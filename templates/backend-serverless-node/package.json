@@ -1,0 +1,15 @@
+{
+  "name": "__BACKEND_SERVICE_NAME__",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,17 @@
+service: __PROJECT_SLUG__-admin-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${opt:region, '__AWS_REGION__'}
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  health:
+    handler: functions/health/handler.handler
+    events:
+      - httpApi:
+          method: GET
+          path: /api/admin/health

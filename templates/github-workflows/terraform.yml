@@ -1,0 +1,26 @@
+name: Terraform
+
+on:
+  pull_request:
+    paths:
+      - 'infrastructure/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Terraform Validate
+    runs-on: ubuntu-latest
+    if: hashFiles('infrastructure/environments/dev/main.tf') != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Format check
+        working-directory: infrastructure
+        run: terraform fmt -check -recursive
+      - name: Init
+        working-directory: infrastructure/environments/dev
+        run: terraform init -backend=false
+      - name: Validate
+        working-directory: infrastructure/environments/dev
+        run: terraform validate
+

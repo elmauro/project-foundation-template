@@ -1,0 +1,14 @@
+service: __PROJECT_SLUG__-layer-otp
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${opt:region, '__AWS_REGION__'}
+
+layers:
+  otp:
+    path: nodejs
+    name: ${self:service}-${sls:stage}
+    description: Shared OTP generation and validation helpers.

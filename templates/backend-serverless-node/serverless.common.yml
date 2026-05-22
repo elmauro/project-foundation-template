@@ -1,0 +1,20 @@
+service: __BACKEND_SERVICE_NAME__
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${opt:region, '__AWS_REGION__'}
+  stage: ${opt:stage, 'dev'}
+  environment:
+    PROJECT_SLUG: __PROJECT_SLUG__
+    BUSINESS_DOMAIN: __BUSINESS_DOMAIN__
+
+functions:
+  health:
+    handler: src/handlers/health.handler
+    events:
+      - httpApi:
+          method: GET
+          path: /health
