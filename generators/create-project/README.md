@@ -11,13 +11,13 @@ npm run create -- --name "Customer Portal" --slug customer-portal --preset fulls
 Crear dentro de `C:\Projects`:
 
 ```powershell
-npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-loyalty-style --domain "customer engagement" --aws-region us-east-1 --projects-root "C:\Projects"
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --domain "customer engagement" --aws-region us-east-1 --projects-root "C:\Projects"
 ```
 
 Crear en una ruta final exacta:
 
 ```powershell
-npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-loyalty-style --target-dir "C:\Projects\customer-portal"
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --target-dir "C:\Projects\customer-portal"
 ```
 
 ## Opciones
@@ -43,5 +43,5 @@ npm run create -- --name "Customer Portal" --slug customer-portal --preset fulls
 - `frontend-vite-react-enterprise`
 - `backend-serverless-multi-api`
 - `infrastructure-aws-capability-folders`
-- `fullstack-aws-loyalty-style`
+- `fullstack-aws-enterprise`
 

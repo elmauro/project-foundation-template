@@ -70,7 +70,7 @@ const presetTemplates = {
     ['github-workflows', '.github/workflows'],
     ['local-dev', 'local-dev'],
   ],
-  'fullstack-aws-loyalty-style': [
+  'fullstack-aws-enterprise': [
     ['frontend-vite-react-enterprise', 'frontend'],
     ['backend-serverless-multi-api', 'backend'],
     ['infrastructure-aws-capability-folders', 'infrastructure'],
@@ -253,7 +253,7 @@ async function main() {
     );
   }
 
-  if (context.PRESET === 'fullstack-aws-terraform' || context.PRESET === 'fullstack-aws-loyalty-style') {
+  if (context.PRESET === 'fullstack-aws-terraform' || context.PRESET === 'fullstack-aws-enterprise') {
     await copyTemplateDirectory(
       terraformModulesRoot,
       path.join(projectDir, 'infrastructure', 'modules'),

@@ -91,9 +91,9 @@ Genera:
 - `docs/`
 - `cursor/`
 
-### `fullstack-aws-loyalty-style`
+### `fullstack-aws-enterprise`
 
-Genera una estructura full-stack neutral pero similar a los proyectos existentes:
+Genera una estructura full-stack enterprise:
 
 - `frontend/` con Vite/React enterprise, Jest, Cypress, MSW, Tailwind, services y routes.
 - `backend/` con APIs serverless separadas, layers, database, tests y docs.

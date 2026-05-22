@@ -9,9 +9,9 @@
 3. **Terraform modules:** bloques reutilizables para AWS.
 4. **Generated project:** repositorio o carpeta final del proyecto de negocio.
 
-## Relacion con proyectos existentes
+## Relacion con referencias previas
 
-`loyalty-cursor` se mantiene como referencia de patrones de trabajo con Cursor, prompts y artefactos de analisis. Este template extrae la parte comun, pero no depende de nombres, APIs ni reglas de negocio Loyalty.
+El template consolida patrones reutilizables de trabajo asistido por IA, frontend, backend e infraestructura. No depende de nombres, APIs ni reglas de negocio de ningun producto especifico.
 
 ## Proyecto generado
 
@@ -30,9 +30,9 @@ La salida recomendada para proyectos full-stack es:
 
 Cada carpeta puede existir o no segun el preset seleccionado.
 
-## Cursor workspace
+## AI workspace
 
-La carpeta `cursor/` del proyecto generado cumple el mismo rol conceptual que `loyalty-cursor`, pero neutral:
+La carpeta `cursor/` del proyecto generado concentra contexto, prompts y artefactos de trabajo:
 
 - `cursor/docs/` contiene el playbook de trabajo.
 - `cursor/projects/` contiene contexto y reglas por repo/stack.

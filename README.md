@@ -1,16 +1,16 @@
 # Project Foundation Template
 
-Base neutral para crear proyectos full-stack con frontend, backend, infraestructura AWS, Terraform, documentacion y contexto para Cursor.
+Base neutral para crear proyectos full-stack con frontend, backend, infraestructura AWS, Terraform, documentacion y contexto para trabajo asistido por IA.
 
-Este template nace a partir de los patrones usados en `loyalty-cursor`, pero no reemplaza ni renombra ese proyecto. `loyalty-cursor` sigue siendo la implementacion y el marco de trabajo especifico para Loyalty; esta carpeta es una base reusable para nuevos proyectos con dominios de negocio distintos.
+Este template concentra estructura, convenciones, generadores y artefactos reutilizables para iniciar nuevos proyectos con dominios de negocio distintos.
 
 ## Objetivos
 
 - Generar proyectos nuevos con una estructura inicial consistente.
 - Separar lo comun de lo especifico del negocio.
-- Entregar templates para frontend, backend, infraestructura, documentacion y trabajo con Cursor.
+- Entregar templates para frontend, backend, infraestructura, documentacion y trabajo asistido por IA.
 - Facilitar despliegues en AWS con Terraform y modulos reutilizables.
-- Evitar copiar reglas, nombres o flujos propios de Loyalty en nuevos proyectos.
+- Evitar copiar reglas, nombres o flujos propios de un producto especifico en nuevos proyectos.
 
 ## Estructura
 
@@ -23,10 +23,13 @@ project-foundation-template/
 │  └─ create-project/
 ├─ templates/
 │  ├─ backend-serverless-node/
+│  ├─ backend-serverless-multi-api/
 │  ├─ cursor-workspace/
 │  ├─ docs/
 │  ├─ frontend-vite-react/
+│  ├─ frontend-vite-react-enterprise/
 │  ├─ github-workflows/
+│  ├─ infrastructure-aws-capability-folders/
 │  ├─ infrastructure-terraform-aws/
 │  ├─ local-dev/
 │  └─ root-common/
@@ -49,10 +52,10 @@ project-foundation-template/
 | `backend-only` | Backend Node/serverless, docs y contexto Cursor backend. |
 | `fullstack-aws` | Frontend, backend, docs, Cursor y estructura AWS. |
 | `fullstack-aws-terraform` | Todo lo anterior mas Terraform por ambientes y referencias a modulos. |
-| `frontend-vite-react-enterprise` | Frontend con layout similar a `loyalty-app-vite`: routes, services, mocks, Cypress, Jest, Tailwind y Radix. |
+| `frontend-vite-react-enterprise` | Frontend enterprise con routes, services, mocks, Cypress, Jest, Tailwind y Radix. |
 | `backend-serverless-multi-api` | Backend con APIs separadas, Serverless Framework, layers, database, docs y tests. |
 | `infrastructure-aws-capability-folders` | Infraestructura por capabilities: cognito, dynamodb, parameters, secrets, postgresdb, proxydb, ses, web, localstack y scripts. |
-| `fullstack-aws-loyalty-style` | Preset full-stack neutral con estructura similar a los proyectos Loyalty actuales. |
+| `fullstack-aws-enterprise` | Preset full-stack enterprise con frontend avanzado, backend multi-API e infraestructura por capabilities. |
 
 ## Uso esperado
 
@@ -63,16 +66,16 @@ npm install
 npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-terraform --domain "customer engagement" --aws-region us-east-1
 ```
 
-Para generar una estructura mas parecida a los proyectos actuales:
+Para generar una estructura enterprise completa:
 
 ```bash
-npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-loyalty-style --domain "customer engagement" --aws-region us-east-1
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --domain "customer engagement" --aws-region us-east-1
 ```
 
 Para crear el proyecto bajo `C:\Projects`, usa `--projects-root`:
 
 ```powershell
-npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-loyalty-style --domain "customer engagement" --aws-region us-east-1 --projects-root "C:\Projects"
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --domain "customer engagement" --aws-region us-east-1 --projects-root "C:\Projects"
 ```
 
 Esto genera:
@@ -84,7 +87,7 @@ C:\Projects\customer-portal\
 Si quieres controlar la ruta final exacta, usa `--target-dir`:
 
 ```powershell
-npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-loyalty-style --target-dir "C:\Projects\customer-portal"
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --target-dir "C:\Projects\customer-portal"
 ```
 
 Salida esperada:
@@ -116,9 +119,9 @@ C:\Projects\customer-portal/
 
 Este template no deberia contener reglas de negocio de un producto especifico. Todo lo que cambie por proyecto debe estar expresado como placeholder, opcion de preset o documento generado bajo `cursor/projects/`.
 
-## Alineacion con proyectos existentes
+## Preset enterprise
 
-El preset `fullstack-aws-loyalty-style` busca replicar la forma tecnica general de los proyectos existentes sin copiar negocio Loyalty:
+El preset `fullstack-aws-enterprise` genera una estructura tecnica completa sin copiar reglas de negocio de ningun producto especifico:
 
 - Frontend Vite/React con `src/components`, `pages`, `routes`, `services`, `types`, `mocks`, `contexts`, `hooks`, `utils`, `lib`, Cypress y Jest.
 - Backend Serverless con APIs separadas, Lambda layers, `database/`, `tests/`, docs por API y script de despliegue por layers/APIs.
