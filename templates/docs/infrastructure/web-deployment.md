@@ -23,6 +23,16 @@ Open the local preview URL shown by Vite and confirm the initial page loads.
 
 ## 2. Create the web infrastructure
 
+Optional: to use a custom domain, the domain must have a public Route 53 hosted zone. Configure it in `infrastructure/web/dev.tfvars` before applying Terraform:
+
+```hcl
+domain_name      = "app.example.com"
+hosted_zone_name = "example.com"
+create_www_alias = false
+```
+
+For an apex domain like `example.com`, set both `domain_name` and `hosted_zone_name` to `example.com`. If the domain was registered outside AWS, delegate it to Route 53 by copying the hosted zone name servers into the registrar.
+
 ```bash
 cd infrastructure/web
 terraform init
@@ -36,6 +46,7 @@ After apply, capture these outputs:
 terraform output web_bucket_name
 terraform output cloudfront_distribution_id
 terraform output cloudfront_domain_name
+terraform output web_domain_names
 terraform output web_url
 ```
 
@@ -72,7 +83,13 @@ The workflow will:
 
 ## 5. Open the initial site
 
-Use:
+Use the custom domain when configured:
+
+```text
+https://<DOMAIN_NAME>
+```
+
+Otherwise use:
 
 ```text
 https://<CLOUDFRONT_DOMAIN_NAME>
@@ -86,6 +103,8 @@ or the `web_url` Terraform output.
 - If Access Denied continues, verify the GitHub environment variables point to the same Terraform outputs used by the CloudFront distribution: `WEB_S3_BUCKET` and `CLOUDFRONT_DISTRIBUTION_ID`.
 - You can verify the object manually with `aws s3api head-object --bucket <WEB_S3_BUCKET> --key index.html`.
 - If the object exists but the site still returns Access Denied, run a CloudFront invalidation for `/*` or rerun the deploy workflow.
+- If the custom domain does not resolve, verify the domain is delegated to the Route 53 hosted zone used by `hosted_zone_name`.
+- If Terraform waits on certificate validation, verify the ACM DNS validation records were created in the public hosted zone.
 - If the page shows an old build, check the CloudFront invalidation step.
 - If the workflow cannot upload, verify `WEB_S3_BUCKET` and IAM permissions.
 - If the workflow cannot invalidate CloudFront, verify `CLOUDFRONT_DISTRIBUTION_ID`.
