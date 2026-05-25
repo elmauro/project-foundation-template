@@ -61,6 +61,7 @@ El generador debe reemplazar placeholders en nombres de archivo y contenido.
 Genera:
 
 - `frontend/`
+- `.cursor/`
 - `docs/`
 - `cursor/` con contexto frontend
 
@@ -69,6 +70,7 @@ Genera:
 Genera:
 
 - `backend/`
+- `.cursor/`
 - `docs/`
 - `cursor/` con contexto backend
 
@@ -78,6 +80,7 @@ Genera:
 
 - `frontend/`
 - `backend/`
+- `.cursor/`
 - `docs/`
 - `cursor/`
 
@@ -88,6 +91,7 @@ Genera:
 - `frontend/`
 - `backend/`
 - `infrastructure/`
+- `.cursor/`
 - `docs/`
 - `cursor/`
 
@@ -98,6 +102,7 @@ Genera una estructura full-stack enterprise:
 - `frontend/` con Vite/React enterprise, Jest, Cypress, MSW, Tailwind, services y routes.
 - `backend/` con APIs serverless separadas, layers, database, tests y docs.
 - `infrastructure/` por capability AWS.
+- `.cursor/` con reglas activas para Cursor.
 - `docs/`
 - `cursor/`
 
@@ -114,6 +119,8 @@ Un proyecto generado debe poder:
 - explicar su dominio y arquitectura inicial desde `README.md` y `docs/`
 - separar frontend, backend e infraestructura
 - declarar variables de ambiente en `.env.example`
+- incluir reglas activas en `.cursor/rules/*.mdc`
+- incluir un mapa rapido en `cursor/context-map.md`
 - contener contexto inicial para Cursor
 - dejar Terraform preparado por ambiente cuando el preset lo incluya
 

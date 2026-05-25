@@ -45,3 +45,10 @@ npm run create -- --name "Customer Portal" --slug customer-portal --preset fulls
 - `infrastructure-aws-capability-folders`
 - `fullstack-aws-enterprise`
 
+## Cursor
+
+Todos los presets generan:
+
+- `.cursor/rules/*.mdc`: reglas activas que Cursor carga automaticamente.
+- `cursor/`: playbooks, contexto por stack, prompts, templates y artefactos de analisis.
+

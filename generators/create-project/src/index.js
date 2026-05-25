@@ -13,6 +13,7 @@ const defaultOutputRoot = path.resolve(__dirname, '../../../generated');
 const presetTemplates = {
   'frontend-only': [
     ['frontend-vite-react', 'frontend'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -21,6 +22,7 @@ const presetTemplates = {
   ],
   'backend-only': [
     ['backend-serverless-node', 'backend'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -30,6 +32,7 @@ const presetTemplates = {
   'fullstack-aws': [
     ['frontend-vite-react', 'frontend'],
     ['backend-serverless-node', 'backend'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -40,6 +43,7 @@ const presetTemplates = {
     ['frontend-vite-react', 'frontend'],
     ['backend-serverless-node', 'backend'],
     ['infrastructure-terraform-aws', 'infrastructure'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -48,6 +52,7 @@ const presetTemplates = {
   ],
   'frontend-vite-react-enterprise': [
     ['frontend-vite-react-enterprise', 'frontend'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -56,6 +61,7 @@ const presetTemplates = {
   ],
   'backend-serverless-multi-api': [
     ['backend-serverless-multi-api', 'backend'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -64,6 +70,7 @@ const presetTemplates = {
   ],
   'infrastructure-aws-capability-folders': [
     ['infrastructure-aws-capability-folders', 'infrastructure'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -74,6 +81,7 @@ const presetTemplates = {
     ['frontend-vite-react-enterprise', 'frontend'],
     ['backend-serverless-multi-api', 'backend'],
     ['infrastructure-aws-capability-folders', 'infrastructure'],
+    ['cursor-config', '.cursor'],
     ['cursor-workspace', 'cursor'],
     ['docs', 'docs'],
     ['root-common', '.'],
@@ -205,11 +213,18 @@ Generated from \`project-foundation-template\`.
 
 ## Structure
 
+- \`.cursor/\`: active Cursor configuration and project rules.
 - \`frontend/\`: web application when enabled by the preset.
 - \`backend/\`: API and application services when enabled by the preset.
 - \`infrastructure/\`: Terraform environments when enabled by the preset.
 - \`cursor/\`: AI working context, prompts, templates and analysis artifacts.
 - \`docs/\`: product, architecture and operational documentation.
+
+## Context
+
+- Start with \`project.config.json\`.
+- Use \`cursor/context-map.md\` as the quick project map.
+- Use \`.cursor/rules/project-context.mdc\` for Cursor context discovery rules.
 `;
 
   await writeFile(path.join(projectDir, 'README.md'), content, 'utf8');

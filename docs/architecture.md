@@ -22,6 +22,7 @@ La salida recomendada para proyectos full-stack es:
 ├─ frontend/
 ├─ backend/
 ├─ infrastructure/
+├─ .cursor/
 ├─ cursor/
 ├─ docs/
 ├─ .github/
@@ -30,11 +31,22 @@ La salida recomendada para proyectos full-stack es:
 
 Cada carpeta puede existir o no segun el preset seleccionado.
 
+## Cursor configuration
+
+La carpeta `.cursor/` contiene configuracion activa que Cursor carga automaticamente:
+
+- `.cursor/rules/core-standards.mdc`
+- `.cursor/rules/project-context.mdc`
+- `.cursor/rules/frontend-react.mdc`
+- `.cursor/rules/backend-serverless.mdc`
+- `.cursor/rules/infrastructure-terraform.mdc`
+
 ## AI workspace
 
-La carpeta `cursor/` del proyecto generado concentra contexto, prompts y artefactos de trabajo:
+La carpeta `cursor/` del proyecto generado concentra documentacion, contexto, prompts y artefactos de trabajo:
 
 - `cursor/docs/` contiene el playbook de trabajo.
+- `cursor/context-map.md` contiene el mapa rapido de estructura, stacks y archivos de contexto.
 - `cursor/projects/` contiene contexto y reglas por repo/stack.
 - `cursor/prompts/` contiene prompts reutilizables.
 - `cursor/templates/` contiene plantillas de analisis y requerimientos.

@@ -24,6 +24,7 @@ project-foundation-template/
 ├─ templates/
 │  ├─ backend-serverless-node/
 │  ├─ backend-serverless-multi-api/
+│  ├─ cursor-config/
 │  ├─ cursor-workspace/
 │  ├─ docs/
 │  ├─ frontend-vite-react/
@@ -95,6 +96,7 @@ Salida esperada:
 ```text
 C:\Projects\customer-portal/
 ├─ .github/
+├─ .cursor/
 ├─ frontend/
 ├─ backend/
 ├─ infrastructure/
@@ -108,12 +110,35 @@ C:\Projects\customer-portal/
 ## Artefactos comunes generados
 
 - `.gitignore` con reglas para Node, Terraform, Serverless y archivos de ambiente.
+- `.cursor/rules/*.mdc` con reglas activas para Cursor.
 - `project.config.json` con el preset y variables usadas al crear el proyecto.
+- `cursor/context-map.md` como indice rapido de estructura, stacks y archivos de contexto.
 - `.github/workflows/ci.yml` para checks frontend/backend.
 - `.github/workflows/terraform.yml` para `terraform fmt`, `init` y `validate`.
 - `.github/workflows/deploy-web.yml` como punto de partida para despliegue web.
 - `docs/adr-template.md`, `docs/security-baseline.md` y `docs/cost-baseline.md`.
 - `local-dev/docker-compose.yml` con Postgres y LocalStack opcionales.
+
+## `.cursor/` vs `cursor/`
+
+El proyecto generado usa ambas carpetas con responsabilidades distintas:
+
+- `.cursor/`: configuracion activa que Cursor lee automaticamente, especialmente `.cursor/rules/*.mdc`.
+- `cursor/`: documentacion de trabajo, contexto por stack, prompts, templates y artefactos de analisis.
+
+Las reglas en `.cursor/rules/` deben ser breves y accionables. La documentacion larga, playbooks y analisis deben vivir en `cursor/`.
+
+## Context discovery
+
+El flujo recomendado para entender un proyecto generado es:
+
+1. Leer `project.config.json`.
+2. Leer `cursor/context-map.md`.
+3. Leer el contexto especifico del area a modificar:
+   - `cursor/projects/frontend/project-context.md`
+   - `cursor/projects/backend/project-context.md`
+   - `cursor/projects/infrastructure/project-context.md`
+4. Usar `cursor/docs/AI-Project-Playbook.md` para el flujo de trabajo.
 
 ## Principio de diseno
 
