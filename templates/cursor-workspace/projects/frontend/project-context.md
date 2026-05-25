@@ -26,6 +26,10 @@ frontend/
 └─ package.json
 ```
 
+Generated features: `__FRONTEND_FEATURES__`
+
+Use `frontend/frontend.config.json` as the source of truth for selected frontend features.
+
 ## Rules
 
 - No hardcodear configuracion de ambiente.

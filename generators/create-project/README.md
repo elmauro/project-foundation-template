@@ -30,6 +30,9 @@ npm run create -- --name "Customer Portal" --slug customer-portal --preset fulls
 | `--domain` | no | `general business` |
 | `--aws-region` | no | `us-east-1` |
 | `--owner-team` | no | `platform` |
+| `--frontend-features` | no | `router,services,types,tailwind` |
+| `--backend-apis` | no | `core,auth,admin` |
+| `--backend-layers` | no | `transversal` |
 | `--projects-root` | no | `../../generated` |
 | `--target-dir` | no | n/a |
 | `--output` | no | alias legacy de `--projects-root` |
@@ -44,6 +47,62 @@ npm run create -- --name "Customer Portal" --slug customer-portal --preset fulls
 - `backend-serverless-multi-api`
 - `infrastructure-aws-capability-folders`
 - `fullstack-aws-enterprise`
+
+## Backend multi-API
+
+Los presets que usan `backend-serverless-multi-api` permiten seleccionar APIs y layers.
+
+Valores validos para `--backend-apis`:
+
+- `core`
+- `auth`
+- `admin`
+- `notification`
+- `worker`
+
+Valores validos para `--backend-layers`:
+
+- `transversal`
+- `domain`
+
+Ejemplo completo:
+
+```powershell
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --backend-apis core,auth,admin,notification,worker --backend-layers transversal,domain --projects-root "C:\Projects"
+```
+
+El generador crea `backend/backend.config.json` con la seleccion final.
+
+## Frontend enterprise
+
+Los presets que usan `frontend-vite-react-enterprise` permiten seleccionar features.
+
+Valores validos para `--frontend-features`:
+
+- `router`
+- `services`
+- `types`
+- `tailwind`
+- `auth`
+- `cognito`
+- `msw`
+- `cypress`
+- `jest`
+- `radix`
+
+Defaults:
+
+```text
+--frontend-features router,services,types,tailwind
+```
+
+Ejemplo completo:
+
+```powershell
+npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --frontend-features router,services,types,tailwind,auth,cognito,msw,cypress,jest,radix --projects-root "C:\Projects"
+```
+
+El generador crea `frontend/frontend.config.json` y ajusta `frontend/package.json` con la seleccion final.
 
 ## Cursor
 

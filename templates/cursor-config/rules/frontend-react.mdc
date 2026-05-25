@@ -12,4 +12,5 @@ alwaysApply: false
 - Keep MSW handlers and Cypress specs aligned with backend contracts.
 - Prefer shared UI primitives from `frontend/src/components/ui/`.
 - Use environment variables through `VITE_*` configuration.
+- Read `frontend/frontend.config.json` before assuming which optional frontend features exist.
 

@@ -4,8 +4,8 @@ set -euo pipefail
 STAGE="${1:-dev}"
 REGION="${AWS_REGION:-__AWS_REGION__}"
 
-LAYERS=(layer-transversal layer-email layer-otp layer-engine)
-APIS=(auth-api admin-api tenant-api transaction-api email-api otp-api)
+LAYERS=(__BACKEND_LAYER_DIRS_BASH__)
+APIS=(__BACKEND_API_DIRS_BASH__)
 
 for layer in "${LAYERS[@]}"; do
   if [ -f "$layer/serverless.yml" ]; then

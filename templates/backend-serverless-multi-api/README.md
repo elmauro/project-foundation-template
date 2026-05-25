@@ -6,26 +6,26 @@ Backend multi-API serverless para `__PROJECT_NAME__`, alineado con una estructur
 
 ```text
 backend/
-├─ auth-api/
-├─ admin-api/
-├─ tenant-api/
-├─ transaction-api/
-├─ email-api/
-├─ otp-api/
-├─ layer-transversal/
-├─ layer-email/
-├─ layer-otp/
-├─ layer-engine/
+├─ <selected-api>/
+├─ <selected-layer>/
 ├─ database/
 ├─ docs/
 ├─ tests/
+├─ backend.config.json
 ├─ deploy-backend.sh
 └─ package.json
 ```
 
-Renombra o elimina APIs que no apliquen al dominio del nuevo proyecto.
+## Generated modules
+
+- APIs: `__BACKEND_API_DIRS_BASH__`
+- Layers: `__BACKEND_LAYER_DIRS_BASH__`
+
+`core-api` is the recommended first domain API. Optional APIs and layers are generated only when selected with generator options.
 
 ## Deploy convention
 
 Deploy layers first, then APIs.
+
+The deploy script reads the generated API/layer list embedded at creation time. The selected backend shape is also recorded in `backend.config.json`.
 

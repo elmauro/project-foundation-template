@@ -20,6 +20,9 @@ Contrato minimo entre el generador y los templates.
 | `BACKEND_SERVICE_NAME` | `<PROJECT_SLUG>-backend` | Nombre logico del backend. |
 | `TERRAFORM_STATE_BUCKET` | empty | Bucket remoto de Terraform, si ya existe. |
 | `OWNER_TEAM` | `platform` | Equipo responsable inicial. |
+| `FRONTEND_FEATURES` | `router,services,types,tailwind` | Features seleccionadas para frontend enterprise. |
+| `BACKEND_APIS` | `core,auth,admin` | APIs seleccionadas para el backend multi-API. |
+| `BACKEND_LAYERS` | `transversal` | Layers seleccionados para el backend multi-API. |
 | `PROJECTS_ROOT` | `../../generated` | Carpeta raiz donde se crea `<PROJECT_SLUG>/`. |
 | `PROJECT_DIR` | `<PROJECTS_ROOT>/<PROJECT_SLUG>` | Ruta final del proyecto generado. |
 
@@ -47,6 +50,9 @@ __AWS_REGION__
 __PRESET__
 __FRONTEND_APP_NAME__
 __BACKEND_SERVICE_NAME__
+__FRONTEND_FEATURES__
+__BACKEND_API_DIRS_BASH__
+__BACKEND_LAYER_DIRS_BASH__
 __OWNER_TEAM__
 __PROJECTS_ROOT__
 __PROJECT_DIR__
@@ -105,6 +111,57 @@ Genera una estructura full-stack enterprise:
 - `.cursor/` con reglas activas para Cursor.
 - `docs/`
 - `cursor/`
+
+## Backend multi-API options
+
+`backend-serverless-multi-api` genera solo las APIs y layers seleccionados.
+
+APIs validas:
+
+- `core` -> `core-api`
+- `auth` -> `auth-api`
+- `admin` -> `admin-api`
+- `notification` -> `notification-api`
+- `worker` -> `worker-api`
+
+Layers validos:
+
+- `transversal` -> `layer-transversal`
+- `domain` -> `layer-domain`
+
+Defaults:
+
+```text
+--backend-apis core,auth,admin
+--backend-layers transversal
+```
+
+El generador registra la seleccion final en `backend/backend.config.json`.
+
+## Frontend enterprise options
+
+`frontend-vite-react-enterprise` genera solo las features seleccionadas.
+
+Features validas:
+
+- `router`
+- `services`
+- `types`
+- `tailwind`
+- `auth`
+- `cognito`
+- `msw`
+- `cypress`
+- `jest`
+- `radix`
+
+Defaults:
+
+```text
+--frontend-features router,services,types,tailwind
+```
+
+El generador registra la seleccion final en `frontend/frontend.config.json` y ajusta `frontend/package.json`.
 
 ### Presets especializados
 

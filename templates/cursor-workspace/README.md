@@ -15,6 +15,7 @@ cursor/
 ├─ prompts/
 ├─ templates/
 └─ analysis/
+   └─ features/
 ```
 
 ## Uso
@@ -25,6 +26,16 @@ cursor/
 - Actualiza `projects/*/project-context.md` cuando cambie la arquitectura real.
 - Crea artefactos por feature en `analysis/features/<feature-slug>/`.
 - Mantiene las reglas tecnicas separadas de las reglas de negocio.
+
+## Analysis artifacts
+
+Usa `analysis/features/<feature-slug>/` para mantener contexto durable de cada trabajo:
+
+- `feature-manifest.md`
+- `user-story.md`
+- `analysis.md`
+- `implementation-notes.md`
+- `test-checklist.md`
 
 ## `.cursor/` vs `cursor/`
 

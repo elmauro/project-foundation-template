@@ -15,13 +15,21 @@ Backend para `__PROJECT_NAME__`, dominio `__BUSINESS_DOMAIN__`.
 
 ```text
 backend/
-├─ src/
-│  ├─ handlers/
-│  ├─ services/
-│  └─ shared/
+├─ <selected-api>/
+├─ <selected-layer>/
+├─ database/
+├─ docs/
 ├─ tests/
+├─ backend.config.json
+├─ deploy-backend.sh
 └─ package.json
 ```
+
+Generated APIs: `__BACKEND_API_DIRS_BASH__`
+
+Generated layers: `__BACKEND_LAYER_DIRS_BASH__`
+
+Use `backend/backend.config.json` as the source of truth for selected APIs and layers.
 
 ## Rules
 

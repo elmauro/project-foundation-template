@@ -14,7 +14,6 @@ infrastructure/
 ├─ proxydb/
 ├─ ses/
 ├─ web/
-├─ localstack/
 └─ scripts/
 ```
 
