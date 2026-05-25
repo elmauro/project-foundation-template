@@ -418,21 +418,21 @@ function buildFrontendPackage(context) {
     preview: 'vite preview',
   };
   const dependencies = {
-    '@vitejs/plugin-react': 'latest',
-    vite: 'latest',
-    typescript: 'latest',
-    react: 'latest',
-    'react-dom': 'latest',
+    react: '^18.2.0',
+    'react-dom': '^18.2.0',
   };
   const devDependencies = {
-    '@eslint/js': 'latest',
-    '@types/node': 'latest',
-    '@types/react': 'latest',
-    '@types/react-dom': 'latest',
-    eslint: 'latest',
-    'eslint-plugin-react-hooks': 'latest',
-    'eslint-plugin-react-refresh': 'latest',
-    'typescript-eslint': 'latest',
+    '@eslint/js': '^9.21.0',
+    '@types/node': '^22.14.1',
+    '@types/react': '^18.2.14',
+    '@types/react-dom': '^18.2.7',
+    '@vitejs/plugin-react': '^4.3.4',
+    eslint: '^9.21.0',
+    'eslint-plugin-react-hooks': '^5.1.0',
+    'eslint-plugin-react-refresh': '^0.4.19',
+    typescript: '^5.3.3',
+    'typescript-eslint': '^8.24.1',
+    vite: '^6.2.0',
   };
   const pkg = {
     name: context.FRONTEND_APP_NAME,
@@ -445,46 +445,46 @@ function buildFrontendPackage(context) {
   };
 
   if (features.has('router')) {
-    dependencies['react-router-dom'] = 'latest';
+    dependencies['react-router-dom'] = '^7.5.0';
   }
 
   if (features.has('services')) {
-    dependencies.axios = 'latest';
+    dependencies.axios = '^1.8.4';
   }
 
   if (features.has('tailwind')) {
-    dependencies.clsx = 'latest';
-    dependencies['tailwind-merge'] = 'latest';
-    devDependencies.autoprefixer = 'latest';
-    devDependencies.postcss = 'latest';
-    devDependencies.tailwindcss = 'latest';
+    dependencies.clsx = '^2.1.1';
+    dependencies['tailwind-merge'] = '^2.6.0';
+    devDependencies.autoprefixer = '^10.4.21';
+    devDependencies.postcss = '^8.5.6';
+    devDependencies.tailwindcss = '^3.4.17';
   }
 
   if (features.has('cognito')) {
-    dependencies['amazon-cognito-identity-js'] = 'latest';
+    dependencies['amazon-cognito-identity-js'] = '^6.3.16';
   }
 
   if (features.has('radix')) {
-    dependencies['@radix-ui/react-dialog'] = 'latest';
-    dependencies['@radix-ui/react-label'] = 'latest';
-    dependencies['@radix-ui/react-select'] = 'latest';
-    dependencies['@radix-ui/react-slot'] = 'latest';
-    dependencies['@radix-ui/react-tabs'] = 'latest';
-    dependencies['@radix-ui/react-tooltip'] = 'latest';
-    dependencies['class-variance-authority'] = 'latest';
-    dependencies['lucide-react'] = 'latest';
-    dependencies.sonner = 'latest';
+    dependencies['@radix-ui/react-dialog'] = '^1.1.15';
+    dependencies['@radix-ui/react-label'] = '^2.1.7';
+    dependencies['@radix-ui/react-select'] = '^2.2.6';
+    dependencies['@radix-ui/react-slot'] = '^1.2.3';
+    dependencies['@radix-ui/react-tabs'] = '^1.1.13';
+    dependencies['@radix-ui/react-tooltip'] = '^1.2.7';
+    dependencies['class-variance-authority'] = '^0.7.1';
+    dependencies['lucide-react'] = '^0.462.0';
+    dependencies.sonner = '^1.7.4';
   }
 
   if (features.has('jest')) {
     scripts.test = 'jest';
-    devDependencies['@testing-library/jest-dom'] = 'latest';
-    devDependencies['@testing-library/react'] = 'latest';
-    devDependencies['@types/jest'] = 'latest';
-    devDependencies['identity-obj-proxy'] = 'latest';
-    devDependencies.jest = 'latest';
-    devDependencies['jest-environment-jsdom'] = 'latest';
-    devDependencies['ts-jest'] = 'latest';
+    devDependencies['@testing-library/jest-dom'] = '^6.6.3';
+    devDependencies['@testing-library/react'] = '^16.3.0';
+    devDependencies['@types/jest'] = '^29.5.14';
+    devDependencies['identity-obj-proxy'] = '^3.0.0';
+    devDependencies.jest = '^29.7.0';
+    devDependencies['jest-environment-jsdom'] = '^29.7.0';
+    devDependencies['ts-jest'] = '^29.3.1';
   }
 
   if (features.has('cypress')) {
@@ -493,13 +493,13 @@ function buildFrontendPackage(context) {
       : 'vite --host 0.0.0.0 --port 51730';
     scripts['cy:e2e'] = 'start-server-and-test cy:dev http://localhost:51730 "cypress open"';
     scripts['cy:e2e:run'] = 'start-server-and-test cy:dev http://localhost:51730 "cypress run --e2e"';
-    devDependencies['cross-env'] = 'latest';
-    devDependencies.cypress = 'latest';
-    devDependencies['start-server-and-test'] = 'latest';
+    devDependencies['cross-env'] = '^7.0.3';
+    devDependencies.cypress = '^14.3.0';
+    devDependencies['start-server-and-test'] = '^2.0.11';
   }
 
   if (features.has('msw')) {
-    devDependencies.msw = 'latest';
+    devDependencies.msw = '^2.7.4';
     pkg.msw = {
       workerDirectory: ['public'],
     };
@@ -593,6 +593,49 @@ function buildFrontendTsconfig(context) {
   }
 
   return `${JSON.stringify({ files: [], references }, null, 2)}\n`;
+}
+
+function buildFrontendEslintConfig() {
+  return `import js from '@eslint/js';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  {
+    ignores: ['dist', 'coverage', 'node_modules'],
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        AbortController: 'readonly',
+        console: 'readonly',
+        document: 'readonly',
+        fetch: 'readonly',
+        Headers: 'readonly',
+        localStorage: 'readonly',
+        navigator: 'readonly',
+        Request: 'readonly',
+        Response: 'readonly',
+        sessionStorage: 'readonly',
+        window: 'readonly',
+      },
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+  },
+);
+`;
 }
 
 function buildFrontendIndexCss(context) {
@@ -691,6 +734,7 @@ async function writeFrontendConfig(projectDir, context) {
 
   await writeFile(path.join(frontendDir, 'frontend.config.json'), `${JSON.stringify(content, null, 2)}\n`, 'utf8');
   await writeFile(path.join(frontendDir, 'package.json'), `${JSON.stringify(buildFrontendPackage(context), null, 2)}\n`, 'utf8');
+  await writeFile(path.join(frontendDir, 'eslint.config.js'), buildFrontendEslintConfig(), 'utf8');
   await writeFile(path.join(frontendDir, 'tsconfig.json'), buildFrontendTsconfig(context), 'utf8');
   await writeFile(path.join(frontendDir, 'src', 'main.tsx'), buildFrontendMain(context), 'utf8');
   await writeFile(path.join(frontendDir, 'src', 'App.tsx'), buildFrontendApp(context), 'utf8');

@@ -6,7 +6,14 @@ Owner team: `__OWNER_TEAM__`
 
 ## Deploy
 
-Documentar aqui los comandos y pipelines reales de despliegue.
+Frontend web:
+
+1. Crear infraestructura en `infrastructure/web`.
+2. Configurar GitHub environment con outputs de Terraform.
+3. Ejecutar workflow `Deploy Web`.
+4. Abrir la URL de CloudFront.
+
+Ver `docs/infrastructure/web-deployment.md`.
 
 ## Rollback
 

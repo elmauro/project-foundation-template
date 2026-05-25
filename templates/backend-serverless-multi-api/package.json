@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:integration": "jest tests/integration --no-cache"
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
+    "test:coverage": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
+    "test:integration": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js tests/integration --no-cache"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "latest",

@@ -10,17 +10,28 @@ jobs:
   validate:
     name: Terraform Validate
     runs-on: ubuntu-latest
-    if: hashFiles('infrastructure/environments/dev/main.tf') != ''
     steps:
       - uses: actions/checkout@v4
+      - name: Check Terraform project
+        id: terraform
+        run: |
+          if [ -f infrastructure/environments/dev/main.tf ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
       - uses: hashicorp/setup-terraform@v3
+        if: steps.terraform.outputs.exists == 'true'
       - name: Format check
+        if: steps.terraform.outputs.exists == 'true'
         working-directory: infrastructure
         run: terraform fmt -check -recursive
       - name: Init
+        if: steps.terraform.outputs.exists == 'true'
         working-directory: infrastructure/environments/dev
         run: terraform init -backend=false
       - name: Validate
+        if: steps.terraform.outputs.exists == 'true'
         working-directory: infrastructure/environments/dev
         run: terraform validate
 

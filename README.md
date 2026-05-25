@@ -130,8 +130,9 @@ C:\Projects\customer-portal/
 - `cursor/analysis/` y `cursor/analysis/features/` para artefactos durables por feature.
 - `.github/workflows/ci.yml` para checks frontend/backend.
 - `.github/workflows/terraform.yml` para `terraform fmt`, `init` y `validate`.
-- `.github/workflows/deploy-web.yml` como punto de partida para despliegue web.
+- `.github/workflows/deploy-web.yml` para desplegar `frontend/dist` a S3 e invalidar CloudFront.
 - `docs/adr-template.md`, `docs/security-baseline.md` y `docs/cost-baseline.md`.
+- `docs/infrastructure/web-deployment.md` con pasos para ver la pagina inicial desplegada.
 - `local-dev/docker-compose.yml` con Postgres opcional para desarrollo local.
 
 ## `.cursor/` vs `cursor/`

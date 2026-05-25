@@ -41,6 +41,7 @@ __PROJECT_SLUG__/
 | Security | `docs/security-baseline.md` |
 | Cost | `docs/cost-baseline.md` |
 | Operations | `docs/runbook.md` |
+| Web deployment | `docs/infrastructure/web-deployment.md` |
 
 ## Scope Guide
 
