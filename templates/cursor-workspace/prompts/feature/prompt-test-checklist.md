@@ -19,6 +19,8 @@ Stack scope: backend | frontend | infrastructure | full-stack
 Output file: cursor/analysis/features/<feature-slug>/test-checklist.md
 
 Create a concise checklist with:
+- document title and `Name:` set to Feature name
+- `Slug:` set to Feature slug
 - happy paths
 - validation and error scenarios
 - auth/role scenarios

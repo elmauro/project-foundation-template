@@ -1,9 +1,11 @@
-# Implementation Notes — `<slug>`
+# Implementation Notes — `<feature-name>`
+
+> Use Feature name in the title. Use Feature slug only in the `Slug:` field and folder path.
 
 ## Feature
 
-- Name:
-- Slug:
+- Name: `<feature-name>`
+- Slug: `<feature-slug>`
 - Ticket/story:
 - Implementation date:
 - Branch/PR:

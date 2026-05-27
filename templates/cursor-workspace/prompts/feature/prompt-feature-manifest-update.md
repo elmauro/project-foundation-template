@@ -15,6 +15,8 @@ Feature name: <feature-name>
 Output file: cursor/analysis/features/<feature-slug>/feature-manifest.md
 
 Update the manifest with:
+- `Name:` set to Feature name and `Slug:` set to Feature slug
+- document title using Feature name
 - status
 - owner or responsible area if known
 - links to ticket, PRs, docs or designs

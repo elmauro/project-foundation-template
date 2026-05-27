@@ -38,6 +38,11 @@ Feature slug: <feature-slug>
 Feature name: <feature-name>
 Stack scope: backend | frontend | infrastructure | full-stack
 
+Naming rules:
+- Use Feature slug only for folder paths: `cursor/analysis/features/<feature-slug>/`.
+- Use Feature name in document titles and in every `Name:` field.
+- Set `Slug:` to Feature slug and `Name:` to Feature name in all saved artifacts.
+
 Please execute in order:
 
 PHASE 1 — READINESS CHECK
@@ -56,16 +61,19 @@ PHASE 3 — IMPLEMENTATION NOTES
 - Save concise notes with summary, decisions, impacted files, docs/tests updated and risks:
   cursor/analysis/features/<feature-slug>/implementation-notes.md
 - Use `implementation-notes-template.md` structure.
+- Title with Feature name; set `Name:` and `Slug:` from the inputs.
 
 PHASE 4 — TEST CHECKLIST
 - Save validation checklist covering happy paths, errors, role/auth cases, API contracts, mocks, E2E and regressions:
   cursor/analysis/features/<feature-slug>/test-checklist.md
 - Use `test-checklist-template.md` structure.
+- Title with Feature name; set `Name:` and `Slug:` from the inputs.
 
 PHASE 5 — FEATURE MANIFEST
 - Update status, completed artifacts, validation status and next step:
   cursor/analysis/features/<feature-slug>/feature-manifest.md
 - Use `feature-manifest-template.md` structure.
+- Keep Feature name in headers and `Name:`; keep Feature slug in `Slug:`.
 
 Constraints:
 - Keep changes minimal and scoped.

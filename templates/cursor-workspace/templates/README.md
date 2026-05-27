@@ -13,3 +13,5 @@ Plantillas para artefactos de trabajo de `cursor/`.
 | `test-checklist-template.md` | Validación manual/automática, contratos, gaps y riesgos. |
 
 Usa los prompts de `cursor/prompts/feature/` para generar o actualizar estos artefactos.
+
+En cada artefacto: titulo y `Name:` = Feature name; `Slug:` = Feature slug.

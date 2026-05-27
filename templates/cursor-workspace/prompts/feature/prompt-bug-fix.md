@@ -9,6 +9,7 @@ Use this prompt when fixing a defect in `frontend/`, `backend/`, `infrastructure
 - Environment: `local | dev | staging | prod-like`
 - Stack scope: `backend`, `frontend`, `infrastructure` or `full-stack`
 - Feature slug: `<bug-... | existing-feature-slug | n/a>`
+- Feature name: `<human-readable name | n/a>`
 
 ## Prompt to paste in Cursor
 
@@ -34,6 +35,7 @@ Environment: local | dev | staging | prod-like
 Role / user type: <admin | customer | operator | n/a>
 Stack scope: backend | frontend | infrastructure | full-stack
 Feature slug: <bug-... | existing-feature-slug | n/a>
+Feature name: <human-readable name | n/a>
 
 Please execute in order:
 
@@ -67,6 +69,8 @@ PHASE 6 — ARTIFACTS (if Feature slug is not n/a)
 - Save or update validation checklist:
   cursor/analysis/features/<feature-slug>/test-checklist.md
 - Use the templates attached above.
+- Set `Name:` to Feature name when provided; otherwise derive a readable name from the bug context, not from the slug alone.
+- Set `Slug:` to Feature slug.
 
 Output:
 - root cause

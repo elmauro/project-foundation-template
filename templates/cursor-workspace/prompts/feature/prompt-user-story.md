@@ -15,6 +15,8 @@ Stack scope: backend | frontend | infrastructure | full-stack
 Output file: cursor/analysis/features/<feature-slug>/user-story.md
 
 Please create or update the user story with:
+- document title and `Name:` set to Feature name
+- `Slug:` set to Feature slug
 - user / role
 - goal
 - business value
@@ -26,6 +28,7 @@ Please create or update the user story with:
 
 Rules:
 - Do not implement code.
+- Do not replace Feature name with a slugified version.
 - Keep acceptance criteria testable.
 - Mark unknowns explicitly.
 - Use domain language from `__BUSINESS_DOMAIN__` when applicable.

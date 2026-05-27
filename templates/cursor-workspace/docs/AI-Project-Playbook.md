@@ -75,6 +75,8 @@ INTAKE -> STORY -> ANALYSIS -> IMPLEMENT -> TEST -> REVIEW -> ITERATE
 
 Adjunta **solo el prompt** de la fase. El prompt ya referencia templates, reglas y contexto del proyecto.
 
+**Slug vs name:** `Feature slug` define la carpeta (`cursor/analysis/features/<feature-slug>/`). `Feature name` es el titulo legible que debe usarse en encabezados y en el campo `Name:` de cada artefacto.
+
 ### 1. Crear paquete de analisis
 
 ```text
@@ -131,6 +133,8 @@ Issue / ticket: <id>
 Problem: <what fails>
 Expected behavior: <what should happen>
 Stack scope: backend | frontend | infrastructure | full-stack
+Feature slug: <bug-... | n/a>
+Feature name: <human-readable name | n/a>
 ```
 
 Si el bug requiere seguimiento, crea `cursor/analysis/features/bug-<ticket>-<area>/`.

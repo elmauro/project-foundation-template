@@ -34,12 +34,18 @@ Ticket/story: <ticket-or-story-if-any>
 Stack scope: backend | frontend | infrastructure | full-stack
 Output: markdown feature package
 
+Naming rules:
+- Use Feature slug only for folder paths: `cursor/analysis/features/<feature-slug>/`.
+- Use Feature name in document titles and in every `Name:` field.
+- Set `Slug:` to Feature slug and `Name:` to Feature name in all saved artifacts.
+
 Please execute in order:
 
 PHASE 1 — INTAKE AND SCOPE
 - Clarify goal, users/roles, expected behavior, non-goals and acceptance criteria.
 - Identify stacks affected: frontend, backend, infrastructure, or combinations.
 - Use `user-story-template.md` structure.
+- Title the document with Feature name, not the slug.
 - Save or update:
   cursor/analysis/features/<feature-slug>/user-story.md
 
@@ -50,12 +56,14 @@ PHASE 2 — IMPACT ANALYSIS
 - For infrastructure, check Terraform modules, env vars, IAM and operational docs.
 - Mark unknowns explicitly.
 - Use `analysis-template.md` structure.
+- Title the document with Feature name and fill `Name:` / `Slug:` from the inputs.
 - Save:
   cursor/analysis/features/<feature-slug>/analysis.md
 
 PHASE 3 — FEATURE MANIFEST
 - Create or update status, owner, links, generated artifacts, current state and next recommended step.
 - Use `feature-manifest-template.md` structure.
+- Set `Goal` and headers using Feature name; keep Feature slug in `Slug:`.
 - Save:
   cursor/analysis/features/<feature-slug>/feature-manifest.md
 

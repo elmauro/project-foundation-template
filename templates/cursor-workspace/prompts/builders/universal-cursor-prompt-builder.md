@@ -51,6 +51,16 @@ Templates:
 - `cursor/templates/implementation-notes-template.md`
 - `cursor/templates/test-checklist-template.md`
 
+## Feature Naming
+
+- **Feature slug:** kebab-case folder name under `cursor/analysis/features/<feature-slug>/`.
+- **Feature name:** human-readable title for the feature.
+- When the user provides both, use both. Do not ignore Feature name.
+- In every saved artifact, set `Name:` to Feature name and `Slug:` to Feature slug.
+- Use **Feature name** in document titles and headers.
+- Use **Feature slug** only for folder paths and file locations.
+- Do not infer Feature name from the slug unless the user did not provide one.
+
 ## Output Quality Rules
 
 - Keep scope narrow.
@@ -98,6 +108,7 @@ Ask only what is missing. If the user supplied enough detail, execute.
    - infrastructure
    - full-stack
 3. Feature / issue:
+   - feature slug
    - feature name
    - ticket
    - acceptance criteria
