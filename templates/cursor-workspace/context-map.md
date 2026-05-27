@@ -50,6 +50,16 @@ __PROJECT_SLUG__/
 - Infrastructure changes usually touch one capability folder or Terraform module plus operational docs.
 - Cross-stack changes should align backend contracts, frontend services/types, mocks and tests before closing.
 
+## Prompts and Templates
+
+| Area | Read first |
+| --- | --- |
+| Prompt index | `cursor/prompts/README.md` |
+| Execution guide | `cursor/prompts/builders/universal-cursor-prompt-builder.md` |
+| Feature workflow | `cursor/prompts/feature/prompt-feature-analysis-package.md` |
+| Artifact templates | `cursor/templates/README.md` |
+| Review guidelines | `cursor/analysis/shared/review-guidelines.md` |
+
 ## Cursor Rules
 
 Active rules live under `.cursor/rules/`. Keep them short and actionable. Longer explanations, prompts and feature artifacts belong under `cursor/`.

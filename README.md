@@ -127,6 +127,9 @@ C:\Projects\customer-portal/
 - `backend/backend.config.json` cuando el preset usa backend multi-API.
 - `frontend/frontend.config.json` cuando el preset usa frontend enterprise.
 - `cursor/context-map.md` como indice rapido de estructura, stacks y archivos de contexto.
+- `cursor/prompts/` con prompts de feature, bug fix, review y el builder universal de ejecucion.
+- `cursor/templates/` con plantillas para user story, analysis, manifest, implementation notes y test checklist.
+- `cursor/analysis/shared/review-guidelines.md` para revisiones asistidas por IA.
 - `cursor/analysis/` y `cursor/analysis/features/` para artefactos durables por feature.
 - `.github/workflows/ci.yml` para checks frontend/backend.
 - `.github/workflows/terraform.yml` para `terraform fmt`, `init` y `validate`.

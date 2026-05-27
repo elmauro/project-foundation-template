@@ -9,6 +9,8 @@ Use this folder to keep durable context across sessions instead of relying only 
 ```text
 analysis/
 ├─ README.md
+├─ shared/
+│  └─ review-guidelines.md
 └─ features/
    └─ <feature-slug>/
       ├─ feature-manifest.md
