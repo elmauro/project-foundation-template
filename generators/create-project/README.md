@@ -36,6 +36,9 @@ npm run create -- --name "Customer Portal" --slug customer-portal --preset fulls
 | `--projects-root` | no | `../../generated` |
 | `--target-dir` | no | n/a |
 | `--output` | no | alias legacy de `--projects-root` |
+| `--with-product-backlog` | no | `false` — incluye `cursor/company/future-work/` |
+| `--fw-prefix` | no | slug en `MAYUS_CON_GUIONES_BAJOS` |
+| `--story-prefix` | no | igual que `--fw-prefix` |
 
 ## Presets
 
@@ -110,4 +113,6 @@ Todos los presets generan:
 
 - `.cursor/rules/*.mdc`: reglas activas que Cursor carga automaticamente.
 - `cursor/`: playbooks, contexto por stack, prompts, templates y artefactos de analisis.
+
+Con `--with-product-backlog` tambien se genera `cursor/company/` (backlog FW + registry vacio).
 

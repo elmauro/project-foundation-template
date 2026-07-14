@@ -11,6 +11,8 @@ analysis/
 ├─ README.md
 ├─ shared/
 │  └─ review-guidelines.md
+├─ studies/
+│  └─ <study-slug>/study.md    ← optional; backlog research
 └─ features/
    └─ <feature-slug>/
       ├─ feature-manifest.md

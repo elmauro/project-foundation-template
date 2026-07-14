@@ -151,6 +151,10 @@ function toSlug(value) {
     .replace(/^-+|-+$/g, '');
 }
 
+function toIdPrefix(value) {
+  return toSlug(value).toUpperCase().replace(/-/g, '_');
+}
+
 function parseListOption(value, defaultValue) {
   if (value === undefined) {
     return defaultValue;
@@ -228,6 +232,10 @@ function buildFrontendSkipPaths(selectedFeatures) {
 function shouldSkipPath(relativePath, context) {
   const normalized = relativePath.replaceAll(path.sep, '/');
 
+  if (!context.WITH_PRODUCT_BACKLOG && (normalized === 'company' || normalized.startsWith('company/'))) {
+    return true;
+  }
+
   return [...(context.SKIP_TEMPLATE_PATHS ?? [])].some((skipPath) => (
     normalized === skipPath || normalized.startsWith(`${skipPath}/`)
   ));
@@ -241,6 +249,9 @@ function buildContext(args) {
   const projectName = String(args.name);
   const projectSlug = String(args.slug ?? toSlug(projectName));
   const preset = String(args.preset ?? 'fullstack-aws-terraform');
+  const idPrefix = toIdPrefix(projectSlug);
+  const withProductBacklog = args['with-product-backlog'] === true
+    || args['with-product-backlog'] === 'true';
 
   if (!presetTemplates[preset]) {
     throw new Error(`Unknown preset "${preset}". Valid presets: ${Object.keys(presetTemplates).join(', ')}`);
@@ -283,6 +294,9 @@ function buildContext(args) {
     FRONTEND_FEATURES: selectedFrontendFeatures,
     FRONTEND_FEATURES_TEXT: selectedFrontendFeatures.join(','),
     OWNER_TEAM: String(args['owner-team'] ?? 'platform'),
+    FW_PREFIX: String(args['fw-prefix'] ?? idPrefix),
+    STORY_PREFIX: String(args['story-prefix'] ?? idPrefix),
+    WITH_PRODUCT_BACKLOG: withProductBacklog,
     PROJECT_DIR: projectDir,
     PROJECTS_ROOT: path.dirname(projectDir),
     SKIP_TEMPLATE_DIRS: new Set(skippedBackendDirs),

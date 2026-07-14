@@ -8,13 +8,22 @@ Create one folder per feature, bug or scoped work item.
 features/<feature-slug>/
 ```
 
+Optional area taxonomy (recommended for large projects):
+
+```text
+features/<area>/<feature-slug>/
+```
+
 Examples:
 
 ```text
 features/customer-onboarding/
+features/backend/auth-api-keys/
+features/frontend/login-redirect/
 features/bug-login-redirect/
-features/refactor-api-errors/
 ```
+
+Areas sugeridas: `backend`, `frontend`, `infrastructure`, `_core`, o dominio de producto.
 
 ## Recommended files
 
@@ -26,3 +35,12 @@ features/refactor-api-errors/
 
 Use templates from `cursor/templates/` when creating these files.
 
+Register closed features in [`INDEX.md`](INDEX.md).
+
+## Lifecycle prompts
+
+| Phase | Prompt |
+| --- | --- |
+| Intake | `cursor/prompts/feature/prompt-story-intake.md` |
+| Full lifecycle | `cursor/prompts/feature/prompt-feature-lifecycle.md` |
+| Close | `cursor/prompts/feature/prompt-feature-close-package.md` |

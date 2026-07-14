@@ -8,6 +8,14 @@ Contexto, reglas, prompts y artefactos de trabajo para Cursor.
 cursor/
 ├─ context-map.md
 ├─ docs/
+│  ├─ AI-Project-Playbook.md
+│  ├─ documentation-governance.md
+│  ├─ github-projects-sync.md
+│  ├─ context-scope-sessions.md
+│  └─ context-trace-matrix.md
+├─ scripts/
+│  ├─ start-feature.mjs
+│  └─ sync-github-feature.mjs
 ├─ projects/
 │  ├─ backend/
 │  ├─ frontend/
@@ -18,7 +26,19 @@ cursor/
 ├─ templates/
 └─ analysis/
    ├─ shared/
+   ├─ studies/              ← optional; study.md before stories
    └─ features/
+```
+
+Optional (generate with `--with-product-backlog`):
+
+```text
+cursor/company/
+├─ DOCUMENTATION-GOVERNANCE.md
+└─ future-work/
+   ├─ ITEM-TEMPLATE.md
+   ├─ STORY-REGISTRY.md
+   └─ README.md
 ```
 
 ## Uso
@@ -36,8 +56,12 @@ cursor/
 | Prompt | Uso |
 | --- | --- |
 | `prompts/builders/universal-cursor-prompt-builder.md` | Guia de ejecucion para tareas completas en sesion. |
+| `prompts/feature/prompt-story-intake.md` | Intake conversacional + crear paquete. |
+| `prompts/feature/prompt-feature-lifecycle.md` | Lifecycle completo analysis→close. |
 | `prompts/feature/prompt-feature-analysis-package.md` | Story + analysis + manifest sin implementar. |
 | `prompts/feature/prompt-feature-implementation-package.md` | Implementacion + notes + checklist + manifest. |
+| `prompts/feature/prompt-feature-validation-package.md` | Validacion enfocada pre-review. |
+| `prompts/feature/prompt-feature-close-package.md` | Cerrar feature + INDEX + sync docs. |
 | `prompts/feature/prompt-feature-review.md` | Revision post-implementacion. |
 | `prompts/feature/prompt-bug-fix.md` | Reproducir, corregir y validar un bug. |
 | `prompts/feature/prompt-user-story.md` | Crear o refinar user story. |

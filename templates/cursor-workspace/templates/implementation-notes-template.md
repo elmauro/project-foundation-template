@@ -89,6 +89,16 @@
 
 ---
 
+## Context trace (optional)
+
+> When context reads were heavy or ambiguous, record 2–4 rows per `cursor/docs/context-trace-matrix.md`.
+
+| Context | Used for | Value | Action |
+| --- | --- | --- | --- |
+| `<path>` | `<decision>` | High \| Medium \| Low | Keep scoped \| Optional \| Do not default |
+
+---
+
 ## RISKS
 
 - Implementation risks:

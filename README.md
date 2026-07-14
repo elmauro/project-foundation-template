@@ -60,6 +60,8 @@ project-foundation-template/
 
 ## Uso esperado
 
+**Guía de ejemplos paso a paso:** [`docs/examples/README.md`](docs/examples/README.md)
+
 Desde `generators/create-project`:
 
 ```bash
@@ -71,6 +73,14 @@ Para generar una estructura enterprise completa:
 
 ```bash
 npm run create -- --name "Customer Portal" --slug customer-portal --preset fullstack-aws-enterprise --domain "customer engagement" --aws-region us-east-1
+```
+
+Con backlog de producto (`cursor/company/future-work/`):
+
+```powershell
+npm run create -- --name "Acme Platform" --slug acme-platform --preset fullstack-aws-enterprise `
+  --with-product-backlog true --fw-prefix ACME --story-prefix ACME `
+  --target-dir "C:\Projects\acme-platform"
 ```
 
 Por defecto, el backend multi-API genera `core-api`, `auth-api`, `admin-api` y `layer-transversal`. Puedes elegir APIs y layers:
@@ -128,6 +138,8 @@ C:\Projects\customer-portal/
 - `frontend/frontend.config.json` cuando el preset usa frontend enterprise.
 - `cursor/context-map.md` como indice rapido de estructura, stacks y archivos de contexto.
 - `cursor/prompts/` con prompts de feature, bug fix, review y el builder universal de ejecucion.
+- `cursor/scripts/` con `start-feature.mjs` y `sync-github-feature.mjs` (GitHub Issues / Project).
+- `cursor/docs/github-projects-sync.md` guia operativa de sync.
 - `cursor/templates/` con plantillas para user story, analysis, manifest, implementation notes y test checklist.
 - `cursor/analysis/shared/review-guidelines.md` para revisiones asistidas por IA.
 - `cursor/analysis/` y `cursor/analysis/features/` para artefactos durables por feature.
@@ -162,6 +174,24 @@ El flujo recomendado para entender un proyecto generado es:
 ## Principio de diseno
 
 Este template no deberia contener reglas de negocio de un producto especifico. Todo lo que cambie por proyecto debe estar expresado como placeholder, opcion de preset o documento generado bajo `cursor/projects/`.
+
+## Cursor kit y proyectos nuevos
+
+Las mejoras genericas del kit Cursor (prompts, templates, playbook, review guidelines) deben implementarse en `templates/cursor-workspace/` y `templates/cursor-config/`. Asi, cada `npm run create` entrega la version actual del kit en `cursor/` y `.cursor/`.
+
+- Guia de sync y checklist para proyectos ya creados: [`docs/cursor-kit-sync.md`](docs/cursor-kit-sync.md)
+- Ejemplos de uso (generador + Cursor + GitHub): [`docs/examples/README.md`](docs/examples/README.md)
+- Roadmap de mejoras: [`loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md`](../loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md)
+
+Los proyectos existentes no se actualizan solos; hay que sincronizar manualmente preservando contenido de producto (`cursor/company/`, features en curso, etc.).
+
+Prácticas maduras desde Simulith / simulith-adr y plan de adopción por capas: [`loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md`](../loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md) § *Adopción desde Simulith*.
+
+## Loyalty monorepo (existing product)
+
+If you work on **Loyalty** (`loyalty-app-vite` + `loyalty-program-serverless` + `loyalty-cursor`), skip the generator and follow:
+
+- [`docs/examples/04-loyalty-monorepo.md`](docs/examples/04-loyalty-monorepo.md)
 
 ## Preset enterprise
 

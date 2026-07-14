@@ -6,7 +6,8 @@
 
 - Name: `<feature-name>`
 - Slug: `<feature-slug>`
-- Ticket/story:
+- Ticket/story: `<ticket-or-story-id>`
+- Backlog ID: `<FW-*|n/a>` — backlog de producto; no sustituye Ticket/story
 - Owner:
 - Last updated:
 - Stack scope: backend | frontend | infrastructure | full-stack

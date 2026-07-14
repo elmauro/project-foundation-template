@@ -55,27 +55,56 @@ Para infraestructura:
 
 Para full-stack, usa los packs que apliquen.
 
+Para features que leen mucho contexto o cruzan carpetas, registra evidencia opcional en [`context-trace-matrix.md`](context-trace-matrix.md).
+
+## Context routing rapido
+
+Antes de cargar documentos largos, elige el contexto minimo por area. Ver tambien `.cursor/rules/context-scope.mdc` y [`context-scope-sessions.md`](context-scope-sessions.md).
+
+1. Identifica stack scope (backend / frontend / infrastructure / full-stack).
+2. Lee primero solo el contexto base de esa area.
+3. Agrega contexto condicional solo si el archivo se toca o cambia una decision.
+4. Si la story fue ambigua o consumio mucho contexto, anota 2-4 filas **Context trace** en `analysis.md` o `implementation-notes.md`.
+
+| Area | Lee primero | Agrega solo si aplica |
+| --- | --- | --- |
+| Backend | `cursor/projects/backend/project-context.md`, `.cursor/rules/backend-serverless.mdc`, paths `backend/` afectados | infra project-context si deploy; `company/future-work/` si backlog |
+| Frontend | `cursor/projects/frontend/project-context.md`, `.cursor/rules/frontend-react.mdc`, paths `frontend/` afectados | backend docs si contrato; MSW/Cypress si E2E |
+| Infrastructure | `cursor/projects/infrastructure/project-context.md`, `.cursor/rules/infrastructure-terraform.mdc` | backend/frontend si outputs afectan apps |
+| Full-stack | Ambos project contexts + feature package | API docs + types/services en ambos lados |
+| Product / backlog | `cursor/company/future-work/`, `documentation-governance.md` | codigo solo si la decision requiere implementacion |
+| Studies | `cursor/analysis/studies/<slug>/study.md`, study template | feature packages solo para filas `implement` |
+
 ## Flujo determinista
 
 ```text
-INTAKE -> STORY -> ANALYSIS -> IMPLEMENT -> TEST -> REVIEW -> ITERATE
+INTAKE -> STORY -> ANALYSIS -> IMPLEMENT -> VALIDATE -> REVIEW -> CLOSE
 ```
 
 | Fase | Proposito | Salida principal |
 | --- | --- | --- |
-| Intake | Aclarar objetivo, alcance, stacks afectados y restricciones | scope corto |
-| Story | Convertir la idea en criterios de aceptacion | `user-story.md` |
-| Analysis | Mapear impacto, contratos, datos, UI, riesgos | `analysis.md` |
-| Implementation | Cambiar codigo y docs dentro del alcance | codigo + `implementation-notes.md` |
-| Testing | Validar happy path, errores, contratos y regresiones | `test-checklist.md` |
-| Review | Revision tipo PR antes de cerrar | findings o listo |
-| Iterate | Ajustes y pendientes documentados | manifest actualizado |
+| Intake | Registrar story y crear paquete inicial | carpeta + manifest |
+| Story | Criterios de aceptacion | `user-story.md` |
+| Analysis | Impacto, contratos, riesgos | `analysis.md` |
+| Implementation | Codigo + docs en alcance | codigo + `implementation-notes.md` |
+| Validate | Ejecutar checks enfocados | `test-checklist.md` actualizado |
+| Review | Revision tipo PR | findings o listo |
+| Close | Cerrar y sincronizar docs/backlog | manifest done + `INDEX.md` |
 
 ## Quick start
 
 Adjunta **solo el prompt** de la fase. El prompt ya referencia templates, reglas y contexto del proyecto.
 
-**Slug vs name:** `Feature slug` define la carpeta (`cursor/analysis/features/<feature-slug>/`). `Feature name` es el titulo legible que debe usarse en encabezados y en el campo `Name:` de cada artefacto.
+**Slug vs name:** `Feature slug` define la carpeta. `Feature name` es el titulo legible en encabezados y campo `Name:`.
+
+### 0. Intake (opcional)
+
+```text
+@cursor/prompts/feature/prompt-story-intake.md
+Mode: A
+
+<describe the feature in natural language>
+```
 
 ### 1. Crear paquete de analisis
 
@@ -122,6 +151,35 @@ Feature name: <feature-name>
 
 La revision debe empezar por hallazgos y clasificar severidad.
 
+### 4. Validar
+
+```text
+@cursor/prompts/feature/prompt-feature-validation-package.md
+
+Feature slug: <feature-slug>
+Feature name: <feature-name>
+Stack scope: backend | frontend | infrastructure | full-stack
+```
+
+### 5. Cerrar
+
+```text
+@cursor/prompts/feature/prompt-feature-close-package.md
+
+Feature slug: <feature-slug>
+Feature name: <feature-name>
+```
+
+### Lifecycle completo
+
+```text
+@cursor/prompts/feature/prompt-feature-lifecycle.md
+
+Feature slug: <feature-slug>
+Feature name: <feature-name>
+Stack scope: backend | frontend | infrastructure | full-stack
+```
+
 ## Ruta para bugs
 
 Para bugs pequenos:
@@ -146,8 +204,13 @@ Si el bug requiere seguimiento, crea `cursor/analysis/features/bug-<ticket>-<are
 - Pruebas o validacion manual estan registradas en `test-checklist.md`.
 - `implementation-notes.md` explica decisiones, archivos tocados y riesgos residuales.
 - La revision no tiene blockers ni majors abiertos.
+- `cursor/analysis/features/INDEX.md` refleja stage `done` cuando la feature se cierra.
 
 ## Referencia
 
 - Indice de prompts: `cursor/prompts/README.md`
 - Plantillas de artefactos: `cursor/templates/`
+- Gobernanza de docs: `cursor/docs/documentation-governance.md`
+- Indice de features: `cursor/analysis/features/INDEX.md`
+- Context routing: `cursor/docs/context-scope-sessions.md`
+- Context trace (optional): `cursor/docs/context-trace-matrix.md`

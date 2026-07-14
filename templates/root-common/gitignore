@@ -37,3 +37,7 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Cursor scripts (local GitHub config)
+cursor/scripts/github-story.config.json
+loyalty-cursor/scripts/github-story.config.json
+

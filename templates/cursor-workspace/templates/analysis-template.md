@@ -1,5 +1,7 @@
 # Analysis — `<feature-name>`
 
+> **Purpose:** analysis of **one concrete story you will implement** (lifecycle; story already exists). To decide if *more* stories are needed (backlog generation), use [`analysis-study-template.md`](analysis-study-template.md) under `cursor/analysis/studies/`.
+>
 > Use Feature name in the title. Use Feature slug only in the `Slug:` field and folder path.
 
 ## Feature

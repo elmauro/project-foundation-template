@@ -1,0 +1,11 @@
+{
+  "pullRequestNumber": null,
+  "pullRequestUrl": null,
+  "issueNumber": null,
+  "issueUrl": null,
+  "featureSlug": "__PROJECT_SLUG__-example-capability",
+  "featureName": "Example capability",
+  "ticket": "__STORY_PREFIX__-001",
+  "releaseTag": null,
+  "lastSyncedAt": null
+}

@@ -54,11 +54,29 @@ __FRONTEND_FEATURES__
 __BACKEND_API_DIRS_BASH__
 __BACKEND_LAYER_DIRS_BASH__
 __OWNER_TEAM__
+__FW_PREFIX__
+__STORY_PREFIX__
 __PROJECTS_ROOT__
 __PROJECT_DIR__
 ```
 
 El generador debe reemplazar placeholders en nombres de archivo y contenido.
+
+### Backlog opcional (`--with-product-backlog`)
+
+Por defecto **no** se copia `cursor/company/`. Con `--with-product-backlog`:
+
+- `cursor/company/README.md`
+- `cursor/company/DOCUMENTATION-GOVERNANCE.md`
+- `cursor/company/future-work/` (ITEM-TEMPLATE, STORY-REGISTRY, README)
+
+Opciones relacionadas:
+
+| Opcion | Default |
+| --- | --- |
+| `--with-product-backlog` | `false` |
+| `--fw-prefix` | slug en `MAYUS_CON_GUIONES_BAJOS` |
+| `--story-prefix` | igual que `--fw-prefix` |
 
 ## Presets
 
@@ -180,4 +198,10 @@ Un proyecto generado debe poder:
 - incluir un mapa rapido en `cursor/context-map.md`
 - contener contexto inicial para Cursor
 - dejar Terraform preparado por ambiente cuando el preset lo incluya
+
+## Cursor kit
+
+Todo preset que incluye `cursor-workspace` genera `cursor/` con prompts, templates, playbook y review guidelines. Las mejoras genericas del kit deben editarse en `templates/cursor-workspace/` (ver [`docs/cursor-kit-sync.md`](cursor-kit-sync.md)).
+
+Con `--with-product-backlog` tambien se genera el scaffold minimo `cursor/company/future-work/`.
 
