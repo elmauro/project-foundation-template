@@ -106,6 +106,19 @@
 
 ---
 
+## Validation plan
+
+- Run tests: yes | no
+- Frontend tests: yes | no | n/a
+- Backend tests: yes | no | n/a
+- Infrastructure validate: yes | no | n/a
+- Extra commands:
+  - n/a
+
+> Filled at analysis. The validation gate (`run-feature-gates.mjs --phase validation`) runs stack tests and extra commands only when **Run tests: yes**. See [`story-validation.md`](../docs/story-validation.md).
+
+---
+
 ## Documentation Sync
 
 - [ ] Manifest status matches current implementation.

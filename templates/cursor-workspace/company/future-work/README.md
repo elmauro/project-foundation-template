@@ -4,6 +4,8 @@ Durable backlog for consistent product improvement.
 
 **Item template:** [`ITEM-TEMPLATE.md`](ITEM-TEMPLATE.md)  
 **Backlog ↔ story registry:** [`STORY-REGISTRY.md`](STORY-REGISTRY.md)  
+**Area taxonomy:** [`AREA-TAXONOMY.md`](AREA-TAXONOMY.md)  
+**Story log template:** [`STORY-LOG-TEMPLATE.md`](STORY-LOG-TEMPLATE.md)  
 **Governance:** [`../DOCUMENTATION-GOVERNANCE.md`](../DOCUMENTATION-GOVERNANCE.md)
 
 ## Structure (minimal)
@@ -13,8 +15,11 @@ cursor/company/future-work/
 ├── README.md              ← this index
 ├── ITEM-TEMPLATE.md       ← FW item fields + lifecycle
 ├── STORY-REGISTRY.md      ← FW ↔ execution story ↔ slug
+├── STORY-LOG-TEMPLATE.md  ← per-area lifecycle diary
+├── AREA-TAXONOMY.md       ← area folders for stories
 └── <area>/                ← optional (backend, frontend, product, …)
-    └── README.md          ← backlog items for that area
+    ├── README.md          ← backlog items for that area
+    └── STORY-LOG.md       ← lifecycle paste blocks (created by new-feature.mjs)
 ```
 
 Add area folders when the backlog grows. Keep shipped behavior in `docs/` — not here.
@@ -34,8 +39,8 @@ Add area folders when the backlog grows. Keep shipped behavior in `docs/` — no
 | Audience | Use |
 | --- | --- |
 | Product | Prioritize backlog items; define ship criteria |
-| Implementation | Promote FW → execution story → `cursor/analysis/features/<slug>/` |
-| Close | Run `prompt-feature-close-package.md` → registry + INDEX + shipped docs |
+| Implementation | Promote FW → execution story (`new-feature.mjs` or intake) → `cursor/analysis/features/<area>/<slug>/` |
+| Close | Run `prompt-feature-close-package.md` → registry + STORY-LOG + INDEX + shipped docs |
 
 ## Lifecycle (summary)
 

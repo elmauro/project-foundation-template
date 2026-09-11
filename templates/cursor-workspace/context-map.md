@@ -15,7 +15,7 @@ Quick map for humans and AI agents working in this project.
 
 ```text
 __PROJECT_SLUG__/
-├─ .cursor/          # Active Cursor rules
+├─ .cursor/          # Active Cursor rules + optional GitHub sync hook
 ├─ .github/          # CI/CD workflows
 ├─ frontend/         # Web app when enabled by the preset
 ├─ backend/          # APIs and services when enabled by the preset
@@ -32,7 +32,9 @@ __PROJECT_SLUG__/
 | Area | Read first |
 | --- | --- |
 | Project metadata | `project.config.json` |
+| Company & product (if present) | `cursor/company/README.md` |
 | AI workflow | `cursor/docs/AI-Project-Playbook.md` |
+| Story validation | `cursor/docs/story-validation.md` |
 | Frontend | `cursor/projects/frontend/project-context.md` |
 | Backend | `cursor/projects/backend/project-context.md` |
 | Infrastructure | `cursor/projects/infrastructure/project-context.md` |
@@ -42,6 +44,7 @@ __PROJECT_SLUG__/
 | Cost | `docs/cost-baseline.md` |
 | Operations | `docs/runbook.md` |
 | Web deployment | `docs/infrastructure/web-deployment.md` |
+| Context optimization | `cursor/docs/context-trace-matrix.md` |
 
 ## Scope Guide
 
@@ -56,11 +59,15 @@ __PROJECT_SLUG__/
 | --- | --- |
 | Prompt index | `cursor/prompts/README.md` |
 | Execution guide | `cursor/prompts/builders/universal-cursor-prompt-builder.md` |
-| Feature workflow | `cursor/prompts/feature/prompt-feature-analysis-package.md` |
+| Feature workflow | `cursor/prompts/feature/prompt-feature-lifecycle.md` |
 | Artifact templates | `cursor/templates/README.md` |
 | Review guidelines | `cursor/analysis/shared/review-guidelines.md` |
 
 ## Cursor Rules
 
 Active rules live under `.cursor/rules/`. Keep them short and actionable. Longer explanations, prompts and feature artifacts belong under `cursor/`.
+
+- `company-product-context.mdc` — product/backlog docs when `cursor/company/` exists (always applied).
+- `context-scope.mdc` — token-aware reads without skipping lifecycle gates.
+- `core-standards.mdc` — scoped changes, no secrets, update docs/tests with contracts.
 

@@ -27,6 +27,8 @@ Links **backlog items** (`FW-*`) to **execution stories** (`__STORY_PREFIX__-*` 
 
 Status: **backlog** = FW without execution ID; **active** = feature folder exists; **shipped** = closed + docs synced.
 
+`new-feature.mjs` inserts new rows immediately under the header separator.
+
 | Execution story | Backlog ID | Feature slug | Feature name | Priority | Status |
 | --- | --- | --- | --- | --- | --- |
 | — | FW-__FW_PREFIX__-001 | `__PROJECT_SLUG__-example-capability` | Example capability | P2 | backlog |

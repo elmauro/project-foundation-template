@@ -25,9 +25,10 @@ Feature slug: <feature-slug>
 Feature name: <feature-name>
 
 Preconditions:
-- Review: pass (sin blockers ni majors abiertos)
+- Review: pass (sin blockers ni majors abiertos) — `Review: **pass**` en test-checklist.md
 - Testing: done o gaps documentados en test-checklist.md
 - Implementation alineada con user-story.md o desviaciones en implementation-notes.md
+- Gate: node cursor/scripts/run-feature-gates.mjs --slug <feature-slug> --phase close-readiness
 
 Please execute in order:
 
@@ -42,12 +43,14 @@ PHASE 2 — INDEX
 
 PHASE 3 — BACKLOG SYNC (if applicable)
 - If cursor/company/future-work/STORY-REGISTRY.md exists: mark story shipped
+- If future-work/<area>/STORY-LOG.md exists: Estado: shipped
 - If Backlog ID (FW-*) exists: move item to Shipped in area README under future-work/
 - Do not invent links or IDs
 
 PHASE 4 — GITHUB SYNC (optional)
 - If cursor/scripts/github-story.config.json exists:
-  node cursor/scripts/sync-github-feature.mjs --slug <feature-slug>
+  node cursor/scripts/run-feature-gates.mjs --slug <feature-slug> --phase sync
+  (or node cursor/scripts/sync-github-feature.mjs --slug <feature-slug>)
 - Ensures issue Done and github.sync.json updated
 
 PHASE 5 — DOCUMENTATION SYNC

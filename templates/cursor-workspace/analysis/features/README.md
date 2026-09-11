@@ -23,7 +23,9 @@ features/frontend/login-redirect/
 features/bug-login-redirect/
 ```
 
-Areas sugeridas: `backend`, `frontend`, `infrastructure`, `_core`, o dominio de producto.
+Areas sugeridas: `backend`, `frontend`, `infrastructure`, `_core`, `product`, o dominio de producto.
+
+Con backlog (`--with-product-backlog`): usa [`AREA-TAXONOMY.md`](../../company/future-work/AREA-TAXONOMY.md) y registra el lifecycle en `future-work/<area>/STORY-LOG.md` via `new-feature.mjs`.
 
 ## Recommended files
 

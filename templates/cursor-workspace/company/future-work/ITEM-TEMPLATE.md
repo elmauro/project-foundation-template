@@ -15,10 +15,10 @@ Template for new entries in any `README.md` under `cursor/company/future-work/`.
 
 **Promote FW → story:**
 
-1. Pick next free execution ID (see registry).
-2. Copy **Title** and **Feature slug (previsto)** to `prompt-feature-analysis-package.md`.
+1. Pick next free execution ID (see registry) or run `node cursor/scripts/new-feature.mjs --name "…" --area <area> --fw FW-__FW_PREFIX__-NNN`.
+2. Copy **Title** and **Feature slug (previsto)** to `prompt-feature-analysis-package.md` (or paste the STORY-LOG lifecycle block).
 3. Update FW item with **Story:** link.
-4. Create feature package under `cursor/analysis/features/<slug>/`.
+4. Create feature package under `cursor/analysis/features/<area>/<slug>/`.
 
 ---
 

@@ -8,7 +8,7 @@ Prompts reutilizables para trabajar con Cursor sobre `__PROJECT_NAME__`.
 |-------------------|---------------|
 | `builders/universal-cursor-prompt-builder.md` | Guía de ejecución para tareas completas en la sesión actual. |
 | `feature/prompt-story-intake.md` | **Entrada** — Modo A story nueva; Modo B desde estudio (`analysis/studies/`). |
-| `feature/prompt-feature-lifecycle.md` | Orquestador analysis → implement → validate → review → close. |
+| `feature/prompt-feature-lifecycle.md` | Orquestador analysis → implement → validate → review → close **con gates**. |
 | `feature/prompt-feature-analysis-package.md` | Story + analysis + manifest sin implementar. |
 | `feature/prompt-feature-implementation-package.md` | Implementar + notes + checklist + manifest. |
 | `feature/prompt-feature-validation-package.md` | Ejecutar checks y actualizar test-checklist. |

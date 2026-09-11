@@ -29,7 +29,8 @@ npm run create -- --name "Acme Portal" --slug acme-portal `
 Then in the generated project:
 
 1. Read `cursor/docs/AI-Project-Playbook.md`
-2. Paste `@cursor/prompts/feature/prompt-story-intake.md` in Cursor for a new feature
-3. Optional: `--with-product-backlog true` at create time for `cursor/company/future-work/`
+2. Optional register: `node cursor/scripts/new-feature.mjs --name "…" --area frontend`
+3. Paste `@cursor/prompts/feature/prompt-story-intake.md` (or the STORY-LOG lifecycle block)
+4. Optional: `--with-product-backlog true` at create time for `cursor/company/future-work/`
 
 **Already on Loyalty?** See [04-loyalty-monorepo.md](04-loyalty-monorepo.md) — no generator; use `loyalty-cursor/` + app repos.

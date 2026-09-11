@@ -22,6 +22,7 @@ Contenido típico de `cursor-workspace/`:
 ```text
 cursor-workspace/
 ├─ docs/AI-Project-Playbook.md
+├─ docs/story-validation.md
 ├─ docs/context-trace-matrix.md
 ├─ docs/context-scope-sessions.md
 ├─ docs/documentation-governance.md
@@ -30,7 +31,7 @@ cursor-workspace/
 │  ├─ builders/
 │  └─ feature/
 ├─ templates/
-├─ scripts/                    # start-feature, sync-github-feature
+├─ scripts/                    # new-feature, run-feature-gates, start-feature, sync-github-feature
 ├─ analysis/shared/review-guidelines.md
 ├─ analysis/studies/            # optional; study.md before stories
 ├─ analysis/features/          # READMEs; sin features de producto
@@ -39,13 +40,13 @@ cursor-workspace/
 └─ context-map.md
 ```
 
-Also add `.cursor/rules/context-scope.mdc` from `templates/cursor-config/`.
+Also add `.cursor/rules/context-scope.mdc`, `.cursor/rules/company-product-context.mdc`, and `.cursor/hooks.json` from `templates/cursor-config/`.
 
 ## Scaffold `cursor/company/` (Capa B)
 
 Incluido en el template bajo `cursor-workspace/company/` pero **solo se copia al generar** si pasas `--with-product-backlog`.
 
-Contiene backlog mínimo: `future-work/ITEM-TEMPLATE.md`, `STORY-REGISTRY.md`, `DOCUMENTATION-GOVERNANCE.md`.
+Contiene backlog mínimo: `future-work/ITEM-TEMPLATE.md`, `STORY-REGISTRY.md`, `STORY-LOG-TEMPLATE.md`, `AREA-TAXONOMY.md`, `DOCUMENTATION-GOVERNANCE.md`.
 
 IDs configurables con `--fw-prefix` y `--story-prefix` (default: slug en `MAYUS_CON_GUIONES_BAJOS`).
 

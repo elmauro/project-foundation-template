@@ -9,7 +9,7 @@ Punto de entrada **conversacional** para crear features con el minimo de friccio
 
 **Automatiza (agente, sin script obligatorio):** carpetas, `user-story.md`, `feature-manifest.md`, filas en `STORY-REGISTRY` si existe backlog, encadenado a lifecycle.
 
-**Opcional (scripts):** `start-feature.mjs`, `sync-github-feature.mjs` — ver `cursor/scripts/README.md`.
+**Recomendado (scripts):** `new-feature.mjs` registra ticket + STORY-LOG y imprime el bloque del orquestador. Luego `start-feature.mjs` y `sync-github-feature.mjs` — ver `cursor/scripts/README.md`.
 
 ---
 
@@ -49,9 +49,12 @@ Reglas de interaccion:
    - Sin area: cursor/analysis/features/<slug>/
 3) Crear user-story.md + feature-manifest.md (titulo = Feature name)
 4) Si existe cursor/company/future-work/STORY-REGISTRY.md: anotar fila; no shipped
+   Preferir: node cursor/scripts/new-feature.mjs --name "<Feature name>" --area <area> [--fw FW-*]
+   Eso escribe STORY-LOG.md del area y el bloque copy-paste del orquestador.
 5) Si Backlog ID = "crear": anadir FW-* en future-work/ con ITEM-TEMPLATE.md
 6) Opcional: node cursor/scripts/start-feature.mjs --slug <slug>
 7) Encadenar prompt-feature-lifecycle.md (o analysis-package si solo planificar)
+8) Validation plan en manifest: Run tests yes/no segun stack (ver story-validation.md)
 
 ── MODO B — STORIES DESDE ESTUDIO
 1) B1 (existe): leer Analysis ref (study.md)

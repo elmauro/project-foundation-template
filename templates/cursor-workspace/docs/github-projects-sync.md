@@ -12,7 +12,7 @@ Operational guide to create or update **GitHub Issues** and **Project board** st
 | **Story state** | `cursor/analysis/features/<area>/<slug>/feature-manifest.md` | Stage → board column |
 | **Validation** | `cursor/analysis/features/<area>/<slug>/test-checklist.md` | How to test |
 | **Linked issue** | `cursor/analysis/features/<area>/<slug>/github.sync.json` | Issue # after first sync |
-| **Scripts** | `cursor/scripts/sync-github-feature.mjs`, `start-feature.mjs` | Automation |
+| **Scripts** | `cursor/scripts/sync-github-feature.mjs`, `start-feature.mjs`, `new-feature.mjs`, `run-feature-gates.mjs` | Automation |
 | **Local config** | `cursor/scripts/github-story.config.json` | Project #, phases (gitignored) |
 
 **Rule:** markdown in the repo defines the story; GitHub Issue + Project reflect **status**, not a second spec.
@@ -99,6 +99,12 @@ Stack scope: full-stack
 node cursor/scripts/start-feature.mjs --slug customer-onboarding
 ```
 
+Or register first (assigns ticket + STORY-LOG when backlog exists):
+
+```bash
+node cursor/scripts/new-feature.mjs --name "Customer onboarding" --area frontend
+```
+
 ### 3. Sync to GitHub
 
 ```bash
@@ -154,6 +160,20 @@ Default mapping (override in config):
 | Project sync skipped | `gh auth refresh -s read:project,project` |
 | Wrong board column | Fix `manifestStageToProjectStatus` in config |
 | Issue not found on re-sync | Check `github.sync.json` or ticket in title |
+
+---
+
+## Cursor hook (optional)
+
+`.cursor/hooks.json` runs `sync-github-feature.mjs --from-hook` after file edits.
+
+Default: **off**. To enable:
+
+1. Copy `github-story.config.example.json` → `github-story.config.json`
+2. Set `"hookEnabled": true`
+3. Reload Cursor hooks (save `hooks.json` or restart)
+
+The script no-ops unless the edited file is a `user-story.md` or `feature-manifest.md` and `hookEnabled` is true.
 
 ---
 

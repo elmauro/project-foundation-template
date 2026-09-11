@@ -88,11 +88,13 @@ node cursor/scripts/sync-github-feature.mjs --all
 ## Typical session
 
 ```text
-1. prompt-story-intake.md          → folder + user-story
-2. start-feature.mjs --slug …      → git branch
-3. prompt-feature-lifecycle.md     → implement + validate + review
-4. sync-github-feature.mjs         → after analysis, after stage changes, on close
-5. prompt-feature-close-package.md → INDEX + registry + docs
+1. new-feature.mjs --name … --area …  → ticket + STORY-LOG (if backlog)
+2. prompt-story-intake.md             → folder + user-story
+3. start-feature.mjs --slug …         → git branch
+4. prompt-feature-lifecycle.md        → implement + validate + review
+5. run-feature-gates.mjs              → after each phase
+6. sync-github-feature.mjs            → after analysis, after stage changes, on close
+7. prompt-feature-close-package.md    → INDEX + registry + STORY-LOG + docs
 ```
 
 ## Loyalty monorepo note

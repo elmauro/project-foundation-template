@@ -51,6 +51,12 @@
 
 **Recommended (agent):** `@cursor/prompts/feature/prompt-story-intake.md` **Mode B** — reads this study and creates feature packages for rows with `Decision: implement`.
 
+**Mechanical register (optional):**
+
+```bash
+node cursor/scripts/new-feature.mjs --from-study cursor/analysis/studies/<study-slug>/study.md
+```
+
 **Manual (per row):**
 
 1. Assign Ticket/story and Backlog ID (update `STORY-REGISTRY.md` if using `company/future-work/`).

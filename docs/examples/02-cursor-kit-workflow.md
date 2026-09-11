@@ -23,6 +23,14 @@ Stack: full-stack. Ticket: ACME-012.
 
 Creates `user-story.md` + `feature-manifest.md` under `cursor/analysis/features/<slug>/`.
 
+With product backlog, register first:
+
+```bash
+node cursor/scripts/new-feature.mjs --name "Password reset via email" --area frontend --fw FW-ACME-012
+```
+
+That writes `STORY-LOG.md` and prints the lifecycle paste block.
+
 ## 1. Analysis package
 
 ```text
@@ -87,9 +95,18 @@ Feature slug: password-reset-email
 Feature name: Password reset via email
 Ticket/story: ACME-012
 Stack scope: full-stack
+Start at: analysis
+Run tests: no
+Auto-close: yes
 ```
 
-Stops on failed gate between phases.
+Stops on failed gate between phases. Gates:
+
+```bash
+node cursor/scripts/run-feature-gates.mjs --slug password-reset-email --phase analysis
+node cursor/scripts/run-feature-gates.mjs --slug password-reset-email --phase validation
+node cursor/scripts/run-feature-gates.mjs --slug password-reset-email --phase review
+```
 
 ## Study before stories (Modo B)
 
@@ -136,7 +153,8 @@ See `cursor/analysis/features/README.md`.
 If you generated with `--with-product-backlog`:
 
 1. Add `FW-ACME-012` to `cursor/company/future-work/README.md` (or area folder)
-2. Register in `STORY-REGISTRY.md`
+2. Register with `new-feature.mjs` or a row in `STORY-REGISTRY.md`
 3. Feature manifest: `Backlog ID: FW-ACME-012`, `Ticket/story: ACME-012`
+4. Lifecycle paste block lives in `future-work/<area>/STORY-LOG.md`
 
 Next: [03-github-sync-and-scripts.md](03-github-sync-and-scripts.md)

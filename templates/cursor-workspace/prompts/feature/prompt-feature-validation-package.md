@@ -42,10 +42,12 @@ PHASE 2 — RUN FOCUSED CHECKS (por stack scope)
 - Backend: tests en backend/ cuando exista (npm test, integration si aplica).
 - Infrastructure: terraform fmt/validate en infrastructure/ cuando aplique.
 - Full-stack: al menos un check por stack tocado en implementation-notes.md.
+- Luego: node cursor/scripts/run-feature-gates.mjs --slug <feature-slug> --phase validation
+  (ejecuta comandos del Validation plan si Run tests: yes; si no, solo archivos).
 
 PHASE 3 — UPDATE ARTIFACTS
 - Marcar resultados en test-checklist.md (passed / failed / blocked / not run).
-- Actualizar feature-manifest.md: Testing status, validation gaps, next step.
+- Actualizar feature-manifest.md: Testing status, Validation plan, next step.
 - Si un check no se ejecuto, documentar por que.
 
 Constraints:

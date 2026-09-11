@@ -11,9 +11,12 @@ cursor/
 │  ├─ AI-Project-Playbook.md
 │  ├─ documentation-governance.md
 │  ├─ github-projects-sync.md
+│  ├─ story-validation.md
 │  ├─ context-scope-sessions.md
 │  └─ context-trace-matrix.md
 ├─ scripts/
+│  ├─ new-feature.mjs
+│  ├─ run-feature-gates.mjs
 │  ├─ start-feature.mjs
 │  └─ sync-github-feature.mjs
 ├─ projects/
@@ -38,6 +41,8 @@ cursor/company/
 └─ future-work/
    ├─ ITEM-TEMPLATE.md
    ├─ STORY-REGISTRY.md
+   ├─ STORY-LOG-TEMPLATE.md
+   ├─ AREA-TAXONOMY.md
    └─ README.md
 ```
 
@@ -57,7 +62,7 @@ cursor/company/
 | --- | --- |
 | `prompts/builders/universal-cursor-prompt-builder.md` | Guia de ejecucion para tareas completas en sesion. |
 | `prompts/feature/prompt-story-intake.md` | Intake conversacional + crear paquete. |
-| `prompts/feature/prompt-feature-lifecycle.md` | Lifecycle completo analysis→close. |
+| `prompts/feature/prompt-feature-lifecycle.md` | Lifecycle completo analysis→close **con gates**. |
 | `prompts/feature/prompt-feature-analysis-package.md` | Story + analysis + manifest sin implementar. |
 | `prompts/feature/prompt-feature-implementation-package.md` | Implementacion + notes + checklist + manifest. |
 | `prompts/feature/prompt-feature-validation-package.md` | Validacion enfocada pre-review. |

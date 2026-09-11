@@ -68,7 +68,7 @@ Por defecto **no** se copia `cursor/company/`. Con `--with-product-backlog`:
 
 - `cursor/company/README.md`
 - `cursor/company/DOCUMENTATION-GOVERNANCE.md`
-- `cursor/company/future-work/` (ITEM-TEMPLATE, STORY-REGISTRY, README)
+- `cursor/company/future-work/` (ITEM-TEMPLATE, STORY-REGISTRY, STORY-LOG-TEMPLATE, AREA-TAXONOMY, README)
 
 Opciones relacionadas:
 
@@ -201,7 +201,9 @@ Un proyecto generado debe poder:
 
 ## Cursor kit
 
-Todo preset que incluye `cursor-workspace` genera `cursor/` con prompts, templates, playbook y review guidelines. Las mejoras genericas del kit deben editarse en `templates/cursor-workspace/` (ver [`docs/cursor-kit-sync.md`](cursor-kit-sync.md)).
+Todo preset que incluye `cursor-workspace` genera `cursor/` con prompts, templates, playbook, scripts (`new-feature.mjs`, `run-feature-gates.mjs`, GitHub sync) y review guidelines. Las mejoras genericas del kit deben editarse en `templates/cursor-workspace/` (ver [`docs/cursor-kit-sync.md`](cursor-kit-sync.md)).
 
-Con `--with-product-backlog` tambien se genera el scaffold minimo `cursor/company/future-work/`.
+`.cursor/` incluye reglas activas, `company-product-context.mdc` y `hooks.json` (GitHub sync off until `hookEnabled`).
+
+Con `--with-product-backlog` tambien se genera el scaffold minimo `cursor/company/future-work/` (registry, STORY-LOG template, area taxonomy).
 

@@ -12,7 +12,8 @@ Complements `project-context.mdc` and `AI-Project-Playbook.md`. **Never skip req
 - Lifecycle unchanged: intake → analysis → implement → validate → review → close.
 - Before editing a stack, read its `cursor/projects/<stack>/project-context.md` (per `project-context.mdc`).
 - Work from the active feature package: `cursor/analysis/features/<area>/<slug>/` or `cursor/analysis/features/<slug>/`.
-- On close: update manifest, `cursor/analysis/features/INDEX.md`, and backlog registry if `cursor/company/future-work/` exists.
+- On close: update manifest, `cursor/analysis/features/INDEX.md`, area `STORY-LOG.md` if present, and backlog registry if `cursor/company/future-work/` exists. Run `sync-github-feature.mjs` when GitHub sync is configured.
+- Use `run-feature-gates.mjs` between phases; do not skip a failed gate.
 - Contract or behavior changes: run relevant tests and update docs/mocks/E2E per stack rules.
 - Cross-stack stories: read every affected stack context before implementing.
 

@@ -117,6 +117,22 @@
 
 ---
 
+## Smoke — feature (T2)
+
+> Required when the Validation plan lists Extra commands. Omit if n/a. See [`story-validation.md`](../docs/story-validation.md).
+
+- [ ] `<command>` — PASS `<date>` | n/a
+
+---
+
+## Manual (optional) (T3)
+
+> End-to-end confidence when automated checks already cover the contract. Does not block close unless ship criteria say otherwise.
+
+- [ ] `<step>` — PASS `<date>` | optional | blocked: `<reason>`
+
+---
+
 ## Results
 
 - Summary:
@@ -126,3 +142,10 @@
 - Notes:
   - `<note>`
 - Sign-off: name / date
+
+---
+
+## Review / Close
+
+- Review: **pending** | **pass** | **fail**
+- Close blockers:

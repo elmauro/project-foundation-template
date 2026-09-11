@@ -2,7 +2,61 @@
 
 Technical reference for scripts in `cursor/scripts/`.
 
-**Operational guide:** [`cursor/docs/github-projects-sync.md`](../docs/github-projects-sync.md)
+**Operational guide:** [`cursor/docs/github-projects-sync.md`](../docs/github-projects-sync.md)  
+**Validation tiers:** [`cursor/docs/story-validation.md`](../docs/story-validation.md)
+
+## New feature (intake)
+
+Registers the next execution ID, writes a `STORY-LOG.md` entry (when `cursor/company/future-work/` exists), and prints the lifecycle paste block. Does **not** create analysis files.
+
+```bash
+node cursor/scripts/new-feature.mjs --name "Password reset via email" --area frontend
+node cursor/scripts/new-feature.mjs --name "…" --area backend --fw FW-__FW_PREFIX__-001 --stack backend
+node cursor/scripts/new-feature.mjs --from-study cursor/analysis/studies/<slug>/study.md --dry-run
+```
+
+| Flag | Default | Notes |
+| --- | --- | --- |
+| `--name` | required (single) | Feature name |
+| `--area` | `backend` | `backend` `frontend` `infrastructure` `product` `_core` or a domain slug |
+| `--fw` | `n/a` | Backlog ID `FW-*` |
+| `--slug` | derived from name | kebab-case |
+| `--stack` | inferred from area | `backend` `frontend` `infrastructure` `full-stack` |
+| `--ticket` | next ID from registry | Override execution ID |
+| `--start` | `analysis` | Orchestrator `Start at` |
+| `--run-tests` | `no` | Persist in Validation plan / paste block |
+| `--from-study` | — | All `Decision: implement` rows in a study |
+| `--dry-run` | — | Preview only |
+
+Ticket prefix comes from `github-story.config.json` → `ticketPrefix` (or the example file).
+
+## Feature lifecycle gates
+
+Mechanical checks between playbook phases (files, Validation plan commands, review sign-off, GitHub sync). Agent prompts stay in `cursor/prompts/feature/`; this script returns pass/fail only.
+
+```bash
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase package
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase analysis
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase implementation
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase validation
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase review
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase close-readiness
+node cursor/scripts/run-feature-gates.mjs --slug customer-onboarding --phase sync --dry-run
+```
+
+| Phase | Checks |
+| --- | --- |
+| `package` | `user-story.md` with Name + Ticket/story |
+| `analysis` | + `analysis.md`, `feature-manifest.md` |
+| `implementation` | + `implementation-notes.md`, `test-checklist.md` |
+| `validation` | + commands from manifest **Validation plan** when `Run tests: yes` |
+| `review` | Validation evidence + `Review: **pass**` in checklist |
+| `close-readiness` | Review gate + manifest stage `review` or `validation` |
+| `sync` | Runs `sync-github-feature.mjs` |
+
+Exit code: **0** pass, **1** fail, **2** usage error. Use `--json` for machine-readable output.
+
+Orchestrator: [`cursor/prompts/feature/prompt-feature-lifecycle.md`](../prompts/feature/prompt-feature-lifecycle.md).
 
 ## Start feature (git branch)
 
@@ -42,6 +96,13 @@ node cursor/scripts/sync-github-feature.mjs --all
 | `projectNumber` | GitHub Project board number |
 | `manifestStageToProjectStatus` | Maps manifest stage → board column |
 | `ticketPhase` | Maps ticket digits → phase label / parent epic |
+| `hookEnabled` | If `true`, `.cursor/hooks.json` syncs after edits to story/manifest |
+
+### Cursor hook (optional)
+
+`.cursor/hooks.json` runs `sync-github-feature.mjs --from-hook` after file edits.
+
+Default: **hook disabled** (`hookEnabled: false`). Enable only after `github-story.config.json` is set up.
 
 ### Workflow with playbook
 

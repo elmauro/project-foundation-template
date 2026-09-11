@@ -138,8 +138,9 @@ C:\Projects\customer-portal/
 - `frontend/frontend.config.json` cuando el preset usa frontend enterprise.
 - `cursor/context-map.md` como indice rapido de estructura, stacks y archivos de contexto.
 - `cursor/prompts/` con prompts de feature, bug fix, review y el builder universal de ejecucion.
-- `cursor/scripts/` con `start-feature.mjs` y `sync-github-feature.mjs` (GitHub Issues / Project).
+- `cursor/scripts/` con `new-feature.mjs`, `run-feature-gates.mjs`, `start-feature.mjs` y `sync-github-feature.mjs` (GitHub Issues / Project).
 - `cursor/docs/github-projects-sync.md` guia operativa de sync.
+- `cursor/docs/story-validation.md` tiers de validacion por story.
 - `cursor/templates/` con plantillas para user story, analysis, manifest, implementation notes y test checklist.
 - `cursor/analysis/shared/review-guidelines.md` para revisiones asistidas por IA.
 - `cursor/analysis/` y `cursor/analysis/features/` para artefactos durables por feature.
