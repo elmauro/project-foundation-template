@@ -59,6 +59,7 @@ __PROJECT_SLUG__/
 | --- | --- |
 | Prompt index | `cursor/prompts/README.md` |
 | Execution guide | `cursor/prompts/builders/universal-cursor-prompt-builder.md` |
+| Story entry (required) | `cursor/prompts/feature/prompt-story-intake.md` |
 | Feature workflow | `cursor/prompts/feature/prompt-feature-lifecycle.md` |
 | Artifact templates | `cursor/templates/README.md` |
 | Review guidelines | `cursor/analysis/shared/review-guidelines.md` |
