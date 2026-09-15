@@ -70,4 +70,5 @@ Active rules live under `.cursor/rules/`. Keep them short and actionable. Longer
 - `company-product-context.mdc` — product/backlog docs when `cursor/company/` exists (always applied).
 - `context-scope.mdc` — token-aware reads without skipping lifecycle gates.
 - `core-standards.mdc` — scoped changes, no secrets, update docs/tests with contracts.
+- `documentation-english.mdc` — project documentation is English-only.
 

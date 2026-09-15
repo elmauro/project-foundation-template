@@ -9,7 +9,9 @@ Workflow for a generated project (paths use `cursor/` at repo root).
 | **Feature slug** | Folder `cursor/analysis/features/<slug>/`, branch segment |
 | **Feature name** | Titles, `Name:` field, GitHub issue title suffix |
 
-## 0. Intake (optional)
+## 0. Intake
+
+**Required for new stories.** Only the product backlog (`FW-*`) is optional — intake creates the feature package and registry entry when backlog is enabled. See [`AI-Project-Playbook.md`](../../templates/cursor-workspace/docs/AI-Project-Playbook.md).
 
 ```text
 @cursor/prompts/feature/prompt-story-intake.md
@@ -32,6 +34,8 @@ node cursor/scripts/new-feature.mjs --name "Password reset via email" --area fro
 That writes `STORY-LOG.md` and prints the lifecycle paste block.
 
 ## 1. Analysis package
+
+Assumes step 0 (Intake) already created the package, or you are resuming an existing story.
 
 ```text
 @cursor/prompts/feature/prompt-feature-analysis-package.md
@@ -88,6 +92,8 @@ Updates `cursor/analysis/features/INDEX.md` and stack docs if contracts changed.
 
 ## Full lifecycle (one prompt)
 
+Run **step 0 (Intake)** first for new stories, then use the orchestrator:
+
 ```text
 @cursor/prompts/feature/prompt-feature-lifecycle.md
 
@@ -108,7 +114,7 @@ node cursor/scripts/run-feature-gates.mjs --slug password-reset-email --phase va
 node cursor/scripts/run-feature-gates.mjs --slug password-reset-email --phase review
 ```
 
-## Study before stories (Modo B)
+## Study before stories (Mode B)
 
 When planning **multiple** stories from a gap analysis:
 
@@ -117,7 +123,7 @@ When planning **multiple** stories from a gap analysis:
 @cursor/templates/analysis-study-template.md
 
 Mode: B
-Analysis ref: crear
+Analysis ref: create
 
 Evaluate authentication gaps (MFA, session timeout) before opening tickets.
 ```
