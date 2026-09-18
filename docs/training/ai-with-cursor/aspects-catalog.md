@@ -2,6 +2,8 @@
 
 Pedagogical index for **AI with Cursor** (existing repo). Facilitation in **Spanish**; kit artifacts and paste-ready prompts in **English**.
 
+**Spanish concept map** (tool-agnostic IA concepts · session · covered?): [`concepts-map.md`](concepts-map.md) · per-session detail in [`01-session.md`](01-session.md) … [`06-session.md`](06-session.md).
+
 Each module follows the same shape:
 
 1. **Why it matters** — what breaks without it.

@@ -2,6 +2,8 @@
 
 Seis clases de 90 minutos. Léelo en voz alta o parafrasea; no hace falta ser literal.
 
+Enseñas **conceptos genéricos de IA aplicados al código** (alcance, contexto, ciclo, verificación). **Cursor** es el laboratorio del curso; si alguien usa Copilot o Claude, el concepto es el mismo — cambia la UI, no la carpeta en git.
+
 Hablas **español** con el grupo. Lo que van a **commitear** en el repo (`cursor/`, `.cursor/`) va en **inglés**. Los prompts se pegan en inglés; debajo pueden poner el ticket en español.
 
 **Apoyo rápido (no hace falta leerlos en clase):**
@@ -10,7 +12,9 @@ Hablas **español** con el grupo. Lo que van a **commitear** en el repo (`cursor
 - Qué copiar del template: [adopt-on-existing-repo.md](adopt-on-existing-repo.md)
 - Cheatsheet sesión 1: [cheatsheet-cursor.md](cheatsheet-cursor.md)
 - Cheatsheet sesiones 3–5: [cheatsheet-lifecycle.md](cheatsheet-lifecycle.md)
-- Si te preguntan el “por qué” de algo: [aspects-catalog.md](aspects-catalog.md)
+- Mapa de conceptos (tabla sesión ↔ concepto ↔ fuera del curso): [concepts-map.md](concepts-map.md)
+- Detalle por concepto (definición, ejemplo, prompt): anexos [01](01-session.md)–[06](06-session.md)
+- Si te preguntan el “por qué” técnico en inglés: [aspects-catalog.md](aspects-catalog.md)
 
 ---
 
@@ -66,6 +70,8 @@ Si alguien termina antes: que mejore su mapa o su análisis. Que no pida otra fe
 ---
 
 # SESIÓN 1 — Cursor sin kit
+
+**Conceptos:** C01–C04 · [anexo](01-session.md) · [tabla](concepts-map.md)
 
 **Meta de hoy:** un cambio chico con Agent. Sin carpeta `cursor/` todavía.
 
@@ -129,6 +135,8 @@ Si alguien termina antes: que mejore su mapa o su análisis. Que no pida otra fe
 
 # SESIÓN 2 — Mapa e identidad
 
+**Conceptos:** C05–C09 · [anexo](02-session.md) · [tabla](concepts-map.md)
+
 **Meta de hoy:** que el repo tenga mapa, identidad y reglas básicas.
 
 ---
@@ -188,6 +196,8 @@ Si alguien termina antes: que mejore su mapa o su análisis. Que no pida otra fe
 
 # SESIÓN 3 — Una historia que no vive en el chat
 
+**Conceptos:** C10–C13 (intake) · [anexo](03-session.md) · [tabla](concepts-map.md)
+
 **Meta de hoy:** carpeta de la feature con story y manifest. **Sin implementar** código en clase.
 
 ---
@@ -242,6 +252,8 @@ cursor/analysis/features/<slug>/
 
 # SESIÓN 4 — Implementar y validar
 
+**Conceptos:** C13–C16 · [anexo](04-session.md) · [tabla](concepts-map.md)
+
 **Meta de hoy:** código en branch, notas de implementación, checklist de prueba empezado. Review es **mañana**.
 
 ---
@@ -292,6 +304,8 @@ INTAKE → STORY → ANALYSIS → IMPLEMENT → VALIDATE → REVIEW → CLOSE
 
 # SESIÓN 5 — Review, cerrar y gastar menos tokens
 
+**Conceptos:** C17–C21 · [anexo](05-session.md) · [tabla](concepts-map.md)
+
 **Meta de hoy:** review hecho, cierre lite, regla de scope, hábito de chat nueva por fase.
 
 ---
@@ -334,6 +348,8 @@ INTAKE → STORY → ANALYSIS → IMPLEMENT → VALIDATE → REVIEW → CLOSE
 ---
 
 # SESIÓN 6 — Producto y el lunes
+
+**Conceptos:** C22–C23 (+ C26 opt-in) · [anexo](06-session.md) · [tabla](concepts-map.md)
 
 **Meta de hoy:** visión corta, tres ítems de backlog, checklist del lunes. Cerramos el curso.
 

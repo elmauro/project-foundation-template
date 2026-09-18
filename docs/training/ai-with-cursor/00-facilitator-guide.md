@@ -4,7 +4,9 @@
 
 Cómo correr las 6 sesiones. **Para dictar:** solo [`facilitator-runbook.md`](facilitator-runbook.md). Los archivos `01-session.md` … `06-session.md` son anexo (homework + checklist); no hace falta leerlos en clase.
 
-**Índice pedagógico por aspecto** (importancia, template, prompts, resultado observable): [`aspects-catalog.md`](aspects-catalog.md). Úsalo para preparar demos y para responder “¿por qué hacemos context-map y no leemos todo el repo?”.
+**Mapa de conceptos** (tabla sesión ↔ concepto ↔ fuera del curso): [`concepts-map.md`](concepts-map.md). Cada [`0N-session.md`](01-session.md) desarrolla los conceptos de esa clase (definición, ejemplo, implementación).
+
+**Índice pedagógico por aspecto** (inglés, template, prompts, DoD): [`aspects-catalog.md`](aspects-catalog.md). Úsalo para preparar demos y para responder “¿por qué hacemos context-map y no leemos todo el repo?”.
 
 ## Rol
 
