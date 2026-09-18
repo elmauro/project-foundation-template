@@ -10,6 +10,8 @@ Al ejecutar `generators/create-project`, todo preset que incluye `cursor-workspa
 
 Los proyectos **nuevos** reciben el kit actualizado automáticamente. Los proyectos **ya generados** requieren sync manual.
 
+Para **enseñar** esa adopción capa por capa (6 × 90 min, repo existente, facilitación en español): [`docs/training/ai-with-cursor/README.md`](training/ai-with-cursor/README.md).
+
 ## Qué incluye cada template
 
 | Template | Destino en proyecto generado |

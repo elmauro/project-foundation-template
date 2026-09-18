@@ -6,6 +6,8 @@ Reusable prompts for working with Cursor on `__PROJECT_NAME__`.
 
 | Folder / file | When to use |
 |-------------------|---------------|
+| `adoption/prompt-bootstrap-project-map.md` | **Layer 0** — draft/apply `context-map.md` + `project.config.json` on existing repos. |
+| `adoption/prompt-bootstrap-stack-context.md` | **Layer 0** — draft/apply `cursor/projects/<stack>/project-context.md`. |
 | `builders/universal-cursor-prompt-builder.md` | Execution guide for complete tasks in the current session. |
 | `feature/prompt-story-intake.md` | **Entry** — Mode A new story; Mode B from study (`analysis/studies/`). |
 | `feature/prompt-feature-lifecycle.md` | After intake: analysis → implement → validate → review → close **with gates**. |

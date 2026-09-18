@@ -9,11 +9,14 @@ Practical recipes for generating projects and using the Cursor kit.
 | [03-github-sync-and-scripts.md](03-github-sync-and-scripts.md) | Branches, Issues, Project board |
 | [04-loyalty-monorepo.md](04-loyalty-monorepo.md) | Loyalty: 3 folders, `@loyalty-cursor/`, JIRA, full-stack example |
 
+**Existing repo (do not generate):** [AI with Cursor training](../training/ai-with-cursor/README.md) — 6 × 90 min, Spanish facilitation, English kit artifacts.
+
 ## Quick links
 
 - Generator: [`generators/create-project/README.md`](../generators/create-project/README.md)
 - Generation contract: [`docs/generation-contract.md`](../docs/generation-contract.md)
-- Cursor kit sync: [`docs/cursor-kit-sync.md`](../docs/cursor-kit-sync.md)
+- Cursor kit sync: [`docs/cursor-kit-sync.md`](../cursor-kit-sync.md)
+- Training (existing repo): [`docs/training/ai-with-cursor/README.md`](../training/ai-with-cursor/README.md)
 - Roadmap: [`loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md`](../../loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md)
 
 ## Minimal path (5 minutes)

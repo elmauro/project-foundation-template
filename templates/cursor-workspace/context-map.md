@@ -58,6 +58,8 @@ __PROJECT_SLUG__/
 | Area | Read first |
 | --- | --- |
 | Prompt index | `cursor/prompts/README.md` |
+| Bootstrap map (existing repo) | `cursor/prompts/adoption/prompt-bootstrap-project-map.md` |
+| Bootstrap stack context | `cursor/prompts/adoption/prompt-bootstrap-stack-context.md` |
 | Execution guide | `cursor/prompts/builders/universal-cursor-prompt-builder.md` |
 | Story entry (required) | `cursor/prompts/feature/prompt-story-intake.md` |
 | Feature workflow | `cursor/prompts/feature/prompt-feature-lifecycle.md` |

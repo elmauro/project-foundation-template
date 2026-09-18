@@ -181,6 +181,9 @@ Este template no deberia contener reglas de negocio de un producto especifico. T
 Las mejoras genericas del kit Cursor (prompts, templates, playbook, review guidelines) deben implementarse en `templates/cursor-workspace/` y `templates/cursor-config/`. Asi, cada `npm run create` entrega la version actual del kit en `cursor/` y `.cursor/`.
 
 - Guia de sync y checklist para proyectos ya creados: [`docs/cursor-kit-sync.md`](docs/cursor-kit-sync.md)
+- Capacitación (repo existente, 6 × 90 min): [`docs/training/ai-with-cursor/README.md`](docs/training/ai-with-cursor/README.md)
+- Runbook para facilitadores: [`docs/training/ai-with-cursor/facilitator-runbook.md`](docs/training/ai-with-cursor/facilitator-runbook.md)
+- Catálogo de aspectos IA (curso): [`docs/training/ai-with-cursor/aspects-catalog.md`](docs/training/ai-with-cursor/aspects-catalog.md)
 - Ejemplos de uso (generador + Cursor + GitHub): [`docs/examples/README.md`](docs/examples/README.md)
 - Roadmap de mejoras: [`loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md`](../loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md)
 
