@@ -37,7 +37,7 @@ Cada anexo [`01-session.md`](01-session.md) … [`06-session.md`](06-session.md)
 
 ## Agenda
 
-**Para dictar:** usa solo [`facilitator-runbook.md`](facilitator-runbook.md) (guión en español coloquial). Los anexos de sesión son para **conceptos + tarea de casa**; no hace falta leerlos en voz alta en clase.
+**Para dictar:** usa solo [`facilitator-runbook.md`](facilitator-runbook.md) (guión en español coloquial). Incluye **qué esperamos en la práctica y en el cierre** de cada sesión, en lenguaje humano. Los anexos de sesión son para **conceptos + tarea de casa**.
 
 | Sesión | Guión | Capa | Resultado en el repo del alumno |
 | --- | --- | --- | --- |

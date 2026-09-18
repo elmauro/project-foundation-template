@@ -44,8 +44,12 @@ Patrón fijo:
 | --- | --- |
 | 0–10 | Recap + homework review (2–3 personas, no todas) |
 | 10–40 | Concepto + demo (pantalla del facilitador) |
-| 40–80 | Práctica en el repo del alumno (tú circulas) |
-| 80–90 | Cierre, homework, qué se commitea |
+| 40–80 | **Práctica** — manos en teclado, entregable concreto |
+| 80–90 | **Cierre** — “¿salimos con esto?”, commit, casa |
+
+**Práctica vs cierre (en criollo):** la práctica es que **ellos** hagan algo verificable en su repo; el cierre es alinear “listo cuando”, commit y tarea de casa — no apagar sin decir qué commitear.
+
+Detalle sesión por sesión (qué hace el alumno, qué haces tú, señales de éxito, preguntas al grupo): [`facilitator-runbook.md`](facilitator-runbook.md) — bloques **“Práctica — qué esperamos”** y **“Cierre — qué esperamos”**, más tabla resumen al final.
 
 Si alguien termina antes: que mejore `project-context.md` o el `analysis.md` de su historia, no que “le pida otra feature al agente”.
 
