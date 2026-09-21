@@ -1,108 +1,112 @@
-# Sesión 1 — IA sin kit (laboratorio: Cursor)
+# Sesión 1 — Fundamentos IA + primera práctica
 
-> **Guión para dictar:** [facilitator-runbook.md → SESIÓN 1](facilitator-runbook.md#sesión-1--cursor-sin-kit)  
-> **Tabla de conceptos:** [concepts-map.md](concepts-map.md) · esta sesión: **C01–C04**
+> **Guión:** [facilitator-runbook.md → S1](facilitator-runbook.md#sesión-1--fundamentos-ia--primera-práctica) · **Glosario:** [concepts-map.md](concepts-map.md)
 
-**Capa:** ninguna  
-**Meta:** un cambio pequeño con modo edición, sin carpeta `cursor/` todavía
-
-**Cheatsheet (Cursor):** [cheatsheet-cursor.md](cheatsheet-cursor.md)
+**Laboratorio de hoy:** Cursor (u otra herramienta con modo editar)  
+**Capa kit:** ninguna todavía  
+**Meta:** entender **qué es la IA en la práctica** y hacer un cambio chico con alcance + verify
 
 ---
 
 ## Conceptos de esta sesión
 
-| ID | Concepto IA (genérico) | ¿Cubierto? |
-| --- | --- | --- |
-| C01 | Alcance y contexto explícito | Sí |
-| C02 | Modos de interacción (explorar / editar / planificar) | Sí |
-| C03 | Verificación y evidencia humana | Sí |
-| C04 | Arquitectura de contexto en tres capas (preview) | Sí |
-
----
-
-### C01 Alcance y contexto explícito
-
-**Qué es:** Acotar **qué información** recibe el modelo: archivos concretos, carpetas permitidas, y explícitamente qué **no** debe leer ni tocar.
-
-**Por qué importa:** Los LLM no “conocen” tu repo. Sin acance, escanean todo, mezclan refactors con el ticket y queman ventana de contexto. Vale igual en Cursor, Copilot y Claude.
-
-**Ejemplo:**
-
-- Mal: *“Arregla el login”* (sin paths ni límites).
-- Bien: *Goal: error when password empty. In scope: src/auth/login.tsx + test. Out of scope: refactor auth. Do not scan rest of repo. Verify: npm test -- login.test.ts*
-
-**En la práctica por herramienta:**
-
-| Herramienta | Cómo acotar |
-| --- | --- |
-| **Cursor** | `@archivo`, In/Out of scope en el prompt |
-| **Copilot** | `#file`, `@workspace` selectivo, instrucciones en chat |
-| **Claude** | Adjuntar archivos; “read only these paths” |
-| **Cualquiera** | Listar paths en el prompt; prohibir exploración libre |
-
-**En este curso (sin kit):** [cheatsheet-cursor](cheatsheet-cursor.md), 1–5 `@`, revisar diff antes de aceptar.
-
----
-
-### C02 Modos de interacción
-
-**Qué es:** Separar **explorar** (solo leer/responder), **editar** (generar diffs/código) y **planificar** (diseñar antes de tocar archivos).
-
-**Por qué importa:** Pedir “solo explica” en modo edición produce cambios accidentales. Pedir un refactor grande sin planificar produce diffs caóticos.
-
-**Ejemplo:** *“¿Dónde se valida el email?”* → modo explorar. *“Añade test para email vacío”* → modo editar + scope.
-
-**En la práctica por herramienta:**
-
-| Herramienta | Explorar | Editar | Planificar |
+| ID | Tipo | Concepto | ¿Cubierto? |
 | --- | --- | --- | --- |
-| **Cursor** | Ask | Agent | Plan |
-| **Copilot** | Chat | Edits / agent | Chat + checklist |
-| **Claude** | Chat | Claude Code | Chat estructurado |
+| C01 | Fundamento | Modelo de lenguaje (LLM) | Sí |
+| C02 | Fundamento | Ventana de contexto | Sí |
+| C03 | Fundamento | Alucinación | Sí |
+| C04 | Fundamento | Contexto | Sí |
+| C05 | Fundamento | Sin memoria entre sesiones | Sí |
+| C06 | Fundamento | Prompt | Sí |
+| C08 | Fundamento | Agente | Sí |
+| C09–C12 | Patrón | Alcance, modos, human-in-the-loop, verify | Sí |
+| C13 | Patrón | Arquitectura de contexto en capas (preview) | Sí |
 
-**Regla de bolsillo:** explorar explica; editar escribe.
-
----
-
-### C03 Verificación y evidencia humana
-
-**Qué es:** El humano ejecuta pruebas o pasos manuales y conserva **evidencia** — no acepta el “listo” del modelo.
-
-**Por qué importa:** Los modelos alucinan tests que pasan en papel. La verificación es independiente de la herramienta.
-
-**Ejemplo:** Tras un fix: `npm test -- Button.test.tsx`. Sin tests: pasos manuales documentados.
-
-**En la práctica:** Cursor Agent puede sugerir el comando; **tú** lo corres en terminal local (o CI). Copilot/Claude igual.
-
-**En este curso:** incluir `Verify with:` en el prompt; anotar resultado en el [workbook](participant-workbook.md).
+Definiciones completas: [concepts-map.md → Fundamentos](concepts-map.md#definiciones-ampliadas-fundamentos-ia)
 
 ---
 
-### C04 Arquitectura de contexto en tres capas
+## Fundamentos — qué hay que entender (sin Cursor)
 
-**Qué es:** Modelo mental portable:
+### C01 Modelo de lenguaje (LLM)
 
-1. **Código** — fuente en git.
-2. **Instrucciones persistentes** — reglas del IDE/repo (sesión 2).
-3. **Memoria durable** — mapa e historias en archivos (sesiones 2–6).
+**Definición:** Predice texto; **no** tiene tu repo en la cabeza ni “recuerda” el standup de ayer.
 
-**Por qué importa:** Hoy solo tienen capa 1; por eso el acance manual (C01) es obligatorio. Las capas 2–3 reducen repetición en **cualquier** herramienta que lea el repo.
-
-**En la práctica:** Copilot lee `.github/copilot-instructions.md`; Claude lee `CLAUDE.md`; Cursor lee `.cursor/rules/`. El **concepto** es el mismo.
-
-**Hoy:** nombrar las tres capas; **no** instalar `cursor/` todavía.
+**En criollo para el equipo:** Trátalo como un interno rapidísimo que lee lo que le pasas **ahora** — no como un senior que lleva años en el código.
 
 ---
 
-## Tarea de casa (45–60 min)
+### C02 Ventana de contexto
 
-1. Terminar el cambio (o revertir si era experimento).
-2. Workbook: qué contexto adjuntaron, qué leyó de más, comando de verificación.
-3. Confirmar ticket slice (sesiones 3–5) con el lead.
+**Definición:** Cupo limitado por petición. Mucho historial + muchos archivos = peor razonamiento.
 
-## Listo cuando
+**En criollo:** No le tires el monorepo; elige qué entra.
 
-- [ ] Diff real + verify documentado.
-- [ ] Explican explorar vs editar (en su herramienta).
-- [ ] Nadie instaló el kit completo por adelantado.
+---
+
+### C03 Alucinación
+
+**Definición:** Suena bien, está mal: API inventada, test que no corre, carpeta que no existe.
+
+**En criollo:** Por eso **siempre** verify (C12); nunca mergees porque “el chat se ve bien”.
+
+---
+
+### C04 Contexto
+
+**Definición:** Todo lo que ve el modelo en esta petición: archivos adjuntos, reglas, mensajes del hilo.
+
+**En criollo:** Contexto bueno = **relevante y acotado**, no “todo el repo”.
+
+---
+
+### C05 Sin memoria entre sesiones
+
+**Definición:** Chat nuevo = borrón. Lo no escrito en git se pierde.
+
+**En criollo:** Por eso más adelante usamos archivos para la memoria (sesión 3), no el hilo.
+
+---
+
+### C06 Prompt
+
+**Definición:** Lo que pides **hoy** en el chat: objetivo, límites, cómo verificar.
+
+---
+
+### C08 Agente
+
+**Definición:** El modelo **puede editar** archivos y correr comandos — no solo hablar.
+
+**En criollo:** Más poder → más cuidado con alcance (C09) y revisar el diff (C11).
+
+---
+
+## Patrones — cómo aplicamos esos fundamentos hoy
+
+### C09 Alcance explícito · C10 Modos · C11 Human-in-the-loop · C12 Verificación
+
+Ver [concepts-map](concepts-map.md#patrones-aplicación-en-desarrollo).  
+**Práctica:** [cheatsheet-cursor](cheatsheet-cursor.md) (Cursor) o equivalente en Copilot/Claude.
+
+| Herramienta | Acotar contexto | Explorar | Editar |
+| --- | --- | --- | --- |
+| Cursor | `@archivo` | Ask | Agent |
+| Copilot | `#file` | Chat | Edits |
+| Claude | Adjuntar archivos | Chat | Claude Code |
+
+---
+
+### C13 Arquitectura de contexto en capas (preview)
+
+1. **Código** (git)  
+2. **Instrucciones persistentes** (sesión 2)  
+3. **Memoria en archivos** (sesiones 3+)
+
+Hoy solo capa 1 → por eso el alcance manual es obligatorio.
+
+---
+
+## Entregables en clase · Listo cuando
+
+Ver [runbook S1 cierre](facilitator-runbook.md#sesión-1--fundamentos-ia--primera-práctica). Diff + verify + workbook S1; ticket slice **confirmado con el lead**; **sin** kit `cursor/` todavía.

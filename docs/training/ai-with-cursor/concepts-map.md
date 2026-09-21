@@ -1,143 +1,532 @@
-# Mapa de conceptos IA — curso repo existente
+# Glosario de conceptos IA — curso repo existente
 
-Conceptos **genéricos de desarrollo asistido por IA**: aplican en Cursor, GitHub Copilot, Claude Code, Windsurf, etc. El curso usa **Cursor + kit** como laboratorio de referencia; la columna *Implementación* indica cómo se materializa ahí.
+## Cómo leer este documento
 
-Facilitación en **español**. Artefactos del kit en **inglés**.
+| Qué | Qué es |
+| --- | --- |
+| **Concepto IA** | Definición agnóstica de herramienta — lo que el estudiante debe **entender** |
+| **Herramienta** | Cursor, Copilot, Claude… distinta UI, mismo concepto |
+| **Kit** | Archivos en git que materializan un patrón (`cursor/`, `.cursor/rules/`) |
 
-**Para dictar:** [facilitator-runbook.md](facilitator-runbook.md)  
-**Detalle por sesión:** [01](01-session.md) … [06](06-session.md)  
-**Referencia técnica (inglés):** [aspects-catalog.md](aspects-catalog.md)
+**Cursor** ayuda a trabajar con IA; **no es** el concepto.
+
+**Para dictar (qué es + ejemplo + por qué importa):** [facilitator-runbook.md](facilitator-runbook.md) → **“Conceptos de hoy”** en cada sesión.
+
+**Referencia pedagógica** (estilo simple, más amplio): [Fundamentos IA Generativa](https://github.com/elmauro/databricks/blob/master/spanish/01_Fundamentos_IA_Generativa.md) y [Desarrollo de Soluciones](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md) en el repo [elmauro/databricks](https://github.com/elmauro/databricks/tree/master/spanish). Este curso **no** cubre Databricks, RAG ni certificación — solo reutilizamos cómo explican los conceptos que sí usamos.
+
+Facilitación en **español**. Kit en **inglés**.
 
 ---
 
-## Tabla maestra — concepto · sesión · ¿cubierto?
+## Formato de ejemplos (como en [elmauro/databricks](https://github.com/elmauro/databricks/tree/master/spanish))
 
-| # | Concepto (IA genérico) | Sesión | ¿Cubierto? |
-| --- | --- | --- | --- |
-| C01 | **Alcance y contexto explícito** — qué sí/no leer; paths concretos | 1 → 5 | **Sí** |
-| C02 | **Modos de interacción** — explorar vs editar vs planificar | 1 | **Sí** |
-| C03 | **Verificación y evidencia humana** — comandos reales, no “LGTM del modelo” | 1 → 4 | **Sí** |
-| C04 | **Arquitectura de contexto en tres capas** — código · instrucciones · memoria | 1 (preview) → 2–6 | **Sí** |
-| C05 | **Mapa e índice del repositorio** — dónde vive cada cosa | 2 | **Sí** |
-| C06 | **Identidad y metadatos del proyecto** — nombre, stacks reales | 2 | **Sí** |
-| C07 | **Instrucciones persistentes** — reglas que el IDE carga sin repetir en cada chat | 2 | **Sí** |
-| C08 | **Contexto por dominio/stack** — cómo se trabaja en frontend, API, infra, etc. | 2 | **Sí** |
-| C09 | **Convenciones de artefactos durables** — idioma, formato, naming | 2 | **Sí** |
-| C10 | **Memoria fuera del chat** — estado por historia en archivos, no en el hilo | 3 | **Sí** |
-| C11 | **Intake y contrato de scope** — story + manifest antes de codear | 3 | **Sí** |
-| C12 | **Análisis antes de implementar** — impacto, archivos, riesgos | 3 (casa) → 4 | **Sí** |
-| C13 | **Ciclo de vida con gates** — intake → … → close; no saltar fases | 3–5 | **Sí** |
-| C14 | **Implementación acotada** — solo lo acordado en el contrato | 4 | **Sí** |
-| C15 | **Validación reproducible** — checklist + pruebas que otro humano puede repetir | 4 | **Sí** |
-| C16 | **Trazabilidad plan vs realidad** — qué cambió respecto al análisis | 4 | **Sí** |
-| C17 | **Gestión de ventana de contexto** — chat/hilo nuevo por fase; no arrastrar ruido | 5 | **Sí** |
-| C18 | **Enrutamiento de lecturas** — qué contexto cargar según el tipo de tarea | 5 | **Sí** |
-| C19 | **Review estructurado** — contra story, scope y criterios, no “¿te gusta?” | 5 | **Sí** |
-| C20 | **Cierre y handoff documentado** — estado final en repo, no solo en chat | 5 | **Sí** |
-| C21 | **Flujo corto para bugs** — scope mínimo sin intake completo | 5 (casa) | **Sí** |
-| C22 | **Contexto de producto y visión** — hacia dónde va el producto | 6 | **Sí** |
-| C23 | **Backlog de producto vs tickets** — ideas/`FW-*` separados de Jira/GitHub | 6 | **Sí** |
-| C24 | **Orquestación multi-fase** — un flujo que encadena fases | — | **Mención** (post-curso) |
-| C25 | **Context trace** — auditar qué leyó el agente | — | **Opcional** (post S4–5) |
-| C26 | **Automatización del ciclo** — scripts, sync con Issues/PR | 6 | **Opt-in** (no profundidad) |
-| C27 | **Generar proyecto greenfield** | — | **No** |
-| C28 | **Studies / intake Mode B** | — | **No** |
-| C29 | **Reglas de negocio de otro producto** (copiar Simulith/Loyalty) | — | **No** (solo demo) |
-| C30 | **Contratos full-stack cruzados** (Swagger, MSW, Cypress) | — | **No** |
-| C31 | **CI/CD y despliegue con agente** | — | **No** |
-| C32 | **Prompt injection / seguridad avanzada** | — | **No** |
-| C33 | **Evaluación sistemática de modelos** (benchmarks, A/B) | — | **No** |
-| C34 | **RAG / embeddings sobre el repo** | — | **No** |
-| C35 | **Multi-agente orquestado** | — | **No** |
+Mismo estilo que [Fundamentos IA](https://github.com/elmauro/databricks/blob/master/spanish/01_Fundamentos_IA_Generativa.md) y [Desarrollo de Soluciones](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md) — adaptado a dev con repo existente:
 
-**Leyenda — ¿Cubierto?**
+| Tipo | Cuándo usarlo | Para qué sirve |
+| --- | --- | --- |
+| **Ejemplo práctico** | Narrativa corta en el repo del alumno | Anclar la definición a algo que ya hicieron o harán |
+| **❌ Mal · ✅ Bien** | Prompts, alcance, confianza en el modelo | Contraste inmediato — ideal para pizarra o dictado |
+| **Ejemplo visual** | Flujos (agente, capas, ciclo, ventana) | Ver la idea en 10 segundos |
+| **Bloque copiable** | Una petición concreta al chat | Pegar en la práctica en clase |
 
-| Valor | Significado |
-| --- | --- |
-| **Sí** | Se explica y se practica (clase o tarea de casa) |
-| **Mención** | Se nombra; no es objetivo de aprendizaje |
-| **Opcional** | Material disponible; el equipo decide |
-| **Opt-in** | Capa avanzada; solo si ya domina el ciclo manual |
-| **No** | Fuera de alcance de las 6 sesiones |
+No hace falta los cuatro en cada concepto — solo donde aclara. Ejemplos listos para copiar: [anexo al final](#anexo--ejemplos-listos-para-copiar-o-dictar).
+
+---
+
+## Tabla maestra — concepto · definición · sesión · ¿cubierto?
+
+| # | Tipo | Concepto | Definición (una frase) | Sesión | ¿Cubierto? |
+| --- | --- | --- | --- | --- | --- |
+| C01 | Fundamento | **LLM** | Predice texto token a token; no “conoce” tu repo. | 1 | **Sí** |
+| C02 | Fundamento | **Ventana de contexto** | Cupo finito de tokens por petición. | 1, 5 | **Sí** |
+| C03 | Fundamento | **Alucinación** | Respuesta plausible pero incorrecta o inventada. | 1, 4 | **Sí** |
+| C04 | Fundamento | **Contexto** | Todo lo que el modelo ve en esta petición. | 1 | **Sí** |
+| C05 | Fundamento | **Sin memoria entre sesiones** | Cada chat empieza en blanco; git es la memoria real. | 1, 3 | **Sí** |
+| C06 | Fundamento | **Prompt** | Tu instrucción: objetivo, contexto, límites, formato, verify. | 1 | **Sí** |
+| C07 | Fundamento | **Instrucciones persistentes** | Reglas que la herramienta carga antes de tu prompt. | 2 | **Sí** |
+| C08 | Fundamento | **Agente** | LLM + permiso para actuar (editar, terminal, buscar). | 1 | **Sí** |
+| C09 | Patrón | **Alcance explícito** | Qué sí/no entra al contexto ni al diff. | 1→5 | **Sí** |
+| C10 | Patrón | **Explorar / editar / planificar** | Separar preguntar, escribir código y diseñar. | 1 | **Sí** |
+| C11 | Patrón | **Human-in-the-loop** | Humano aprueba, verifica y corrige. | 1→4 | **Sí** |
+| C12 | Patrón | **Verificación y evidencia** | Prueba real documentada; no “listo” del chat. | 1→4 | **Sí** |
+| C13 | Patrón | **Contexto en capas** | Código · reglas · memoria en archivos. | 1→6 | **Sí** |
+| C14 | Patrón | **Mapa del repositorio** | Índice en git: dónde vive cada cosa. | 2 | **Sí** |
+| C15 | Patrón | **Memoria durable** | Estado por historia en archivos, no en el hilo. | 3 | **Sí** |
+| C16 | Patrón | **Contrato de scope** | Story + manifest antes de codear. | 3 | **Sí** |
+| C17 | Patrón | **Análisis previo** | Plan escrito: archivos, riesgos. | 3→4 | **Sí** |
+| C18 | Patrón | **Ciclo con gates** | Fases con entregables; no saltar pasos. | 3→5 | **Sí** |
+| C19 | Patrón | **Implementación acotada** | Diff solo según contrato. | 4 | **Sí** |
+| C20 | Patrón | **Validación reproducible** | Checklist que otro humano puede repetir. | 4 | **Sí** |
+| C21 | Patrón | **Gestión de ventana** | Chat nuevo por fase del ciclo. | 5 | **Sí** |
+| C22 | Patrón | **Review estructurado** | Revisar contra story/manifest. | 5 | **Sí** |
+| C23 | Patrón | **Cierre y handoff** | Estado final en repo, no en chat. | 5 | **Sí** |
+| C24 | Patrón | **Contexto de producto** | Visión y backlog vs ticket del día. | 6 | **Sí** |
+| C25–C27 | — | Orquestación, trace, automatización | Ver abajo | — | Mención/opt-in |
+| C28–C35 | — | RAG, greenfield, multi-agente… | Fuera del curso | — | **No** |
 
 ---
 
 ## Vista por sesión
 
-| Sesión | Conceptos | ¿Cubierto en clase? |
-| --- | --- | --- |
-| [1](01-session.md) | C01, C02, C03, C04 | Sí |
-| [2](02-session.md) | C05, C06, C07, C08, C09 | Sí |
-| [3](03-session.md) | C10, C11, C12, C13 (intake) | Sí |
-| [4](04-session.md) | C13, C14, C15, C16 | Sí |
-| [5](05-session.md) | C17, C18, C19, C20, C21 | Sí |
-| [6](06-session.md) | C22, C23, C26 (opt-in) | Sí (+ opt-in) |
-
----
-
-## Equivalencias por herramienta (misma idea, distinta UI)
-
-| Concepto | Cursor (referencia del curso) | GitHub Copilot | Claude (Code / Projects) | Otros |
-| --- | --- | --- | --- | --- |
-| C01 Alcance | `@archivo`, In/Out of scope en prompt | `@workspace`, `#file`, instrucciones en chat | Attach files, project knowledge, “read only X” | Pegar paths + reglas en system prompt |
-| C02 Modos | Ask / Agent / Plan | Chat / Copilot Edits / agent mode | Chat vs Claude Code (edit) | Separar “explica” de “escribe” |
-| C03 Verificación | Correr terminal desde Agent | Terminal local / CI | Terminal en Claude Code | Siempre humano corre el comando |
-| C07 Instrucciones persistentes | `.cursor/rules/*.mdc` | `.github/copilot-instructions.md` | `CLAUDE.md`, project instructions | `AGENTS.md`, rules en repo |
-| C10 Memoria | `cursor/analysis/features/<slug>/` | Misma carpeta en repo (tool-agnostic) | Idem + project docs | Cualquier markdown en git |
-| C17 Ventana de contexto | Chat nuevo por fase | Nuevo chat / thread | Nueva conversación / session | No reutilizar hilo de 500 msgs |
-
-**Principio:** el **concepto** es portable; la **carpeta y el prompt** viven en git y sirven para cualquier herramienta que lea el repo.
-
----
-
-## Detalle y enlaces por concepto
-
-| # | Detalle (sesión) | Implementación en este curso |
-| --- | --- | --- |
-| C01 | [S1](01-session.md#c01-alcance-y-contexto-explícito) | Prompt con paths + Do NOT read |
-| C02 | [S1](01-session.md#c02-modos-de-interacción) | Ask vs Agent vs Plan |
-| C03 | [S1](01-session.md#c03-verificación-y-evidencia-humana) | `Verify with:` + comando local |
-| C04 | [S1](01-session.md#c04-arquitectura-de-contexto-en-tres-capas) | Preview; capas 2–3 en S2+ |
-| C05 | [S2](02-session.md#c05-mapa-e-índice-del-repositorio) | `cursor/context-map.md` |
-| C06 | [S2](02-session.md#c06-identidad-y-metadatos-del-proyecto) | `project.config.json` |
-| C07 | [S2](02-session.md#c07-instrucciones-persistentes) | `.cursor/rules/*.mdc` |
-| C08 | [S2](02-session.md#c08-contexto-por-dominiostack) | `cursor/projects/<stack>/project-context.md` |
-| C09 | [S2](02-session.md#c09-convenciones-de-artefactos-durables) | Inglés en `cursor/` |
-| C10 | [S3](03-session.md#c10-memoria-fuera-del-chat) | `analysis/features/<slug>/` |
-| C11 | [S3](03-session.md#c11-intake-y-contrato-de-scope) | `user-story.md`, `feature-manifest.md` |
-| C12 | [S3](03-session.md#c12-análisis-antes-de-implementar) | `analysis.md` |
-| C13 | [S3–S5](03-session.md#c13-ciclo-de-vida-con-gates) | Playbook + prompts por fase |
-| C14 | [S4](04-session.md#c14-implementación-acotada) | Diff vs manifest |
-| C15 | [S4](04-session.md#c15-validación-reproducible) | `test-checklist.md` |
-| C16 | [S4](04-session.md#c16-trazabilidad-plan-vs-realidad) | `implementation-notes.md` |
-| C17 | [S5](05-session.md#c17-gestión-de-ventana-de-contexto) | Chat nueva por fase |
-| C18 | [S5](05-session.md#c18-enrutamiento-de-lecturas) | `context-scope.mdc` |
-| C19 | [S5](05-session.md#c19-review-estructurado) | `prompt-feature-review.md` |
-| C20 | [S5](05-session.md#c20-cierre-y-handoff-documentado) | Close lite + INDEX |
-| C21 | [S5](05-session.md#c21-flujo-corto-para-bugs) | `prompt-bug-fix.md` |
-| C22 | [S6](06-session.md#c22-contexto-de-producto-y-visión) | `cursor/company/` |
-| C23 | [S6](06-session.md#c23-backlog-de-producto-vs-tickets) | `FW-*` vs ticket |
-| C24 | — | [cheatsheet-lifecycle](cheatsheet-lifecycle.md) orchestrator |
-| C25 | — | [aspects-catalog](aspects-catalog.md) M12 |
-| C26 | [S6](06-session.md#c26-automatización-del-ciclo-opt-in) | [03-github-sync](../../examples/03-github-sync-and-scripts.md) |
-| C27 | — | [01-create-project](../../examples/01-create-project.md) |
-| C28–C35 | — | Fuera del curso |
-
----
-
-## Relación con `aspects-catalog.md` (M#)
-
-| Módulo | Conceptos |
+| Sesión | Conceptos |
 | --- | --- |
-| M1 | C01, C02, C03 |
-| M2 | C05, C06 |
-| M3 | C07, C09 |
-| M4 | C08 |
-| M5 | C10, C11 |
-| M6 | C12, C13, C14, C15, C16, C21 |
-| M7 | C17, C18 |
-| M8 | C19, C20 |
-| M9 | C22, C23 |
-| M10 | C27 (no) |
-| M11 | C26 (opt-in) |
-| M12 | C25 (opcional) |
+| [1](01-session.md) | C01–C13 |
+| [2](02-session.md) | C07, C13–C14 |
+| [3](03-session.md) | C05, C15–C18 |
+| [4](04-session.md) | C03, C11–C12, C18–C20 |
+| [5](05-session.md) | C02, C21–C23 |
+| [6](06-session.md) | C24 |
+
+---
+
+## Definiciones ampliadas (estilo claro — para estudiar o dictar)
+
+Cada concepto: **Qué es** · **Ejemplo** · **Por qué te importa como dev**
+
+---
+
+### C01 — Modelo de lenguaje (LLM)
+
+**Qué es:** Un LLM es un modelo **generativo** entrenado con muchísimo texto. No “razona” como una persona: **predice** la siguiente palabra (token) una y otra vez hasta completar la respuesta. Por fuera parece inteligente; por dentro es probabilidad + contexto que le diste.
+
+**Ejemplo práctico:** Le pasas `login.tsx` y pides un test. Genera código que *se parece* a tests reales — pero puede inventar un helper que no existe (→ C03).
+
+**Ejemplo visual:**
+
+```
+Tu prompt + @login.tsx  →  [ LLM: token → token → token … ]  →  describe('Login'…)
+                                                                    ↑ puede inventar import
+```
+
+**Por qué te importa:** No asumas que “vio” todo el repo, que recuerda ayer o que entiende tu negocio. Es un asistente rapidísimo con **solo** lo que adjuntaste ahora.
+
+---
+
+### C02 — Ventana de contexto
+
+**Qué es:** Límite de **tokens** (pedazos de texto) que caben en **una** petición. Entran: archivos, reglas, historial del chat, tu prompt. Todo compite por el mismo cupo.
+
+**Ejemplo práctico:** Chat de 300 mensajes + 20 archivos `@` → el modelo pierde foco o ignora lo del medio. Por eso en sesión 5 abrimos **chat nuevo por fase** (C21).
+
+**Ejemplo visual:**
+
+```
+┌─────────────────── ventana finita ───────────────────┐
+│  reglas  │  @archivos  │  historial chat  │  prompt  │
+└────────────────────────────────────────────────────────┘
+         ↑ todo compite — lo del medio se pierde primero
+```
+
+**Por qué te importa:** Más contexto ≠ mejor. Contexto **relevante y acotado** (C09) rinde más que tirarle el monorepo.
+
+---
+
+### C03 — Alucinación
+
+**Qué es:** El LLM responde con tono seguro pero **inventa**: APIs que no existen, paths falsos, fechas incorrectas, “el test pasó” sin haberlo corrido. Hay alucinación **extrínseca** (inventa datos) e **intrínseca** (se contradice).
+
+**Ejemplo práctico:** *“¿Dónde está `UserService.getOrders`?”* → responde `src/services/UserService.ts` pero en tu repo el archivo se llama distinto o la función no existe.
+
+**❌ Mal · ✅ Bien:**
+
+| ❌ Mal | ✅ Bien |
+| --- | --- |
+| *“Suena bien, lo mergeo”* | Path existe en el repo (`git grep` o abrir archivo) |
+| *“El agente dijo que pasaron los tests”* | `npm test -- login.test.ts` en **tu** terminal (C12) |
+| *“Seguro que esa API existe”* | Buscar en código o docs del proyecto |
+
+**Por qué te importa:** No es bug raro — es comportamiento normal del modelo. Defensa: **verificar tú** (C12), no confiar en el tono del chat. (En productos con RAG se reduce; en este curso usamos mapa + verify + contrato.)
+
+---
+
+### C04 — Contexto
+
+**Qué es:** **Todo** lo que la herramienta envía al LLM en esta petición: archivos adjuntos, instrucciones persistentes (C07), mensajes viejos del hilo, texto que pegaste.
+
+**Ejemplo — prompt con buen contexto** (inspirado en [componentes de prompt](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md)):
+
+```
+INSTRUCCIONES: Cambio mínimo, sin refactor.
+CONTEXTO: @src/auth/login.tsx @src/auth/login.test.ts
+INPUT: Mostrar error si password vacío.
+FORMATO: Solo esos dos archivos.
+VERIFY: npm test -- login.test.ts
+```
+
+**Por qué te importa:** El output es tan bueno como el contexto que le diste — ni más ni menos.
+
+---
+
+### C05 — Sin memoria entre sesiones
+
+**Qué es:** Cada chat o hilo es **nuevo** para el modelo. Cierras la ventana → no “recuerda” scope, criterios ni decisiones. Lo único durable es lo que **escribiste en git**.
+
+**Ejemplo:** El martes acordaron en Slack “no tocar i18n”. El miércoles abres chat nuevo → el modelo **no sabe** nada de Slack. Tiene que estar en el manifest (C16).
+
+**Por qué te importa:** Motiva memoria durable (C15), mapa (C14) y contrato escrito antes de codear.
+
+---
+
+### C06 — Prompt
+
+**Qué es:** La instrucción que **tú** escribes en esta conversación. Un buen prompt suele tener: **instrucciones**, **contexto**, **pregunta/objetivo**, **formato** y **cómo verificar** — como los [componentes de prompt](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md) en prompt engineering.
+
+**Ejemplo visual — componentes:**
+
+```
+┌─────────────────────────────────────┐
+│ 1. INSTRUCCIONES   cambio mínimo    │
+│ 2. CONTEXTO        @login.tsx       │
+│ 3. OBJETIVO        error si vacío   │
+│ 4. FORMATO         solo esos files  │
+│ 5. VERIFY          npm test …       │
+└─────────────────────────────────────┘
+```
+
+**❌ Prompt malo:**
+
+```
+"Arregla el login"
+```
+
+**✅ Prompt bueno (bloque copiable):**
+
+```
+INSTRUCTIONS: Minimal change only. Do NOT refactor auth.
+CONTEXT: @src/auth/login.tsx @src/auth/login.test.ts
+GOAL: Show validation error when password is empty.
+FORMAT: Only those two files.
+VERIFY: npm test -- login.test.ts
+```
+
+**Por qué te importa:** Prompt vago → el modelo rellena huecos → alucina (C03). Prompt claro = mini-contrato de la petición de hoy.
+
+---
+
+### C07 — Instrucciones persistentes
+
+**Qué es:** Texto que el IDE carga **automáticamente** en cada petición, **antes** de tu prompt: convenciones, idioma de docs, seguridad.
+
+**Ejemplo:** Regla “documentation in English under `cursor/`” — no la repites en cada chat.
+
+| Herramienta | Archivo típico |
+| --- | --- |
+| Cursor | `.cursor/rules/*.mdc` |
+| Copilot | `.github/copilot-instructions.md` |
+| Claude | `CLAUDE.md` |
+
+**Por qué te importa:** Capa 2 de C13. Comportamiento estable sin quemar tokens repitiendo lo mismo (C02).
+
+---
+
+### C08 — Agente
+
+**Qué es:** LLM con **permiso para actuar**: editar archivos, terminal, búsqueda — no solo chat. Como un agente en sentido general: **razona → elige acción → usa herramientas → observa resultado** (idea similar a [componentes de Agent](https://github.com/elmauro/databricks/blob/master/spanish/01_Fundamentos_IA_Generativa.md): LLM + tools + memoria de hilo + planificación).
+
+**Ejemplo práctico:** Pides “añade test” → el agente abre archivos, escribe diff y puede correr `npm test`. Tú revisas antes de accept (C11).
+
+**Ejemplo visual — bucle del agente:**
+
+```
+  Objetivo ("añade test")
+        ↓
+  LLM elige acción → leer archivo / editar / terminal
+        ↓
+  Observa resultado → repite hasta "creo que terminé"
+        ↓
+  Humano revisa diff (C11) — no hay merge automático
+```
+
+**Por qué te importa:** Más poder = diffs más grandes y más riesgo fuera de scope. Requiere C09, C11, C12.
+
+---
+
+### C09 — Alcance explícito
+
+**Qué es:** Decir **qué** entra al contexto y al diff y **qué no** — paths concretos, In scope / Out of scope, “Do NOT read rest of repo”.
+
+**Ejemplo práctico:** Ticket en `src/auth/` → adjuntas solo esa carpeta. Prohibido “analiza todo el monorepo”.
+
+**❌ Mal · ✅ Bien:**
+
+| ❌ Mal | ✅ Bien |
+| --- | --- |
+| *“Mejora el módulo de auth”* | In scope: `src/auth/login.tsx`, `login.test.ts` |
+| *“Analiza el repo y arregla”* | Out of scope: refactor, i18n, otros módulos |
+| `@` en la raíz del monorepo | `@src/auth/` + mapa si hace falta orientarse |
+
+**Por qué te importa:** Respuesta directa a C01 (no conoce el repo) y C04 (contexto limitado). Sin alcance → refactors de paso y PRs imposibles.
+
+---
+
+### C10 — Explorar / editar / planificar
+
+**Qué es:** Tres **intenciones** distintas: **explorar** (preguntar, sin tocar archivos), **editar** (generar diffs), **planificar** (diseñar antes si el cambio es grande). Relacionado con técnicas como *chain-of-thought* (“piensa paso a paso”) cuando el cambio es ambiguo — pero aquí el foco es **no mezclar modos**.
+
+**Ejemplo:** *“¿Dónde se valida el email?”* → explorar. *“Añade test”* → editar + alcance (C09).
+
+**Por qué te importa:** Explorar en modo editar = cambios accidentales. **Explorar explica; editar escribe.**
+
+---
+
+### C11 — Human-in-the-loop
+
+**Qué es:** La IA **propone**; el humano **aprueba, corrige y verifica**. No hay merge automático porque el chat “se ve bien”. Misma idea que “usar IA como **asistente**, no reemplazo” en adopción empresarial.
+
+**Ejemplo:** Agent genera 8 archivos → tú reviertes 6 que no pediste y solo commiteas 2.
+
+**Por qué te importa:** La responsabilidad del código es tuya — ante el equipo, legal y operativamente.
+
+---
+
+### C12 — Verificación y evidencia
+
+**Qué es:** **Tú** corres test/lint/build o documentas pasos manuales reproducibles. Evidencia en repo o checklist — no fe en el mensaje del modelo.
+
+**Ejemplo:** Tras el fix: `npm test -- login.test.ts` en **tu** terminal. Si falla, pegas el error en chat nuevo con mismo alcance.
+
+**Por qué te importa:** Antídoto a C03. El modelo puede decir “tests pass” sin haberlos corrido.
+
+---
+
+### C13 — Arquitectura de contexto en capas
+
+**Qué es:** Tres fuentes separadas: (1) **código** en git, (2) **instrucciones persistentes** (C07), (3) **memoria** en archivos — mapa, historias, visión (C14, C15, C24).
+
+**Ejemplo práctico:** Sin capas 2–3, repites en cada chat “los tests van con pnpm” y adjuntas medio repo (C02).
+
+**Ejemplo visual — las tres cajas (sesión 1 en pizarra):**
+
+```
+┌─────────────┐   ┌──────────────────┐   ┌─────────────────────────┐
+│ 1. CÓDIGO   │   │ 2. REGLAS        │   │ 3. MEMORIA (cursor/)    │
+│ src/, tests │   │ .cursor/rules/   │   │ context-map, features/  │
+└─────────────┘   └──────────────────┘   └─────────────────────────┘
+     git              corto, always           largo, por historia
+```
+
+**Por qué te importa:** Organiza el contexto para no saturar la ventana y no depender del hilo (C05).
+
+---
+
+### C14 — Mapa del repositorio
+
+**Qué es:** Índice en git (`context-map.md`): dónde están tests, APIs, docs, prompts. Table of contents para humanos y modelos.
+
+**Ejemplo:** Repo solo API → el mapa lista `src/handlers/`, **no** inventa `frontend/`.
+
+**Por qué te importa:** El LLM no tiene mapa mental (C01). Sin índice, adivina carpetas.
+
+---
+
+### C15 — Memoria durable
+
+**Qué es:** Estado de una historia en **archivos** (`analysis/features/<slug>/`), no en el chat. Story, manifest, analysis, checklist viven en git.
+
+**Ejemplo:** Cierras Cursor el viernes → el lunes retomas leyendo `user-story.md`, no 200 mensajes.
+
+**Por qué te importa:** Consecuencia directa de C05. El chat es borrador; git es contrato.
+
+---
+
+### C16 — Contrato de scope (intake)
+
+**Qué es:** **Antes de codear:** `user-story.md` (qué quiere el usuario) + `feature-manifest.md` (qué sí, qué no, definition of done).
+
+**Ejemplo práctico:** Out of scope: *“no i18n, no redesign table, no refactor auth module”* — concreto, no “mejorar UX”.
+
+**❌ Mal · ✅ Bien (Out of scope en manifest):**
+
+| ❌ Mal | ✅ Bien |
+| --- | --- |
+| *“Mejorar UX de la tabla”* | *“No redesign table layout or columns”* |
+| *“Arreglar deuda técnica si hace falta”* | *“No refactor auth module; separate ticket”* |
+| *(vacío)* | Al menos 2 ítems concretos que **no** harán |
+
+**Por qué te importa:** Sin contrato escrito, el agente en implement (C19) improvisa scope.
+
+---
+
+### C17 — Análisis previo
+
+**Qué es:** `analysis.md`: **cómo** atacar la story — archivos, riesgos, dependencias — separado del **qué** (story).
+
+**Ejemplo:** *“Toca UserService; riesgo timezone; confirmar query param con backend.”*
+
+**Por qué te importa:** Evita sorpresas en sesión 4. Plan antes del diff.
+
+---
+
+### C18 — Ciclo de vida con gates
+
+**Qué es:** Fases con entregables: intake → analysis → implement → validate → review → close. **Gates** = no pasar a la siguiente sin el artefacto mínimo.
+
+**Ejemplo práctico:** No implementar en sesión 3 (solo intake). No mergear en sesión 4 (review en 5).
+
+**Ejemplo visual:**
+
+```
+INTAKE → ANALYSIS → IMPLEMENT → VALIDATE → REVIEW → CLOSE
+  │         │           │           │          │
+ story    analysis.md   diff      checklist   findings
++manifest              + verify              + INDEX
+  ↑ gate: sin manifest no hay implement
+```
+
+**Por qué te importa:** Sin gates, la IA es “generador de diffs al azar”.
+
+---
+
+### C19 — Implementación acotada
+
+**Qué es:** Diff limitado a manifest + analysis. Lo “de paso” se revierte o va a otro ticket.
+
+**Ejemplo:** Manifest permite 3 archivos → diff de 25 archivos = **mal**, aunque el modelo diga que “mejoró cosas”.
+
+**Por qué te importa:** PRs reviewables; menos deuda escondida.
+
+---
+
+### C20 — Validación reproducible
+
+**Qué es:** `test-checklist.md` + comandos que **otra persona** ejecuta sin leerte el chat.
+
+**Ejemplo:** *“1. npm test -- X. 2. Abrir /orders, filtrar fecha, ver filas.”*
+
+**Por qué te importa:** Review, QA y tu yo futuro no tienen el hilo del Agent.
+
+---
+
+### C21 — Gestión de ventana de contexto
+
+**Qué es:** **Un chat/hilo por fase** del ciclo. No arrastrar intake + implement + review en 400 mensajes. Analogía: [prompt chaining](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md) — el output de una fase vive en **archivos**, el siguiente chat arranca limpio.
+
+**Ejemplo práctico:** Review hoy → chat nuevo con solo `@feature-package/` + guidelines — no el hilo del martes.
+
+**Ejemplo visual:**
+
+```
+Chat A (intake)     Chat B (implement)     Chat C (review)
+     │                     │                      │
+     └──── manifest ───────┴──── diff ──────────────┘
+              ↑ memoria en git, no en el historial
+```
+
+**Por qué te importa:** Aplica C02. Menos ruido, menos tokens, menos confusión.
+
+---
+
+### C22 — Review estructurado
+
+**Qué es:** Revisar diff **contra** story, manifest y criterios — buscar scope creep, tests faltantes.
+
+**Ejemplo:** Manifest excluía i18n → diff toca `es.json` = finding blocker.
+
+**Por qué te importa:** “¿Te gusta el código?” no detecta incumplimientos de contrato.
+
+---
+
+### C23 — Cierre y handoff
+
+**Qué es:** Estado final **en repo**: manifest actualizado, INDEX, notas — el siguiente dev no depende del chat.
+
+**Ejemplo:** Close lite marca story `done` y actualiza índice de features.
+
+**Por qué te importa:** Handoff, auditoría, cambio de herramienta o de persona en el equipo.
+
+---
+
+### C24 — Contexto de producto
+
+**Qué es:** Capa **estratégica**: visión corta, backlog `FW-*` — separado del ticket del sprint (Jira/GitHub).
+
+**Ejemplo:** Visión: *“Mobile-first LATAM; offline out until Q3”* → evita que el agente diseñe desktop-first en cada ticket.
+
+**Por qué te importa:** Scope creep de **producto**, no solo de código.
+
+---
+
+## Fuera del curso (referencia Databricks — no enseñamos aquí)
+
+| Tema | Por qué no en 6 sesiones | Dónde leer más |
+| --- | --- | --- |
+| **RAG** | Requiere embeddings, vector DB, chunking | [02_Desarrollo_Soluciones.md](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md) |
+| **Fine-tuning** | Pre-entrenamiento vs ajuste fino es otro programa | [01_Fundamentos_IA_Generativa.md](https://github.com/elmauro/databricks/blob/master/spanish/01_Fundamentos_IA_Generativa.md) |
+| **Multi-agente** | C35 — opt-in avanzado | Idem |
+| **Prompt injection / guardrails** | C33 — seguridad avanzada | Idem § Riesgos |
+| **Greenfield generator** | Curso = repo existente | [01-create-project](../../examples/01-create-project.md) |
+
+---
+
+## Relación concepto → herramienta → kit
+
+```
+Fundamento (C01–C08) → Patrón (C09–C24) → Kit en git (Cursor lab)
+```
+
+Referencia técnica kit: [aspects-catalog.md](aspects-catalog.md)
+
+---
+
+## Anexo — ejemplos listos para copiar o dictar
+
+Bloques que el facilitador puede **pegar en chat** o **mostrar en pantalla**. Más contexto en [facilitator-runbook.md](facilitator-runbook.md) y [cheatsheet-cursor.md](cheatsheet-cursor.md) / [cheatsheet-lifecycle.md](cheatsheet-lifecycle.md).
+
+### Sesión 1 — cambio chico con alcance (C04, C06, C09, C12)
+
+```
+INSTRUCTIONS: Minimal change. Do NOT scan the whole repo.
+CONTEXT: @src/.../TargetFile.tsx @src/.../TargetFile.test.ts
+GOAL: [one sentence — e.g. show error when field empty]
+IN SCOPE: only the files above
+OUT OF SCOPE: refactor, i18n, other modules
+FORMAT: smallest diff that works
+VERIFY: [exact command — e.g. npm test -- TargetFile.test.ts]
+```
+
+### Sesión 3 — intake (C16, C18) — sin implementar
+
+```
+Mode A — draft only. Do NOT edit src/ or open Agent to implement.
+Read @cursor/context-map.md and ticket below.
+Create user-story.md and feature-manifest.md under cursor/analysis/features/<slug>/
+In manifest: In scope, Out of scope (≥2 concrete items), Definition of done.
+Set Implement now? no
+```
+
+### Sesión 4 — implement (C19, C20)
+
+```
+New chat. Do NOT reuse intake thread.
+Read @feature-manifest.md @analysis.md
+Implement only In scope. Revert anything Out of scope.
+Update implementation-notes.md and test-checklist.md
+VERIFY: run [command from manifest or analysis]
+```
+
+### Sesión 5 — review (C22)
+
+```
+New chat. Review diff against @user-story.md @feature-manifest.md
+Find: scope creep, missing tests, DoD not met.
+Output: numbered findings (blocker / nice-to-have). Do NOT merge.
+```
+
+### Manifest — Out of scope (C16)
+
+**❌ Mal:**
+
+```markdown
+## Out of scope
+- Improve UX
+- Fix tech debt if needed
+```
+
+**✅ Bien:**
+
+```markdown
+## Out of scope
+- No i18n / copy changes
+- No table layout or column redesign
+- No auth module refactor (ticket AUTH-99)
+```

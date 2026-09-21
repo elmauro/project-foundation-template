@@ -24,11 +24,11 @@ Each module follows the same shape:
 
 ## Session mapping
 
-**Dictation script:** [`facilitator-runbook.md`](facilitator-runbook.md). Session files `01`–`06` are annex only (homework + checklist).
+**Dictation script:** [`facilitator-runbook.md`](facilitator-runbook.md). Session files `01`–`06` are annex only (concepts + in-class deliverables). No homework between sessions.
 
 | Module | Session | Kit layer |
 | --- | --- | --- |
-| M1 Scope and modes | [S1 runbook](facilitator-runbook.md#sesión-1--cursor-sin-kit) · [annex](01-session.md) | None |
+| M1 Scope and modes | [S1 runbook](facilitator-runbook.md#sesión-1--fundamentos-ia--primera-práctica) · [annex](01-session.md) | None |
 | M2 Map and identity | [S2 runbook](facilitator-runbook.md#sesión-2--mapa-e-identidad) · [annex](02-session.md) | 0 |
 | M3 Active rules | [S2 runbook](facilitator-runbook.md#sesión-2--mapa-e-identidad) · [annex](02-session.md) | 0 |
 | M4 Stack context | [S2 runbook](facilitator-runbook.md#sesión-2--mapa-e-identidad) · [annex](02-session.md) | 0 |
@@ -36,9 +36,9 @@ Each module follows the same shape:
 | M6 Lifecycle | [S3–S4 runbook](facilitator-runbook.md#sesión-3--una-historia-que-no-vive-en-el-chat) · [annex](03-session.md) / [04](04-session.md) | A |
 | M7 Tokens and sessions | [S5 runbook](facilitator-runbook.md#sesión-5--review-cerrar-y-gastar-menos-tokens) · [annex](05-session.md) | A+ |
 | M8 Review and quality | [S5 runbook](facilitator-runbook.md#sesión-5--review-cerrar-y-gastar-menos-tokens) · [annex](05-session.md) | A+ |
-| M9 Product and scope | [S6 runbook](facilitator-runbook.md#sesión-6--producto-y-el-lunes) · [annex](06-session.md) | B |
+| M9 Product and scope | [S6 runbook](facilitator-runbook.md#sesión-6--producto-y-cierre-del-curso) · [annex](06-session.md) | B |
 | M10 New project (annex) | — | Generator |
-| M11 Automation (optional) | [S6 runbook](facilitator-runbook.md#sesión-6--producto-y-el-lunes) · [annex](06-session.md) | C |
+| M11 Automation (optional) | [S6 runbook](facilitator-runbook.md#sesión-6--producto-y-cierre-del-curso) · [annex](06-session.md) | C |
 | M12 Context trace (optional) | After S4–5 | A+ |
 
 Copy order for adoption: [`adopt-on-existing-repo.md`](adopt-on-existing-repo.md).
@@ -56,7 +56,7 @@ Without explicit scope, the agent scans the repository, mixes refactors with the
 ### Template source
 
 - [`cheatsheet-cursor.md`](cheatsheet-cursor.md)
-- Session script: [`facilitator-runbook.md` → S1](facilitator-runbook.md#sesión-1--cursor-sin-kit) · homework: [`01-session.md`](01-session.md)
+- Session script: [`facilitator-runbook.md` → S1](facilitator-runbook.md#sesión-1--fundamentos-ia--primera-práctica) · annex: [`01-session.md`](01-session.md)
 
 ### In the learner's repo (session 1)
 

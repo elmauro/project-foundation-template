@@ -1,57 +1,15 @@
-# Sesión 6 — Producto y el lunes
+# Sesión 6 — Contexto de producto
 
-> **Guión:** [facilitator-runbook.md → S6](facilitator-runbook.md#sesión-6--producto-y-el-lunes) · **Conceptos:** [concepts-map.md](concepts-map.md) **C22–C23**, C26 opt-in
+> **Guión:** [facilitator-runbook.md → S6](facilitator-runbook.md#sesión-6--producto-y-cierre-del-curso) · **Glosario:** [concepts-map.md](concepts-map.md)
 
-**Capa:** B (+ C opt-in)
-
----
-
-## Conceptos de esta sesión
-
-| ID | Concepto IA (genérico) | ¿Cubierto? |
-| --- | --- | --- |
-| C22 | Contexto de producto y visión | Sí |
-| C23 | Backlog de producto vs tickets | Sí |
-| C26 | Automatización del ciclo | Opt-in |
+**Conceptos:** C24 (contexto de producto) · C27 opt-in (automatización kit)
 
 ---
 
-### C22 Contexto de producto y visión
+## C24 Contexto de producto
 
-**Qué es:** Capa de contexto **estratégico** (`cursor/company/`, visión, áreas) — no reemplaza stories.
+**Definición (patrón):** Capa de contexto **estratégico** — visión, backlog `FW-*` — separada del ticket del sprint. Evita que el modelo agrande scope sin alineación de producto.
 
-**Por qué importa:** Sin visión, el modelo optimiza localmente (refactors) sin alineación de producto.
+**Kit:** `cursor/company/` · no confundir ticket Jira con `FW-*`
 
-**En la práctica:** Cualquier herramienta: adjuntar `product-vision.md` en features grandes.
-
----
-
-### C23 Backlog de producto vs tickets
-
-**Qué es:** Separar **ticket de herramienta** (Jira `PROJ-123`) de **ítem de backlog interno** (`FW-*`).
-
-**Por qué importa:** Mezclarlos confunde prompts y trazabilidad.
-
-**En este curso:** 3× `FW-*` + promover uno a intake next sprint.
-
----
-
-### C26 Automatización del ciclo (opt-in)
-
-**Qué es:** Scripts sync Issues/PR/registry — Layer C.
-
-**¿Cubierto?** Opt-in, no profundidad. Primero dominar ciclo manual (C13–C20).
-
-**Referencia:** [03-github-sync](../../examples/03-github-sync-and-scripts.md)
-
----
-
-## Fuera del curso
-
-C27–C35 en [concepts-map.md](concepts-map.md): greenfield, Studies, RAG, multi-agente, etc.
-
----
-
-## Tarea de casa · Listo cuando
-
-Ver [00-facilitator-guide.md](00-facilitator-guide.md) criterios de éxito del programa.
+**Práctica y cierre del curso:** [runbook S6](facilitator-runbook.md#sesión-6--producto-y-cierre-del-curso)

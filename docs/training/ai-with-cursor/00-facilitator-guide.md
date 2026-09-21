@@ -2,9 +2,9 @@
 
 **Guión para dictar:** [`facilitator-runbook.md`](facilitator-runbook.md) — español coloquial, listo para leer en voz alta (este doc es la referencia técnica complementaria).
 
-Cómo correr las 6 sesiones. **Para dictar:** solo [`facilitator-runbook.md`](facilitator-runbook.md). Los archivos `01-session.md` … `06-session.md` son anexo (homework + checklist); no hace falta leerlos en clase.
+Cómo correr las 6 sesiones (bloque intensivo, **sin tareas entre sesiones**). **Para dictar:** solo [`facilitator-runbook.md`](facilitator-runbook.md). Los archivos `01-session.md` … `06-session.md` son anexo (conceptos + entregables en clase); no hace falta leerlos en clase.
 
-**Mapa de conceptos** (tabla sesión ↔ concepto ↔ fuera del curso): [`concepts-map.md`](concepts-map.md). Cada [`0N-session.md`](01-session.md) desarrolla los conceptos de esa clase (definición, ejemplo, implementación).
+**Glosario IA** (definiciones agnósticas de herramienta · sesión · ¿cubierto?): [`concepts-map.md`](concepts-map.md). Separa **fundamento IA**, **patrón de uso** y **kit/Cursor**. Anexos [`0N-session.md`](01-session.md) enlazan definiciones + práctica.
 
 **Índice pedagógico por aspecto** (inglés, template, prompts, DoD): [`aspects-catalog.md`](aspects-catalog.md). Úsalo para preparar demos y para responder “¿por qué hacemos context-map y no leemos todo el repo?”.
 
@@ -28,13 +28,14 @@ El kit incluye `.cursor/rules/documentation-english.mdc`. Dilo en la sesión 2: 
 
 Los prompts se pegan en inglés (son los del template). El alumno puede añadir debajo una línea en español con el ticket concreto.
 
-## Antes del programa (T−7 días)
+## Antes del bloque (pre-requisitos)
 
 1. Confirmar que cada alumno tiene Cursor + acceso al repo existente.
-2. Pedir el workbook: nombre del repo, stacks reales, comando de test, ticket candidato.
+2. Workbook con pre-requisitos completos (repo, stacks, comando de test, ticket candidato).
 3. Tener a mano este template (para copiar archivos) y, si puedes, Simulith abierto **solo para demos**.
-4. Preparar un USB/zip o rama de referencia **no es necesario**: se copia capa por capa; el orden está en [`adopt-on-existing-repo.md`](adopt-on-existing-repo.md).
+4. El orden de copia está en [`adopt-on-existing-repo.md`](adopt-on-existing-repo.md).
 5. Si el grupo no puede commitear en el repo de producto, que usen un fork. El curso muere si no hay un repo real.
+6. **Lead disponible** (presencial o remoto) en sesiones 1 y 3 para confirmar y recortar el ticket slice.
 
 ## Durante cada sesión (90 min)
 
@@ -42,12 +43,12 @@ Patrón fijo:
 
 | Min | Bloque |
 | --- | --- |
-| 0–10 | Recap + homework review (2–3 personas, no todas) |
+| 0–10 | Recap sesión anterior (2–3 personas; en S1: presentación del repo) |
 | 10–40 | Concepto + demo (pantalla del facilitador) |
 | 40–80 | **Práctica** — manos en teclado, entregable concreto |
-| 80–90 | **Cierre** — “¿salimos con esto?”, commit, casa |
+| 80–90 | **Cierre** — “¿salimos con esto?”, commit, checklist “listo cuando” |
 
-**Práctica vs cierre (en criollo):** la práctica es que **ellos** hagan algo verificable en su repo; el cierre es alinear “listo cuando”, commit y tarea de casa — no apagar sin decir qué commitear.
+**Práctica vs cierre (en criollo):** la práctica es que **ellos** hagan algo verificable en su repo; el cierre es alinear “listo cuando” y commit — **nada queda para después**. Si falta algo, recorta scope en la misma sesión.
 
 Detalle sesión por sesión (qué hace el alumno, qué haces tú, señales de éxito, preguntas al grupo): [`facilitator-runbook.md`](facilitator-runbook.md) — bloques **“Práctica — qué esperamos”** y **“Cierre — qué esperamos”**, más tabla resumen al final.
 
@@ -84,7 +85,7 @@ El programa “cierra” si al final de la sesión 6:
 | --- | --- |
 | El agente lista todo el repo | Parar. Pedir paths concretos. Recordar Capa 0. |
 | Copian `frontend/` en un repo que solo es API | Borrar. El mapa describe el repo real. |
-| Escriben `user-story.md` en español | Permitido en sesión 3 como borrador; homework: inglés. |
+| Escriben `user-story.md` en español | Borrador en español OK; **antes del cierre de S3** pasar a inglés en el repo. |
 | No tienen tests | Validation = comando que sí exista (lint, script, prueba manual listada en el checklist). |
 | Quieren el generador `npm run create` | Fuera de alcance. Este curso es adopción sobre existente. |
 | Ticket enorme | Recortar a un slice de 1–2 días. El resto queda `Out of scope` en el manifest. |

@@ -1,8 +1,8 @@
 # Participant workbook
 
-Imprime o duplica este archivo. Lo que commitees en el repo va en **inglés**; estas notas pueden quedar en español (no las subas a `cursor/`).
+Imprime o duplica este archivo. Lo completas **durante cada sesión** (no hay tareas entre sesiones). Lo que commitees en el repo va en **inglés**; estas notas pueden quedar en español (no las subas a `cursor/`).
 
-## Before session 1
+## Pre-requisitos (antes de la sesión 1)
 
 | Campo | Tu respuesta |
 | --- | --- |
@@ -10,10 +10,10 @@ Imprime o duplica este archivo. Lo que commitees en el repo va en **inglés**; e
 | Product name / slug | |
 | Stacks reales (carpetas) | |
 | Cómo se prueba hoy (comando) | |
-| Ticket candidato (sesiones 3–5) | |
+| Ticket candidato (sesiones 3–4) | |
 | Lead que recorta alcance | |
 
-## Session 1 — Cursor without a kit
+## Session 1 — Cursor without a kit *(en clase)*
 
 Cambio de práctica (no el ticket grande):
 
@@ -22,8 +22,9 @@ Cambio de práctica (no el ticket grande):
 - ¿Qué leyó de más el agente?
 - Cómo verificaste:
 - ¿Revertiste? sí / no
+- Ticket slice confirmado con el lead:
 
-## Session 2 — Map
+## Session 2 — Map *(en clase)*
 
 - [ ] `project.config.json`
 - [ ] `cursor/context-map.md` (sin carpetas inventadas)
@@ -34,7 +35,7 @@ Cambio de práctica (no el ticket grande):
 
 Ask de control (“Where do I add a test for X?”): ¿citó el mapa? sí / no
 
-## Session 3 — Story package
+## Session 3 — Story package *(en clase)*
 
 - Feature name:
 - Feature slug:
@@ -43,9 +44,9 @@ Ask de control (“Where do I add a test for X?”): ¿citó el mapa? sí / no
 - Backlog ID: `n/a` (hasta sesión 6)
 - [ ] `user-story.md` en inglés
 - [ ] `feature-manifest.md` con out of scope
-- [ ] `analysis.md` (homework)
+- [ ] `analysis.md` (archivos, riesgos, verify)
 
-## Session 4 — Implement / validate
+## Session 4 — Implement / validate *(en clase)*
 
 - Branch:
 - Comando de verificación corrido:
@@ -53,14 +54,14 @@ Ask de control (“Where do I add a test for X?”): ¿citó el mapa? sí / no
 - [ ] `test-checklist.md`
 - Archivos que el agente tocó de más (si aplica):
 
-## Session 5 — Review / close / scope
+## Session 5 — Review / close / scope *(en clase)*
 
 - Review: pass / blockers / majors
 - [ ] `INDEX.md` actualizado
 - [ ] `context-scope.mdc`
-- Bug-fix extra (homework): slug o descripción
+- Bug-fix corto (otro chat): slug o descripción / N/A
 
-## Session 6 — Product brain
+## Session 6 — Product brain *(en clase)*
 
 - [ ] `cursor/company/README.md`
 - [ ] `product-vision.md` (una página, inglés)
@@ -70,7 +71,7 @@ Ask de control (“Where do I add a test for X?”): ¿citó el mapa? sí / no
 - El que promoverías a story:
 - [ ] No copié Capa D (IDs / stacks / registry de otro producto)
 
-## Monday checklist
+## Checklist operativo (referencia post-curso)
 
 1. Agent con `@` de `project-context` o de la feature package.
 2. Historia nueva → intake.
@@ -78,8 +79,8 @@ Ask de control (“Where do I add a test for X?”): ¿citó el mapa? sí / no
 4. Recortar si pide el repo entero.
 5. Kit desde `project-foundation-template`, no desde un producto vivo.
 
-Prompt que voy a pegar el lunes:
+Prompt de intake listo para copiar:
 
 ```text
-(pega aquí)
+(pega aquí — completar en sesión 6)
 ```
