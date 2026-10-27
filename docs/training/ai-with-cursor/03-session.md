@@ -1,6 +1,6 @@
 # Sesión 3 — Memoria durable e intake
 
-> **Guión:** [facilitator-runbook.md → S3](facilitator-runbook.md#sesión-3--una-historia-que-no-vive-en-el-chat) · **Glosario:** [concepts-map.md](concepts-map.md)
+> **Lab:** [labs/03-intake-sin-codigo.md](labs/03-intake-sin-codigo.md) · **Guión:** [facilitator-runbook.md → S3](facilitator-runbook.md#sesión-3--una-historia-que-no-vive-en-el-chat) · **Glosario:** [concepts-map.md](concepts-map.md)
 
 **Conceptos:** C05, C15–C18 · **Kit:** Layer A (intake)
 

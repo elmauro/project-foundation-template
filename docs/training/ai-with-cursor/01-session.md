@@ -1,6 +1,6 @@
 # Sesión 1 — Fundamentos IA + primera práctica
 
-> **Guión:** [facilitator-runbook.md → S1](facilitator-runbook.md#sesión-1--fundamentos-ia--primera-práctica) · **Glosario:** [concepts-map.md](concepts-map.md)
+> **Lab (paso a paso):** [labs/01-primera-practica.md](labs/01-primera-practica.md) · **Guión:** [facilitator-runbook.md → S1](facilitator-runbook.md#sesión-1--fundamentos-ia--primera-práctica) · **Glosario:** [concepts-map.md](concepts-map.md)
 
 **Laboratorio de hoy:** Cursor (u otra herramienta con modo editar)  
 **Capa kit:** ninguna todavía  

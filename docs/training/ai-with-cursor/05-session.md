@@ -1,6 +1,6 @@
 # Sesión 5 — Review, cierre y ventana de contexto
 
-> **Guión:** [facilitator-runbook.md → S5](facilitator-runbook.md#sesión-5--review-cerrar-y-gastar-menos-tokens) · **Glosario:** [concepts-map.md](concepts-map.md)
+> **Lab:** [labs/05-review-y-cierre.md](labs/05-review-y-cierre.md) · **Guión:** [facilitator-runbook.md → S5](facilitator-runbook.md#sesión-5--review-cerrar-y-gastar-menos-tokens) · **Glosario:** [concepts-map.md](concepts-map.md)
 
 **Conceptos:** C02, C21–C23
 

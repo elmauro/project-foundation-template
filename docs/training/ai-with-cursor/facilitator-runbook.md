@@ -18,9 +18,11 @@ Hablas **español** con el grupo. Lo que van a **commitear** en el repo (`cursor
 - Cheatsheet sesiones 3–5: [cheatsheet-lifecycle.md](cheatsheet-lifecycle.md)
 - Glosario completo (qué es + ejemplo + por qué importa): [concepts-map.md](concepts-map.md)
 - **Ejemplos copiables** (prompts, ❌/✅, diagramas): [concepts-map.md § Anexo](concepts-map.md#anexo--ejemplos-listos-para-copiar-o-dictar)
-- **Para dictar en clase:** bloques **“Conceptos de hoy”** en cada sesión **abajo en este runbook**
+- **Para dictar en clase:** cada concepto es una **historia corta** en “Conceptos de hoy”. Léela o cuéntala; no hace falta el formato “qué es / ejemplo / por qué”
 - Estilo de explicación como [elmauro/databricks/spanish](https://github.com/elmauro/databricks/tree/master/spanish): ejemplo práctico, ❌/✅, visual si ayuda — sin Databricks/RAG en el curso
 - Anexos por sesión: [01](01-session.md)–[06](06-session.md)
+- **Una diapositiva por sesión** (copiar tal cual): [slides/](slides/)
+- **Laboratorio paso a paso** (alumnos siguen esto en la práctica): [labs/](labs/)
 - Si te preguntan el “por qué” técnico en inglés: [aspects-catalog.md](aspects-catalog.md)
 
 ---
@@ -111,153 +113,145 @@ En todas las sesiones usamos el mismo lenguaje:
 
 ---
 
-### Conceptos de hoy (10–35 min) — léelos o parafrasea
+### Conceptos de hoy (10–35 min) — cuéntalos
 
-Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Donde ayude: **❌ mal / ✅ bien** o un mini diagrama en pizarra (como en [databricks/spanish](https://github.com/elmauro/databricks/tree/master/spanish)). Glosario + bloques copiables: [concepts-map.md](concepts-map.md).
-
----
-
-#### C01 — Modelo de lenguaje (LLM) · *Fundamento*
-
-**Qué es:** Modelo **generativo** entrenado con muchísimo texto. No “sabe” tu código: **predice** la siguiente palabra una y otra vez hasta armar la respuesta. Por fuera parece inteligente; por dentro es probabilidad + lo que le pasaste.
-
-**Ejemplo:** Le muestras un archivo y pide un test → genera algo que *se ve* a test real, pero puede inventar un import que no existe.
-
-**Por qué te importa:** No es un senior del equipo. Es un asistente rapidísimo que solo ve **esta petición**. Si le hablas vago, rellena con suposiciones.
+Cada bloque es una historia corta. Léela o cuéntala con tus palabras. Si ayuda, dibuja en la pizarra. Glosario y ejemplos para copiar: [concepts-map.md](concepts-map.md).
 
 ---
 
-#### C02 — Ventana de contexto · *Fundamento*
+#### C01 — El modelo no conoce tu repo
 
-**Qué es:** Cupo **finito** de tokens por petición. Compiten: archivos `@`, reglas, historial del chat, tu prompt.
+Le pasas un archivo y le pides un test. En segundos te devuelve algo que *se ve* a test de verdad. Lo abres: el import no existe. Se lo inventó.
 
-**Ejemplo:** Chat larguísimo + 15 archivos adjuntos → pierde foco o ignora lo del medio.
+Por dentro no guarda tu código. Adivina la siguiente palabra, una y otra vez, con lo que le diste **en esta petición**. Si hablas vago, llena los huecos solo.
 
-**Por qué te importa:** Más texto ≠ mejor. Por eso acotamos (C09) y en sesión 5 un chat por fase (C21).
-
----
-
-#### C03 — Alucinación · *Fundamento*
-
-**Qué es:** Respuesta **segura pero falsa**: API inventada, path que no existe, “el test pasó” sin correrlo. Puede inventar datos (**extrínseca**) o contradecirse (**intrínseca**).
-
-**Ejemplo:** *“¿Dónde está getOrders?”* → te da `src/services/UserService.ts` pero en tu repo la ruta es otra.
-
-**❌ Mal · ✅ Bien:** ❌ *“Suena bien, mergeo”* → ✅ abrir el path + correr test en terminal.
-
-**Por qué te importa:** Comportamiento **normal** del LLM, no bug raro. Defensa: verificar tú (C12), no confiar en el tono.
+No es un senior del equipo. Es un asistente rapidísimo que solo ve esta conversación.
 
 ---
 
-#### C04 — Contexto · *Fundamento*
+#### C02 — El escritorio se llena
 
-**Qué es:** **Todo** lo que entra al modelo en esta petición: archivos, reglas, mensajes viejos, texto pegado.
+Imagina un escritorio chico. Encima caben los archivos, las reglas, el chat de hace una hora y el pedido de ahora. Pones 15 archivos y un chat eterno: lo del medio se cae al piso. El modelo sigue hablando como si lo hubiera leído.
 
-**Ejemplo — mal vs bien:**
-
-| Mal | Bien |
-| --- | --- |
-| *“Arregla login”* | Instrucción + `@login.tsx` + `@login.test.ts` + Out of scope + Verify |
-
-**Por qué te importa:** El diff es tan bueno como el contexto — ni más ni menos.
+Más texto no mejora la respuesta. Por eso hoy acotamos qué le damos (C09) y en la sesión 5 abrimos un chat nuevo por cada fase (C21).
 
 ---
 
-#### C05 — Sin memoria entre sesiones · *Fundamento*
+#### C03 — Suena seguro y está mal
 
-**Qué es:** Cierras el chat → el modelo **no recuerda** acuerdos. Cada hilo empieza en blanco. Solo persiste lo en **git**.
+Preguntas: “¿dónde está getOrders?”. Responde con calma: `src/services/UserService.ts`. Abres el archivo. Esa función no está. En tu repo vive en otro path.
 
-**Ejemplo:** Acordaron en Slack “no tocar i18n”. Chat nuevo el miércoles → el modelo **no sabe** de Slack.
+Eso es una alucinación: una respuesta segura y falsa. A veces inventa algo que no existe. A veces se contradice.
 
-**Por qué te importa:** Por eso existen mapa, manifest y story en archivos (sesiones 2–3).
+❌ “Suena bien, mergeo.”
+✅ Abres el path y corres el test en tu terminal.
 
----
-
-#### C06 — Prompt · *Fundamento*
-
-**Qué es:** Tu instrucción en **este** chat. Cinco piezas: instrucciones, contexto, objetivo, formato, verify — como en prompt engineering ([databricks § componentes](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md)).
-
-**Ejemplo:** ❌ *“Arregla login”* → ✅ bloque con INSTRUCTIONS + `@files` + GOAL + VERIFY (copiar de [anexo concepts-map](concepts-map.md#anexo--ejemplos-listos-para-copiar-o-dictar)).
-
-**Por qué te importa:** Prompt vago → huecos → alucinación (C03).
+Es comportamiento normal, no un bug raro. La defensa eres tú (C12), no el tono de la respuesta.
 
 ---
 
-#### C07 — Instrucciones persistentes · *Fundamento* (preview — sesión 2)
+#### C04 — Solo ve lo que le pones enfrente
 
-**Qué es:** Reglas que el IDE carga **siempre**, antes de tu prompt (`.cursor/rules/`, `CLAUDE.md`, etc.).
+“Arregla el login” es como decirle a alguien nuevo “arregla eso” y señalar toda la oficina. No sabe qué archivo, qué dejar quieto, ni cómo sabes que quedó bien.
 
-**Ejemplo:** “Docs bajo `cursor/` en inglés” — no lo repites en cada chat.
+Mejor: le pasas `@login.tsx`, `@login.test.ts`, le dices qué no debe tocar, y cómo verificar.
 
-**Por qué te importa:** Capa 2 de C13. Hoy solo lo nombramos.
-
----
-
-#### C08 — Agente · *Fundamento*
-
-**Qué es:** LLM + permiso para **actuar**: editar archivos, terminal, búsqueda. Piensa en: razonar → elegir acción → usar herramienta → ver resultado.
-
-**Ejemplo:** Pides un test → abre archivos, escribe diff, puede correr npm. **Tú** revisas antes de accept.
-
-**Por qué te importa:** Más poder = más riesgo fuera de scope. Hoy practican con C09 y C11.
+El cambio que te devuelve sale de eso. De lo que le pusiste enfrente.
 
 ---
 
-#### C09 — Alcance explícito · *Patrón*
+#### C05 — El chat de ayer ya no existe
 
-**Qué es:** Delimitar qué entra al contexto y al diff — paths concretos, In/Out of scope, “Do NOT scan repo”.
+El martes acordaron en el chat: “no toques las traducciones”. El miércoles abren un chat nuevo. Para el modelo, esa conversación nunca pasó. Slack tampoco cuenta.
 
-**Ejemplo:** Ticket en `src/auth/` → solo `@` esa carpeta. Prohibido “analiza todo”.
-
-**Por qué te importa:** El LLM no conoce tu repo (C01). Sin alcance → refactors de paso.
-
-**Hoy en Cursor:** `@` + líneas de scope en el prompt.
+Solo permanece lo que quedó escrito en **git**. Por eso en las sesiones 2 y 3 el mapa y la historia van a archivos.
 
 ---
 
-#### C10 — Explorar / editar / planificar · *Patrón*
+#### C06 — Cómo le pides las cosas
 
-**Qué es:** Tres intenciones: **explorar** (preguntar sin tocar), **editar** (diffs), **planificar** (diseñar antes si es grande).
+Un pedido vago deja huecos. El modelo los llena solo, y ahí aparecen las invenciones del C03.
 
-**Ejemplo:** *“¿Dónde se valida email?”* → explorar. *“Añade test”* → editar + alcance.
+Un pedido claro trae cinco cosas: qué hacer, con qué archivos, cuál es el objetivo, cómo debe verse la respuesta, y cómo verificar.
 
-**Por qué te importa:** Mezclar modos = cambios accidentales. **Explorar explica; editar escribe.**
+❌ “Arregla login.”
+✅ Instrucciones + los `@archivos` + el objetivo + el comando para verificar.
 
-**Hoy en Cursor:** Ask / Agent / Plan.
-
----
-
-#### C11 — Human-in-the-loop · *Patrón*
-
-**Qué es:** La IA propone; **tú** apruebas, corriges y verificas. Asistente, no piloto automático.
-
-**Ejemplo:** Agent toca 8 archivos → reviertes 6, commiteas 2.
-
-**Por qué te importa:** El código es tu responsabilidad ante el equipo.
-
-**Hoy:** Leer diff antes de accept.
+El bloque para copiar está en el [anexo del glosario](concepts-map.md#anexo--ejemplos-listos-para-copiar-o-dictar).
 
 ---
 
-#### C12 — Verificación y evidencia · *Patrón*
+#### C07 — Las reglas pegadas en la pared *(mañana las escribimos)*
 
-**Qué es:** **Tú** corres test/lint/build o documentas pasos manuales reproducibles.
+Hay frases que no quieres repetir en cada chat: “los docs de `cursor/` van en inglés”.
 
-**Ejemplo:** `npm test -- login.test.ts` en tu terminal — aunque el chat diga “listo”.
-
-**Por qué te importa:** Antídoto a C03. Verify no es opcional.
-
-**Hoy:** `Verify with:` + ejecutar comando.
+Esas frases viven en el repo y el editor se las muestra al modelo **antes** de tu mensaje (`.cursor/rules/`, `CLAUDE.md`). Hoy solo las nombramos. Mañana las pegamos.
 
 ---
 
-#### C13 — Arquitectura de contexto en capas · *Patrón* (preview)
+#### C08 — Ahora también puede tocar el teclado
 
-**Qué es:** Tres fuentes: (1) código git, (2) reglas persistentes, (3) memoria en archivos (mapa, historias).
+Hasta aquí el modelo solo hablaba. Un agente puede actuar: abrir archivos, escribir el cambio, correr un comando.
 
-**Ejemplo:** Sin capas 2–3 repites en cada chat “los tests son pnpm test” y adjuntas medio repo.
+Le pides un test. Abre archivos, propone el diff, a veces corre npm. Tú miras **antes** de aceptar.
 
-**Por qué te importa:** Hoy solo capa 1 → alcance manual obligatorio (C09). Sesiones 2–6 arman el resto.
+Más manos, más chance de que se vaya de tema. Hoy lo frenan el alcance (C09) y tu revisión (C11).
+
+---
+
+#### C09 — Dile hasta dónde puede llegar
+
+El ticket vive en `src/auth/`. Le adjuntas solo esa carpeta. Le escribes qué entra y qué queda fuera. Le prohibes “analiza todo el repo”.
+
+Sin ese límite, como no conoce tu código, aprovecha y refactoriza de paso.
+
+Hoy: `@` en los archivos justos, y dos líneas de alcance en el pedido.
+
+---
+
+#### C10 — Preguntar no es editar
+
+Tres intenciones, tres modos:
+
+- **Explorar:** “¿dónde se valida el email?” Mira. No toca archivos.
+- **Editar:** “añade el test.” Escribe, con alcance.
+- **Planificar:** si el cambio es grande, primero el plan y después el código.
+
+Si pides “solo quiero entender” en modo editar, te cambia archivos.
+
+Hoy en Cursor: Ask, Agent y Plan. Explorar explica. Editar escribe.
+
+---
+
+#### C11 — Tú sigues al volante
+
+El agente propone. Tú apruebas.
+
+Toca 8 archivos. Lees el diff. Reviertes 6. Te quedas con 2.
+
+El código que entra al repo es tuyo frente al equipo. Hoy: lees antes de aceptar.
+
+---
+
+#### C12 — Si no lo corriste, no pasó
+
+El chat dice “listo, el test pasa”. Abres la terminal y corres `npm test -- login.test.ts`. Verde o rojo lo dice la terminal.
+
+Si no hay test, escribes el paso a mano: qué hacer y qué deberías ver.
+
+Hoy cada pedido cierra con `Verify with:` y **tú** ejecutas ese comando.
+
+---
+
+#### C13 — Tres cajones *(el resto lo armamos después)*
+
+Tres cajones. Hoy solo está lleno el primero, y por eso en cada chat repiten “los tests son `pnpm test`” y adjuntan medio repo.
+
+1. **Código** — lo que ya tienen.
+2. **Reglas cortas** — el editor las carga siempre (sesión 2).
+3. **Memoria en archivos** — el mapa y las historias (sesión 2 en adelante).
+
+Hoy, sin esos cajones, el alcance a mano (C09) es obligatorio.
 
 ---
 
@@ -342,43 +336,45 @@ Más detalle: [concepts-map.md](concepts-map.md)
 
 ---
 
-### Conceptos de hoy (10–30 min)
+### Conceptos de hoy (10–30 min) — cuéntalos
 
-Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [concepts-map.md](concepts-map.md).
-
----
-
-#### C07 — Instrucciones persistentes · *Fundamento*
-
-**Qué es:** Reglas en el repo que el IDE **carga siempre**, antes de tu prompt — como un “system message” permanente del equipo.
-
-**Ejemplo:** Regla “no commitear `.env`” → no la escribes en cada chat; Cursor/Copilot/Claude la inyectan solos.
-
-**Por qué te importa:** Capa 2 de C13. Ahorras tokens (C02) y evitas olvidar convenciones (C06 repetido mal).
-
-**Kit hoy:** `.cursor/rules/*.mdc` · Copilot: `copilot-instructions.md` · Claude: `CLAUDE.md`
+Cada bloque sigue la historia de ayer. Léelo o cuéntalo. Glosario: [concepts-map.md](concepts-map.md).
 
 ---
 
-#### C13 — Arquitectura de contexto en capas · *Patrón*
+#### C07 — Lo que ya no tienes que repetir
 
-**Qué es:** Tres cajas separadas: **código** · **reglas cortas** (C07) · **docs largos** (mapa, historias en `cursor/`).
+Ayer, en cada pedido, tuvieron que decir “los tests se corren así” y “no toques esto”. Hoy esa frase se pega en la pared del repo.
 
-**Ejemplo:** Meter el mapa entero en una regla `alwaysApply` → saturas contexto. Mapa en `cursor/` + reglas cortas = equilibrio.
+El editor se la muestra al modelo **antes** de tu mensaje. “No commitees `.env`” deja de escribirse en cada chat. Cursor, Copilot o Claude la ponen solos.
 
-**Por qué te importa:** Sin capas, cada chat empieza de cero (C05) y repites lo mismo.
+El escritorio se llena menos (C02) y la convención no se olvida.
+
+Hoy: `.cursor/rules/`. En Copilot sería `copilot-instructions.md`. En Claude, `CLAUDE.md`.
 
 ---
 
-#### C14 — Mapa del repositorio · *Patrón*
+#### C13 — Cada cosa en su cajón
 
-**Qué es:** Índice en git: “los tests están acá, la API acá, los prompts acá” — table of contents para humanos y LLM.
+Tres cajones, cada uno con su tamaño.
 
-**Ejemplo:** Repo solo backend → el mapa lista `src/handlers/`, **no** inventa `frontend/`. Pregunta en explorar: *“Where do I add a test for X?”* → debe citar **tu** mapa.
+El **código** es el producto. Las **reglas** son frases cortas, siempre visibles. El **mapa** y las historias son documentos largos: viven en `cursor/` y se adjuntan cuando hacen falta.
 
-**Por qué te importa:** El LLM no conoce tu repo (C01). El mapa es la respuesta a “¿dónde vivo las cosas?”.
+Si metes el mapa entero en una regla que se carga siempre, el escritorio se llena antes de que escribas el pedido. Reglas cortas, mapa aparte.
 
-**Kit hoy:** `cursor/context-map.md` + `project.config.json`
+Sin esos cajones, cada chat empieza en blanco (C05) y repites lo mismo.
+
+---
+
+#### C14 — Un mapa para no adivinar la casa
+
+Llega alguien nuevo y pregunta “¿dónde pongo un test?”. Sin mapa, el modelo inventa una carpeta `frontend/` aunque el repo sea solo backend.
+
+El mapa es el índice en git: los tests están acá, la API acá, los prompts acá. Sirve para la persona y para el modelo, porque el modelo no conoce tu repo (C01).
+
+Hoy: `cursor/context-map.md` y `project.config.json`.
+
+La prueba, en modo explorar: *“Where do I add a new test for X?”* La respuesta cita **su** mapa. Si inventa una carpeta, el mapa todavía no sirve.
 
 ---
 
@@ -471,71 +467,67 @@ Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [c
 
 ---
 
-### Conceptos de hoy (10–30 min)
+### Conceptos de hoy (10–30 min) — cuéntalos
 
-Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [concepts-map.md](concepts-map.md).
-
----
-
-#### C05 — Sin memoria entre sesiones · *Fundamento*
-
-**Qué es:** El chat **no es base de datos**. Cierras la ventana → scope y criterios se pierden para el modelo.
-
-**Ejemplo:** Acordaron Out of scope “no i18n” solo en el hilo → en el **siguiente chat** el Agent no lo sabe.
-
-**Por qué te importa hoy:** Motiva escribir el contrato en archivos (C15, C16).
+Cada bloque sigue la historia. Léelo o cuéntalo. Glosario: [concepts-map.md](concepts-map.md).
 
 ---
 
-#### C15 — Memoria durable · *Patrón*
+#### C05 — Lo que acordaron se evaporó
 
-**Qué es:** Una carpeta por historia en git con story, manifest, analysis — **memoria de verdad**.
+Ayer escribieron en el chat: “esto no incluye traducciones”. Cierran la ventana. Abren otra. El modelo no estuvo en esa reunión.
 
-**Ejemplo:** Compañero retoma tu ticket leyendo `cursor/analysis/features/filter-by-date/` — no tu chat de 80 mensajes.
+El chat no guarda acuerdos. Si la frase no está en un archivo, para el siguiente chat nunca existió. Por eso hoy el contrato se escribe (C15, C16).
 
-**Por qué te importa:** Capa 3 de C13. Funciona con Cursor, Copilot o Claude: los archivos son agnósticos.
+---
+
+#### C15 — La carpeta que reemplaza el chat
+
+El jueves un compañero retoma el ticket. No va a leer un chat de 80 mensajes. Va a abrir una carpeta:
 
 ```
-cursor/analysis/features/<slug>/
+cursor/analysis/features/filter-by-date/
   user-story.md
   feature-manifest.md
-  analysis.md        ← hoy, antes del cierre
+  analysis.md        ← hoy, antes de irse
 ```
 
----
-
-#### C16 — Contrato de scope (intake) · *Patrón*
-
-**Qué es:** **Antes de codear:** story (qué quiere el usuario) + manifest (qué sí/no entra en el slice).
-
-**Ejemplo:** Out of scope: *“no redesign table, no refactor auth, no i18n”* — concreto. Mal: *“mejorar UX”*.
-
-**Por qué te importa:** Escudo contra scope creep en sesión 4. **Hoy:** intake only · `Implement now? no`.
+Eso es la memoria de verdad: el tercer cajón (C13). Son archivos. Siguen sirviendo si mañana cambian de herramienta.
 
 ---
 
-#### C17 — Análisis previo · *Patrón*
+#### C16 — El contrato, antes del código
 
-**Qué es:** Plan escrito: archivos, riesgos, dependencias — separar **qué** de **cómo**.
+Antes de una línea de código quedan dos papeles. La historia: qué quiere quien usa el producto. El manifest: qué sí entra en este pedazo y qué se queda afuera.
 
-**Ejemplo:** *“Toca UserService; riesgo timezone; confirmar query param con backend.”*
+“Mejorar la UX” no limita nada. “No rediseñar la tabla, no refactorizar auth, no tocar i18n” sí.
 
-**Por qué te importa:** Menos sorpresas en el diff. **Hoy:** completar `analysis.md` antes del cierre.
+Ese papel es el escudo de mañana, cuando el agente quiera hacer de más. Hoy solo firman el contrato. `Implement now? no`.
 
 ---
 
-#### C18 — Ciclo con gates · *Patrón*
+#### C17 — Mirar el terreno antes de cavar
 
-**Qué es:** Fases con entregables; no saltar a código sin contrato ni a merge sin verify.
+El análisis es el plano: qué archivos se tocan, qué puede salir mal, con quién hay que confirmar.
 
-**Ejemplo:** Hoy cruzan solo la puerta **intake**. Codear en sesión 3 = saltarse el gate.
+“Toca UserService. El riesgo es la zona horaria. Hay que confirmar el query param con backend.”
+
+Ahí se separa el **qué** del **cómo**. El diff de mañana trae menos sorpresas. Hoy ese plano es `analysis.md`, antes del cierre.
+
+---
+
+#### C18 — Una puerta a la vez
+
+El camino tiene puertas. No se salta ninguna.
 
 ```
 INTAKE → ANALYSIS → IMPLEMENT → VALIDATE → REVIEW → CLOSE
-  ↑ hoy ↑
+  ↑ hoy cruzamos estas dos ↑
 ```
 
-> **Slug** = kebab-case · **Ticket** ≠ **FW-*** (sesión 6).
+Escribir código de producto hoy es saltarse la puerta. Primero el contrato.
+
+El nombre de la carpeta va en kebab-case (`filter-by-date`). El ticket de Jira es otra cosa: las ideas de backlog (`FW-*`) llegan en la sesión 6.
 
 ---
 
@@ -609,59 +601,54 @@ INTAKE → ANALYSIS → IMPLEMENT → VALIDATE → REVIEW → CLOSE
 
 ---
 
-### Conceptos de hoy (10–35 min)
+### Conceptos de hoy (10–35 min) — cuéntalos
 
-Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [concepts-map.md](concepts-map.md).
-
----
-
-#### C03 — Alucinación · *Fundamento*
-
-**Qué es:** En código, el modelo inventa tests “que pasan en el chat”, imports inexistentes, o APIs que suenan bien pero no están.
-
-**Ejemplo:** Agent dice *“added test, all pass”* → corres `npm test` y falla en rojo.
-
-**Por qué te importa hoy:** Día de más diffs. **Corres** verify (C12); no lees “done”.
+Cada bloque sigue la historia. Léelo o cuéntalo. Glosario: [concepts-map.md](concepts-map.md).
 
 ---
 
-#### C11 — Human-in-the-loop · *Patrón*
+#### C03 — “El test pasó” y la terminal en rojo
 
-**Qué es:** Tú revisas **cada archivo** del diff; reviertes lo fuera del manifest.
+El agente escribe: “añadí el test, todo pasa”. Corres `npm test`. Rojo.
 
-**Ejemplo:** Manifest permitía 3 archivos → diff de 18 → reviertes 15 aunque el chat diga “también mejoré X”.
-
-**Por qué te importa:** El manifest es la ley; el agente es proactivo por diseño (C08).
+Hoy hay más cambios que en cualquier otra sesión. Una frase segura en el chat no es evidencia. La evidencia la produce el comando que corres tú (C12).
 
 ---
 
-#### C18 — Ciclo con gates · *Patrón*
+#### C11 — El contrato es la ley
 
-**Qué es:** Hoy: **implement** + **validate** — dos puertas del ciclo.
+Ayer el manifest permitió 3 archivos. Hoy el diff trae 18. El chat dice: “también mejoré el resto”.
 
-**Ejemplo:** Terminar código sin checklist ni comando corrido = saltarse validate.
-
-**Por qué te importa:** Validate es antídoto a C03. Review = sesión 5.
+Lees archivo por archivo. Reviertes los 15 que no estaban en el contrato. El agente es proactivo (C08): si no lo frenas, sigue. Tú mandas.
 
 ---
 
-#### C19 — Implementación acotada · *Patrón*
+#### C18 — Hoy se cruzan dos puertas
 
-**Qué es:** Diff limitado al contrato (manifest + analysis).
+Ayer firmaron el contrato. Hoy toca implementar y validar.
 
-**Ejemplo:** Slice “filtro por fecha” → no refactorizar la tabla entera “de paso”.
+Código sin un comando corrido, o sin un checklist que otra persona pueda seguir, es saltarse la segunda puerta. Esa puerta es la respuesta al “todo pasa” del chat (C03).
 
-**Por qué te importa:** PRs chicos, reviewables, menos deuda escondida.
+La revisión queda para la sesión 5. Hoy no se mergea.
 
 ---
 
-#### C20 — Validación reproducible · *Patrón*
+#### C19 — Solo lo que firmaron
 
-**Qué es:** Checklist + comandos que **otro humano** ejecuta sin tu chat.
+El pedazo es “filtro por fecha”. El agente ve la tabla y quiere reescribirla de paso.
 
-**Ejemplo:** *“1. pnpm test DateFilter.test.tsx 2. Login user X, filtrar fecha, ver filas.”*
+El diff se queda en lo que dicen el manifest y el análisis. Un cambio chico se puede revisar. El regalo escondido se vuelve deuda.
 
-**Por qué te importa:** Evidencia para review y para el futuro. **Chat nueva** — no reutilizar intake.
+---
+
+#### C20 — Que otra persona lo repita sin ti
+
+El checklist no dice “correr los tests”. Dice esto:
+
+1. `pnpm test DateFilter.test.tsx`
+2. Entras con el usuario X, filtras por fecha, ves las filas.
+
+Alguien que no estuvo en tu chat puede hacer exactamente eso. Por eso el chat de hoy es nuevo: no reciclas el hilo donde firmaron el contrato.
 
 ---
 
@@ -735,53 +722,45 @@ Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [c
 
 ---
 
-### Conceptos de hoy (10–45 min)
+### Conceptos de hoy (10–45 min) — cuéntalos
 
-Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [concepts-map.md](concepts-map.md).
-
----
-
-#### C02 — Ventana de contexto · *Fundamento*
-
-**Qué es:** Cupo finito de tokens. Historial largo + muchos archivos = el modelo pierde foco o mezcla decisiones viejas.
-
-**Ejemplo:** Mismo chat desde intake (sesión 3) hasta review (hoy) → confusión y tokens quemados.
-
-**Por qué te importa hoy:** Motiva C21 — **chat nuevo por fase**.
+Cada bloque sigue la historia. Léelo o cuéntalo. Glosario: [concepts-map.md](concepts-map.md).
 
 ---
 
-#### C21 — Gestión de ventana · *Patrón*
+#### C02 — El mismo chat desde el martes
 
-**Qué es:** **Un chat por fase:** review en uno, close en otro. Memoria en **archivos** (C15), no en el hilo (C05).
+Siguen en el hilo donde escribieron la historia, el análisis y el código. Van 200 mensajes. El modelo mezcla una decisión vieja con la de hoy, o se le cae lo del medio.
 
-**Ejemplo:** Review con solo `@feature-package/` + guidelines — sin pegar 200 mensajes del intake (sesión 3).
-
-**Por qué te importa:** Menos ruido, menos costo, respuestas más coherentes.
-
-**Hoy:** mínimo dos chats nuevos (review + close).
+El escritorio se llenó. Por eso hoy cada fase abre su propio chat (C21).
 
 ---
 
-#### C22 — Review estructurado · *Patrón*
+#### C21 — Fase nueva, chat nuevo
 
-**Qué es:** Revisar contra story, manifest y checklist — no “¿te gusta?”.
+La memoria ya no vive en el hilo. Vive en la carpeta de la historia (C15). El chat de ayer, cerrado, ya no existe (C05).
 
-**Ejemplo:** Finding: *“Manifest excluía i18n pero diff toca es.json — mover a otro ticket o actualizar manifest.”*
+Para revisar, abres un chat limpio y le pasas solo esa carpeta y las guías. Para cerrar, otro chat, solo los archivos del cierre. Sin arrastrar la conversación del martes.
 
-**Por qué te importa:** Detecta scope creep que el ojo cansado no ve. **Review ≠ merge.**
+Menos ruido, menos costo, respuestas más claras. Hoy, mínimo dos chats: review y close.
 
 ---
 
-#### C23 — Cierre y handoff · *Patrón*
+#### C22 — Revisar contra el contrato
 
-**Qué es:** Estado final en repo: manifest `done`, INDEX actualizado — el siguiente dev no necesita tu chat.
+“¿Te gusta el cambio?” no es una revisión.
 
-**Ejemplo:** Close lite marca la feature cerrada; compañero ve en git qué se entregó.
+Una revisión dice: “El contrato dejó las traducciones afuera y el diff toca `es.json`. O lo sacas, o actualizas el contrato.”
 
-**Por qué te importa:** Handoff, auditoría, cambio de herramienta.
+Ahí aparece lo que se coló y el ojo cansado ya no ve. Revisar es leer el diff contra la historia, el manifest y el checklist. Mergear es otra puerta, después.
 
-**Kit hoy:** `context-scope.mdc` + close lite. Opcional: `prompt-bug-fix.md` en **otro** chat.
+---
+
+#### C23 — Que el siguiente no necesite tu chat
+
+Cierras. El manifest dice que terminó. El índice también. Tu compañero abre git y ve qué se entregó. No te escribe “¿en qué quedó?”.
+
+Hoy dejan la regla de alcance (`context-scope.mdc`) y un cierre corto. Si sobra tiempo, un bug de 10 minutos en **otro** chat, con `prompt-bug-fix.md`.
 
 ---
 
@@ -855,35 +834,31 @@ Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [c
 
 ---
 
-### Conceptos de hoy (10–30 min)
+### Conceptos de hoy (10–30 min) — cuéntalos
 
-Cada bloque: **qué es** · **ejemplo** · **por qué te importa**. Glosario: [concepts-map.md](concepts-map.md).
-
----
-
-#### C24 — Contexto de producto · *Patrón*
-
-**Qué es:** Capa **estratégica**: visión de una página, backlog de ideas (`FW-*`) — separada del ticket del día.
-
-**Ejemplo:** Visión: *“Mobile-first LATAM; offline out until Q3”* → el agente no propone rediseño desktop en cada ticket.
-
-**Por qué te importa:** Sin esto, cada slice optimiza localmente y el producto se desalinea.
-
-**Kit hoy:** `cursor/company/`, `product-vision.md`, 3× `FW-<PREFIJO>-*`.
-
-> **Dos IDs:** `FW-ACME-012` = idea de backlog · `ACME-1041` = ticket Jira. No mezclar.
+Último capítulo. Léelo o cuéntalo. Glosario: [concepts-map.md](concepts-map.md).
 
 ---
 
-#### C27 — Automatización del ciclo · *Kit* (opt-in)
+#### C24 — El norte, aparte del ticket de hoy
 
-**Qué es:** Scripts sync Issues/PR — **después** de dominar el ciclo manual (C18).
+Cada ticket empuja un pedacito. Sin un norte escrito, el agente propone en cada uno un rediseño de escritorio. El producto era mobile para Latam, y sin modo offline hasta el tercer trimestre.
 
-**Ejemplo:** Sync a GitHub Project — útil **después** del curso, cuando ya dominaron el ciclo manual (C18).
+Ese norte cabe en una página de visión y en ideas de backlog (`FW-*`), separadas del ticket del día.
 
-**Por qué te importa:** Automatizar sin entender multiplica errores.
+Hoy: `cursor/company/`, `product-vision.md`, y tres ideas reales.
 
-**No copien** kit ajeno (`SML-*`, `runtime/` de otro producto).
+Dos números distintos. `FW-ACME-012` es una idea para más adelante. `ACME-1041` es el ticket de Jira de esta semana. Cada uno vive en su lugar.
+
+---
+
+#### C27 — Automatizar después *(opcional, solo mirarlo)*
+
+Hay scripts que sincronizan issues y pull requests. Sirven cuando el ciclo a mano (C18) ya sale sin pensarlo.
+
+Automatizar un ciclo que todavía se está aprendiendo multiplica los errores. Hoy solo los miran. No son parte del cierre.
+
+El kit se copia del template. Una carpeta de otro producto (`SML-*`, `runtime/`) se queda en ese producto.
 
 ---
 

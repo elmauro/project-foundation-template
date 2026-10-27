@@ -1,6 +1,6 @@
 # Sesión 6 — Contexto de producto
 
-> **Guión:** [facilitator-runbook.md → S6](facilitator-runbook.md#sesión-6--producto-y-cierre-del-curso) · **Glosario:** [concepts-map.md](concepts-map.md)
+> **Lab:** [labs/06-producto-y-cierre.md](labs/06-producto-y-cierre.md) · **Guión:** [facilitator-runbook.md → S6](facilitator-runbook.md#sesión-6--producto-y-cierre-del-curso) · **Glosario:** [concepts-map.md](concepts-map.md)
 
 **Conceptos:** C24 (contexto de producto) · C27 opt-in (automatización kit)
 

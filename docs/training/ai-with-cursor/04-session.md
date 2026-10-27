@@ -1,6 +1,6 @@
 # Sesión 4 — Implementar y validar
 
-> **Guión:** [facilitator-runbook.md → S4](facilitator-runbook.md#sesión-4--implementar-y-validar) · **Glosario:** [concepts-map.md](concepts-map.md)
+> **Lab:** [labs/04-implementar-y-validar.md](labs/04-implementar-y-validar.md) · **Guión:** [facilitator-runbook.md → S4](facilitator-runbook.md#sesión-4--implementar-y-validar) · **Glosario:** [concepts-map.md](concepts-map.md)
 
 **Conceptos:** C03, C08, C11–C12, C18–C20
 

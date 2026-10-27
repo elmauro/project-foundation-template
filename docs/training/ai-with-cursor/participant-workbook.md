@@ -1,5 +1,7 @@
 # Participant workbook
 
+Paso a paso de cada sesión: [labs/](labs/).
+
 Imprime o duplica este archivo. Lo completas **durante cada sesión** (no hay tareas entre sesiones). Lo que commitees en el repo va en **inglés**; estas notas pueden quedar en español (no las subas a `cursor/`).
 
 ## Pre-requisitos (antes de la sesión 1)

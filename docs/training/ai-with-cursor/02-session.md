@@ -1,6 +1,6 @@
 # Sesión 2 — Contexto persistente (capas 2 y 3 empiezan)
 
-> **Guión:** [facilitator-runbook.md → S2](facilitator-runbook.md#sesión-2--mapa-e-identidad) · **Glosario:** [concepts-map.md](concepts-map.md)
+> **Lab:** [labs/02-mapa-y-reglas.md](labs/02-mapa-y-reglas.md) · **Guión:** [facilitator-runbook.md → S2](facilitator-runbook.md#sesión-2--mapa-e-identidad) · **Glosario:** [concepts-map.md](concepts-map.md)
 
 **Conceptos:** C07 (instrucciones persistentes), C13–C14 (capas + mapa) · **Kit:** Layer 0
 

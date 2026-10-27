@@ -1,5 +1,9 @@
 # AI with Cursor — existing repo
 
+Para enviarle a alguien que quiere saber de qué va, sin el guión de clase: [course-overview.md](course-overview.md).
+
+**Paso a paso en clase:** [labs/](labs/) (pasos numerados y cómo verificar cada sesión).
+
 Capacitación en **definiciones de IA que hay que conocer** para usar modelos bien en código: qué es un LLM, ventana de contexto, alucinación, memoria, human-in-the-loop, etc. Esas ideas son **agnósticas de herramienta**.
 
 **Cursor** (y el kit en git) es el **laboratorio** donde practicamos; Copilot, Claude Code u otras herramientas sirven igual si el alumno ya las usa.
