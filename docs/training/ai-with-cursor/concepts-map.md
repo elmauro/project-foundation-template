@@ -10,7 +10,9 @@
 
 **Cursor** ayuda a trabajar con IA; **no es** el concepto.
 
-**Para dictar (qué es + ejemplo + por qué importa):** [facilitator-runbook.md](facilitator-runbook.md) → **“Conceptos de hoy”** en cada sesión.
+**Para dictar:** [facilitator-runbook.md](facilitator-runbook.md) → **“Conceptos de hoy”** (historia corta por concepto).
+
+**Para estudiar por sesión:** anexos [01-session.md](01-session.md)–[06-session.md](06-session.md) — mismo contenido en tres capas: **definición (IA)** · **en la práctica** · **para contar en clase**.
 
 **Referencia pedagógica** (estilo simple, más amplio): [Fundamentos IA Generativa](https://github.com/elmauro/databricks/blob/master/spanish/01_Fundamentos_IA_Generativa.md) y [Desarrollo de Soluciones](https://github.com/elmauro/databricks/blob/master/spanish/02_Desarrollo_Soluciones.md) en el repo [elmauro/databricks](https://github.com/elmauro/databricks/tree/master/spanish). Este curso **no** cubre Databricks, RAG ni certificación — solo reutilizamos cómo explican los conceptos que sí usamos.
 

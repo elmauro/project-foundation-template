@@ -21,7 +21,7 @@ Hablas **español** con el grupo. Lo que van a **commitear** en el repo (`cursor
 - **Para dictar en clase:** cada concepto es una **historia corta** en “Conceptos de hoy”. Léela o cuéntala; no hace falta el formato “qué es / ejemplo / por qué”
 - Estilo de explicación como [elmauro/databricks/spanish](https://github.com/elmauro/databricks/tree/master/spanish): ejemplo práctico, ❌/✅, visual si ayuda — sin Databricks/RAG en el curso
 - Anexos por sesión: [01](01-session.md)–[06](06-session.md)
-- **Una diapositiva por sesión** (copiar tal cual): [slides/](slides/)
+- **Diapositivas** (decks por sesión, varias slides cada una): [slides/](slides/)
 - **Laboratorio paso a paso** (alumnos siguen esto en la práctica): [labs/](labs/)
 - Si te preguntan el “por qué” técnico en inglés: [aspects-catalog.md](aspects-catalog.md)
 
@@ -62,7 +62,7 @@ Si alguien termina antes: que mejore lo de hoy (mapa, análisis, checklist) — 
 
 En todas las sesiones usamos el mismo lenguaje:
 
-| Bloque | En criollo | Qué NO es |
+| Bloque | En pocas palabras | Qué NO es |
 | --- | --- | --- |
 | **Práctica** | Manos en el teclado, en **su** repo, con un resultado concreto que puedes verificar en 2 minutos | Una demo tuya de 40 minutos mientras ellos miran |
 | **Cierre** | Alinear expectativas: “¿salimos con esto sí o no?”, commit, una pregunta al grupo | Apagar sin commit ni checklist “listo cuando” |

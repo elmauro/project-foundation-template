@@ -4,6 +4,8 @@ Para enviarle a alguien que quiere saber de qué va, sin el guión de clase: [co
 
 **Paso a paso en clase:** [labs/](labs/) (pasos numerados y cómo verificar cada sesión).
 
+**Diapositivas:** [slides/](slides/) (un deck por sesión; cada `---` es una slide, alineada con [01-session.md](01-session.md)–[06-session.md](06-session.md)).
+
 Capacitación en **definiciones de IA que hay que conocer** para usar modelos bien en código: qué es un LLM, ventana de contexto, alucinación, memoria, human-in-the-loop, etc. Esas ideas son **agnósticas de herramienta**.
 
 **Cursor** (y el kit en git) es el **laboratorio** donde practicamos; Copilot, Claude Code u otras herramientas sirven igual si el alumno ya las usa.

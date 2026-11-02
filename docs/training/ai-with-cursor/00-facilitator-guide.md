@@ -48,7 +48,7 @@ Patrón fijo:
 | 40–80 | **Práctica** — manos en teclado, entregable concreto |
 | 80–90 | **Cierre** — “¿salimos con esto?”, commit, checklist “listo cuando” |
 
-**Práctica vs cierre (en criollo):** la práctica es que **ellos** hagan algo verificable en su repo; el cierre es alinear “listo cuando” y commit — **nada queda para después**. Si falta algo, recorta scope en la misma sesión.
+**Práctica vs cierre (resumen):** la práctica es que **ellos** hagan algo verificable en su repo; el cierre es alinear “listo cuando” y commit — **nada queda para después**. Si falta algo, recorta scope en la misma sesión.
 
 Detalle sesión por sesión (qué hace el alumno, qué haces tú, señales de éxito, preguntas al grupo): [`facilitator-runbook.md`](facilitator-runbook.md) — bloques **“Práctica — qué esperamos”** y **“Cierre — qué esperamos”**, más tabla resumen al final.
 
