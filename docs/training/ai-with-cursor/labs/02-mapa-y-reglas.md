@@ -30,6 +30,7 @@ Desde el template hacia tu repo:
 
 | Desde template | Hacia tu repo |
 | --- | --- |
+| `templates/root-common/cursorignore` | `.cursorignore` |
 | `templates/cursor-workspace/context-map.md` | `cursor/context-map.md` |
 | `templates/cursor-workspace/prompts/adoption/*` | `cursor/prompts/adoption/` |
 | `templates/cursor-config/rules/core-standards.mdc` | `.cursor/rules/core-standards.mdc` |
@@ -38,7 +39,7 @@ Desde el template hacia tu repo:
 
 Copia `project-context.md` del stack que **sí** tienes (ej. `templates/.../projects/backend/`) a `cursor/projects/<tu-stack>/`.
 
-**Verifica:** existen `cursor/context-map.md` y al menos un archivo en `.cursor/rules/`.
+**Verifica:** existen `.cursorignore` (para no saturar el indexador con `node_modules` ni builds), `cursor/context-map.md` y al menos un archivo en `.cursor/rules/`.
 
 ### 3. Borrador del mapa — Mode A (Ask)
 

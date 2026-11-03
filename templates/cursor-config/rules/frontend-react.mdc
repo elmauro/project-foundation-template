@@ -1,6 +1,6 @@
 ---
 description: Frontend React and Vite conventions
-globs: frontend/**/*.{ts,tsx,js,jsx}
+globs: {frontend,console,apps/*}/**/*.{ts,tsx,js,jsx}
 alwaysApply: false
 ---
 

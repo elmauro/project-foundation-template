@@ -1,6 +1,7 @@
 ---
 description: Company and product context for scope and business decisions
-alwaysApply: true
+globs: cursor/company/**,cursor/analysis/**,docs/domain.md,cursor/prompts/**
+alwaysApply: false
 ---
 
 # Company & Product Context

@@ -32,9 +32,9 @@
 
 **Definición (IA):** Separar tres fuentes: **código** (git), **reglas cortas** (always-on), **memoria larga** (mapa, historias en `cursor/`).
 
-**En la práctica:** Meter el mapa entero en una regla `alwaysApply` satura la ventana (C02). Reglas cortas + mapa adjunto cuando hace falta.
+**En la práctica:** Meter el mapa entero o el contexto corporativo en una regla `alwaysApply` satura la ventana (C02). Reglas cortas + reglas específicas acotadas con `globs:` + exclusión con `.cursorignore` (`node_modules`, `dist`, lockfiles) para proteger el presupuesto de tokens.
 
-**Para contar en clase:** Tres cajones, cada uno con su tamaño. Código = producto. Reglas = frases cortas siempre visibles. Mapa e historias = documentos largos en `cursor/`, adjuntos cuando toca.
+**Para contar en clase:** Tres cajones, cada uno con su tamaño. Código = producto. Reglas = frases cortas siempre visibles. Mapa e historias = documentos largos en `cursor/`, adjuntos cuando toca. Y `.cursorignore` = la tapa del basurero para que el modelo no revuelva en dependencias ni artefactos gigantes.
 
 ---
 

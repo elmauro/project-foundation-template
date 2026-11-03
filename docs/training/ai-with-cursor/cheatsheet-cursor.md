@@ -36,6 +36,9 @@ Sin kit (sesión 1): quita la línea de `project-context.md` y deja solo archivo
 
 ## Anti-patterns
 
+- Trabajar sin `.cursorignore` (Cursor indexa dependencias, builds y lockfiles gigantes, devorando miles de tokens en cada búsqueda semántica o `@Codebase`)
+- Reglas globales con `alwaysApply: true` para documentos largos (se inyectan en cada mensaje, incluso para editar una línea; usa `alwaysApply: false` con `globs:`)
+- No tener un comando rápido de verificación de tipos (`typecheck` / `tsc --noEmit`)
 - Refactor “de paso”
 - 40 archivos para un cambio de 2
 - Confiar en el chat sin correr el comando de verify

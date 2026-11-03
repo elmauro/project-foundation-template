@@ -1,0 +1,44 @@
+# Cursor Codebase Indexing & Search Exclusions (.cursorignore)
+# Prevents large generated, binary, and dependency files from consuming AI context tokens.
+
+# Version control & IDE
+.git/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Dependencies
+**/node_modules/
+**/vendor/
+
+# Build and distribution artifacts
+**/dist/
+**/build/
+**/coverage/
+**/.turbo/
+**/.next/
+**/.nuxt/
+*.tsbuildinfo
+**/package-lock.json
+**/pnpm-lock.yaml
+**/yarn.lock
+
+# Cache and temporary files
+**/.cache/
+**/tmp/
+**/temp/
+**/logs/
+
+# Test reports and E2E state
+**/playwright-report/
+**/test-results/
+**/.e2e-state/
+**/cypress/videos/
+**/cypress/screenshots/
+
+# Terraform cache and local state
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate*
+**/crash.log

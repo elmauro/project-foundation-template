@@ -733,7 +733,7 @@ Track in [`loyalty-cursor/docs/FUTURE-WORK-CURSOR-KIT.md`](../../../../loyalty-c
 | Subagents / parallel exploration | Cost and complexity |
 | Model selection | Org policy varies |
 | Large refactor playbook | Separate from feature lifecycle |
-| `.cursorignore` / index tuning | Ops doc, not session 1–6 |
+| Advanced index tuning & embeddings | Ops doc, not session 1–6 (base `.cursorignore` ships in Layer 0) |
 | User rules vs project rules | Personal preference workshop |
 
 ---

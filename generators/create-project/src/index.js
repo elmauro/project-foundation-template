@@ -331,6 +331,10 @@ function resolveTemplateName(entry, context) {
     return '.gitignore';
   }
 
+  if (resolvedName === 'cursorignore') {
+    return '.cursorignore';
+  }
+
   return resolvedName;
 }
 

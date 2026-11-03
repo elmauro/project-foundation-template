@@ -41,10 +41,13 @@ Ajusta `stacks` a lo que el repo **tiene**: `frontend`, `backend`, `infrastructu
 | `templates/cursor-workspace/README.md` | `cursor/README.md` |
 | `templates/cursor-workspace/prompts/adoption/*` | `cursor/prompts/adoption/` |
 | `templates/cursor-workspace/projects/<stack>/project-context.md` | solo stacks que existan |
+| `templates/root-common/cursorignore` | `.cursorignore` |
 | `templates/cursor-config/rules/core-standards.mdc` | `.cursor/rules/core-standards.mdc` |
 | `templates/cursor-config/rules/project-context.mdc` | `.cursor/rules/project-context.mdc` |
 | `templates/cursor-config/rules/documentation-english.mdc` | `.cursor/rules/documentation-english.mdc` |
 | Stack rule if it matches | `.cursor/rules/frontend-react.mdc` / `backend-serverless.mdc` / `infrastructure-terraform.mdc` |
+
+Editar `.cursorignore`: asegúrate de que excluya `node_modules/`, `dist/`, builds, reportes y `package-lock.json` para evitar que el indexador semántico y `@Codebase` devoren la ventana de contexto y el cupo de tokens.
 
 Editar `context-map.md`: borrar carpetas que el repo no tiene. Añadir las que sí (`apps/`, `services/`, `runtime/`, etc.).
 

@@ -34,9 +34,9 @@
 
 **Definición:** Código · reglas cortas · memoria larga (`cursor/`).
 
-**En la práctica:** No metas el mapa entero en `alwaysApply` — satura C02.
+**En la práctica:** No metas el mapa entero ni docs largos en `alwaysApply` — satura C02. Usa `globs:` y `.cursorignore`.
 
-**Para contar:** Tres cajones, cada uno con su tamaño.
+**Para contar:** Tres cajones, cada uno con su tamaño. `.cursorignore` evita que la IA indexe dependencias y builds.
 
 ---
 
