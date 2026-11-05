@@ -74,6 +74,8 @@ Copiar desde este repo, no desde un producto vivo:
 | `templates/cursor-workspace/` | `<repo>/cursor/` |
 | `templates/cursor-config/` | `<repo>/.cursor/` |
 
+Ejemplo: `templates/cursor-workspace/prompts/adoption/` → `cursor/prompts/adoption/`. No busques `cursor/prompts/adoption/` **dentro** de `project-foundation-template`; ahí la carpeta se llama `cursor-workspace`.
+
 Simulith (u otro producto maduro) es **demo opcional** para el facilitador: así se ve el sistema cuando ya tiene cientos de stories. Los alumnos no clonan esas carpetas.
 
 Qué no copiar (Capa D): IDs de producto, stacks que el repo no tiene, registries poblados, reglas de negocio.

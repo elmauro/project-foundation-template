@@ -391,7 +391,7 @@ La prueba, en modo explorar: *“Where do I add a new test for X?”* La respues
 > Vamos juntos, no lean en silencio.
 
 1. Copien de `project-foundation-template` → ver [adopt-on-existing-repo](adopt-on-existing-repo.md) capa 0.
-2. Copien `cursor/prompts/adoption/`.
+2. Copien `templates/cursor-workspace/prompts/adoption/*` → `cursor/prompts/adoption/` en el repo del alumno (en el template **no** existe `cursor/prompts/adoption/`).
 3. Scaffold de `context-map.md`.
 4. Peguen **Mode A** de `prompt-bootstrap-project-map.md` con `@README`, `@package.json` y rutas reales.
 5. Revisan, corrigen, **Mode B** aplica.

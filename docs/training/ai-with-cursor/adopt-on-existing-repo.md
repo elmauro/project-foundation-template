@@ -10,6 +10,23 @@ Reemplazar placeholders al copiar a mano (el generador no corre aquí):
 
 Checklist operativo (sin didáctica): [`docs/cursor-kit-sync.md`](../../cursor-kit-sync.md).
 
+### Rutas: template vs repo del alumno
+
+En **este** repositorio (`project-foundation-template`) el kit **no** está bajo `cursor/`. Vive en:
+
+```text
+templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md
+templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md
+```
+
+Tras copiar Layer 0 al repo del alumno, la misma carpeta queda en:
+
+```text
+cursor/prompts/adoption/…
+```
+
+Los bloques `@cursor/prompts/adoption/…` dentro de los prompts asumen **ya copiado** en el repo del alumno. En el template, abre o `@`-adjunta la ruta `templates/cursor-workspace/prompts/adoption/…` (o copia primero y usa `cursor/…`).
+
 ---
 
 ## Layer 0 — Session 2

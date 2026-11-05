@@ -4,6 +4,13 @@ Create or refresh **`cursor/projects/<stack>/project-context.md`** for one stack
 
 Training module: M4 in `docs/training/ai-with-cursor/aspects-catalog.md`.
 
+## File location
+
+| Context | Path |
+| --- | --- |
+| Template source (foundation) | `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md` |
+| Learner repo (after Layer 0) | `cursor/prompts/adoption/prompt-bootstrap-stack-context.md` |
+
 ## When to use
 
 - After `context-map.md` exists (Layer 0).

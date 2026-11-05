@@ -32,7 +32,7 @@ Desde el template hacia tu repo:
 | --- | --- |
 | `templates/root-common/cursorignore` | `.cursorignore` |
 | `templates/cursor-workspace/context-map.md` | `cursor/context-map.md` |
-| `templates/cursor-workspace/prompts/adoption/*` | `cursor/prompts/adoption/` |
+| `templates/cursor-workspace/prompts/adoption/*` | `cursor/prompts/adoption/` (misma carpeta; el template la llama `cursor-workspace/`) |
 | `templates/cursor-config/rules/core-standards.mdc` | `.cursor/rules/core-standards.mdc` |
 | `templates/cursor-config/rules/project-context.mdc` | `.cursor/rules/project-context.mdc` |
 | `templates/cursor-config/rules/documentation-english.mdc` | `.cursor/rules/documentation-english.mdc` |
@@ -43,9 +43,11 @@ Copia `project-context.md` del stack que **sí** tienes (ej. `templates/.../proj
 
 ### 3. Borrador del mapa — Mode A (Ask)
 
-Abre **Ask**. Pega el bloque **Mode A** de:
+Abre **Ask**. Pega el bloque **Mode A** de (tras el paso 2, en tu repo):
 
 `cursor/prompts/adoption/prompt-bootstrap-project-map.md`
+
+Si aún no copiaste: abre `project-foundation-template/templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md` y `@`-adjunta ese archivo en Cursor.
 
 Adjunta con `@`: README, manifesto raíz (`package.json`, `go.mod`, …) y 2–6 rutas reales.
 

@@ -4,6 +4,13 @@ Create or refresh **project identity** and the **context index** for an existing
 
 Training module: M2 in `docs/training/ai-with-cursor/aspects-catalog.md`.
 
+## File location
+
+| Context | Path |
+| --- | --- |
+| Template source (foundation) | `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md` |
+| Learner repo (after Layer 0) | `cursor/prompts/adoption/prompt-bootstrap-project-map.md` |
+
 ## When to use
 
 - First adoption of Layer 0 (session 2 of AI with Cursor course).

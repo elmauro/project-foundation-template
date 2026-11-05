@@ -128,9 +128,12 @@ Adjust `stacks` to reality: `frontend`, `backend`, `infrastructure`, or names li
 
 ### Adoption prompt
 
-Kit file: `cursor/prompts/adoption/prompt-bootstrap-project-map.md`
+| Location | Path |
+| --- | --- |
+| Template (foundation repo) | `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md` |
+| After Layer 0 copy (learner repo) | `cursor/prompts/adoption/prompt-bootstrap-project-map.md` |
 
-**Mode A (Ask)** — draft for review:
+**Mode A (Ask)** — draft for review (use `@cursor/…` only after the file is copied into the learner repo):
 
 ```text
 @cursor/prompts/adoption/prompt-bootstrap-project-map.md
@@ -250,9 +253,12 @@ One `project-context.md` per stack (30–80 lines each):
 
 ### Adoption prompt
 
-Kit file: `cursor/prompts/adoption/prompt-bootstrap-stack-context.md`
+| Location | Path |
+| --- | --- |
+| Template (foundation repo) | `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md` |
+| After Layer 0 copy (learner repo) | `cursor/prompts/adoption/prompt-bootstrap-stack-context.md` |
 
-**Mode A (Ask):**
+**Mode A (Ask)** (use `@cursor/…` only after Layer 0 copy):
 
 ```text
 @cursor/prompts/adoption/prompt-bootstrap-stack-context.md

@@ -46,7 +46,7 @@
 
 **Para contar en clase:** Alguien pregunta dónde poner un test. Sin mapa, el modelo inventa una ruta. Con mapa, cita **tu** índice.
 
-**Kit:** `cursor/context-map.md`, `project.config.json`, `cursor/projects/<stack>/project-context.md` (cómo se trabaja en ese stack). Bootstrap: [prompt-bootstrap-project-map.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md), [prompt-bootstrap-stack-context.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md) · Copia: [adopt-on-existing-repo.md](../adopt-on-existing-repo.md) Layer 0.
+**Kit:** `cursor/context-map.md`, `project.config.json`, `cursor/projects/<stack>/project-context.md` (cómo se trabaja en ese stack). Bootstrap (origen en el template: `templates/cursor-workspace/prompts/adoption/`): [prompt-bootstrap-project-map.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md), [prompt-bootstrap-stack-context.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md) · Copia: [adopt-on-existing-repo.md](../adopt-on-existing-repo.md) Layer 0.
 
 **Prueba de control (Ask):** *“Where do I add a new test for X?”* → debe citar el mapa, no inventar carpetas.
 
