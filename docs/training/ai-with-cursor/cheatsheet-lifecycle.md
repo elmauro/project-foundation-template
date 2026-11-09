@@ -12,6 +12,8 @@ Bugs chicos: `prompt-bug-fix.md` en lugar de intake completo.
 
 ## Intake (Mode A)
 
+Sesión 3: si aún no copiaste el playbook (Layer A sesión 4), usa el bloque en [labs/03-intake-sin-codigo.md](labs/03-intake-sin-codigo.md) paso 3 (`@context-map` + `@project-context`).
+
 ```text
 @cursor/prompts/feature/prompt-story-intake.md
 @cursor/docs/AI-Project-Playbook.md

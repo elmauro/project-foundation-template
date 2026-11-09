@@ -214,6 +214,8 @@ cursor/analysis/features/<area>/<slug>/
 
 `<area>` es opcional. Sin taxonomía de producto, usa `cursor/analysis/features/<slug>/`.
 
+Step-by-step copy list (Spanish, session 3 only): [labs/03-intake-sin-codigo.md](labs/03-intake-sin-codigo.md) → paso 1.
+
 Adaptar `review-guidelines.md`: quitar secciones de stacks que no existen.
 
 ---

@@ -539,9 +539,9 @@ El nombre de la carpeta va en kebab-case (`filter-by-date`). El ticket de Jira e
 
 **El alumno hace:**
 
-1. Copia capa A (templates + prompts) — [adopt guide](adopt-on-existing-repo.md) bloque sesión 3.
+1. Copia Layer A sesión 3 — tabla en [lab 03 paso 1](labs/03-intake-sin-codigo.md) (misma lista que [adopt guide](adopt-on-existing-repo.md) filas sesión 3).
 2. Elige **su ticket real** ya acordado con el lead — recortado a 1–2 días.
-3. Chat **nuevo** → pega intake Mode A del [cheatsheet-lifecycle](cheatsheet-lifecycle.md).
+3. Chat **nuevo** (Ask) → intake Mode A — bloque del [lab 03 paso 3](labs/03-intake-sin-codigo.md) (sin playbook hasta sesión 4); alternativa: [cheatsheet-lifecycle](cheatsheet-lifecycle.md) si ya tienen playbook.
 4. Revisa `user-story.md` y `feature-manifest.md` en **inglés**.
 5. En el manifest: **In scope**, **Out of scope** y definition of done **concretos** (no “mejorar UX”).
 6. `Implement now? no` — sin excepciones en clase.

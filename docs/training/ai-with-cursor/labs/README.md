@@ -6,7 +6,7 @@ Guías para **quien hace el curso**. Cada archivo es una sesión: pasos numerado
 | --- | --- | --- |
 | 1 | [01-primera-practica.md](01-primera-practica.md) | Un cambio chico con alcance y verify (sin kit) |
 | 2 | [02-mapa-y-reglas.md](02-mapa-y-reglas.md) | Mapa, identidad y reglas en el repo |
-| 3 | [03-intake-sin-codigo.md](03-intake-sin-codigo.md) | Carpeta de la historia (story + manifest + analysis) |
+| 3 | [03-intake-sin-codigo.md](03-intake-sin-codigo.md) | Layer A (copiar) + carpeta de la historia (crear en intake) |
 | 4 | [04-implementar-y-validar.md](04-implementar-y-validar.md) | Código del ticket + checklist |
 | 5 | [05-review-y-cierre.md](05-review-y-cierre.md) | Review, close y regla de alcance |
 | 6 | [06-producto-y-cierre.md](06-producto-y-cierre.md) | Visión + backlog + workbook cerrado |
