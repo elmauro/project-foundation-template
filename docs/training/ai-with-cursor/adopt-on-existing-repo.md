@@ -33,6 +33,44 @@ Los bloques `@cursor/prompts/adoption/…` dentro de los prompts asumen **ya cop
 
 Identity + map + always-on rules. Sin esto el resto del kit no tiene ancla.
 
+### Product (project) vs technical areas (`stacks`)
+
+The kit uses **three names** for different things. Do not treat `stacks` as “the whole product.”
+
+| Concept | Meaning | Where in the kit |
+| --- | --- | --- |
+| **Product / project** | The business product you build (one name for the team) | `projectName`, `projectSlug`, `businessDomain` in `project.config.json` |
+| **Git repo** | One workspace you open in Cursor | Repo root; one `cursor/context-map.md` per repo |
+| **Technical area** | UI, API, infra, mobile, runtime — a slice of context for the agent | `stacks[]` + `cursor/projects/<label>/project-context.md` |
+
+The JSON field is still called **`stacks`** (template history). Read it as **areas** or **components** of the same product. One product can have UI **and** API without being “one stack.”
+
+**One repo, one product, UI + API together**
+
+```json
+{
+  "projectName": "Loyalty",
+  "projectSlug": "loyalty",
+  "stacks": ["vite-ui", "serverless-api"]
+}
+```
+
+- One `projectName` for the product.
+- Two entries in `stacks` → two `project-context.md` files (each with **real** paths, e.g. `loyalty-app-vite/` and `loyalty-program-serverless/`).
+- One shared `context-map.md` listing both areas.
+- `.cursor/rules/project-context.mdc`: one discovery line per area that exists.
+
+**One repo, only UI or only API**
+
+- Still one **product** in `projectName` (even if the full product also has another git repo elsewhere).
+- `stacks: ["app"]` or `["api"]` → one context file is enough.
+
+**Several git repos for one product**
+
+- Each repo gets its **own** kit (own map, own `project.config.json`).
+- Same `projectName` is optional; often each repo has a focused name (`Loyalty UI` / `Loyalty API`).
+- Full-stack hub patterns (sync between repos) are advanced; see product examples, not session 2 default.
+
 ### Create (do not copy blindly)
 
 `project.config.json` mínimo (English keys; fill with the real product):
@@ -48,7 +86,11 @@ Identity + map + always-on rules. Sin esto el resto del kit no tiene ancla.
 }
 ```
 
-Ajusta `stacks` a lo que el repo **tiene**: `frontend`, `backend`, `infrastructure`, u otros nombres reales (`api`, `mobile`, `runtime`).
+Ajusta `stacks` a etiquetas que tenga sentido para **tu** equipo. No tienen que llamarse `frontend` / `backend` / `infrastructure` ni coincidir con nombres de carpeta.
+
+Ejemplos de `stacks` en repos reales: `["vite-ui"]`, `["serverless-api"]`, `["ui","api"]`, `["runtime"]`, `["mobile"]`.
+
+El **mapa** y cada `project-context.md` deben usar **rutas que existen** (`src/`, `apps/web/`, `transaction-api/`, `loyalty-app-vite/`, etc.). El template del generador usa `frontend/` y `backend/` como convención de **proyectos nuevos**; en repos legados son solo referencia al copiar el scaffold.
 
 ### Copy and adapt
 
@@ -70,12 +112,60 @@ Editar `context-map.md`: borrar carpetas que el repo no tiene. Añadir las que s
 
 Editar `project-context.md`: 1–2 páginas de **cómo está hoy** el stack (rutas, tests, convenciones). El agente puede redactar el primer borrador; el humano corrige.
 
+**Editar `.cursor/rules/project-context.mdc`** (no confundir con `cursor/projects/.../project-context.md`):
+
+- El `.mdc` es la regla corta *alwaysApply*: orden de lectura (config → mapa → stack context).
+- El `.md` bajo `cursor/projects/<stack>/` es el contenido largo del stack.
+- Borra referencias a `frontend/`, `backend/`, `infrastructure/` si no existen en tu repo.
+
+### Mono-repo (un solo stack en un git)
+
+Válido y habitual en el curso. Ejemplo mínimo:
+
+```json
+{
+  "projectName": "My API",
+  "projectSlug": "my-api",
+  "businessDomain": "…",
+  "preset": "existing",
+  "ownerTeam": "product",
+  "stacks": ["api"]
+}
+```
+
+- Una carpeta: `cursor/projects/api/project-context.md` (el segmento `api` es la **etiqueta** en `stacks`; puede ser `vite-ui`, `otp-api`, etc.).
+- Un solo bloque de descubrimiento en `project-context.mdc` apuntando a ese archivo y a rutas reales (`src/`, `apps/foo/`, etc.).
+- No hace falta copiar scaffold de `projects/frontend/` si no tienes carpeta `frontend/`. Puedes partir del scaffold `backend/` solo como **formato** del markdown y borrar referencias a `backend/`.
+
+Varias apps **en el mismo git** = varios elementos en `stacks`, un `project-context.md` por etiqueta, y una línea por stack en el `.mdc`. Cada contexto describe **sus** carpetas, aunque ninguna se llame `frontend` o `backend`.
+
+### Nombres de carpeta ≠ nombres del template
+
+| En el kit (generador) | En tu repo (válido) |
+| --- | --- |
+| `frontend/` | `loyalty-app-vite/`, `apps/web/`, `src/` |
+| `backend/` | `loyalty-program-serverless/`, `services/`, `otp-api/` |
+| `infrastructure/` | `terraform/`, `deploy/`, `.aws/` |
+
+`project.config.json` → `stacks` = etiquetas lógicas. `context-map.md` → rutas físicas.
+
 **Prompts de bootstrap (recomendado en sesión 2):**
 
 | From template | Use |
 | --- | --- |
-| `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md` | `cursor/prompts/adoption/` — Mode A draft, then Mode B apply map + `project.config.json` |
-| `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md` | `cursor/prompts/adoption/` — one stack at a time |
+| `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md` | `cursor/prompts/adoption/` — Mode A (Ask) draft → human edit → Mode B (Agent) apply map + `project.config.json` |
+| `templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md` | `cursor/prompts/adoption/` — repeat **per entry** in `stacks` (one technical area per file) |
+
+**Stack / area context bootstrap** (after map exists):
+
+1. Pick one label from `project.config.json` → `stacks` (e.g. `vite-ui`).
+2. Set **Stack root path** to a real folder (`src/`, `apps/api/`, `loyalty-app-vite/`).
+3. Mode A (Ask): paste Mode A from the prompt; attach `@cursor/context-map.md`, area manifest, source tree, tests/README.
+4. Human review: fix paths and commands; trim invented `frontend/` / `backend/`.
+5. Mode B (Agent): apply to `cursor/projects/<label>/project-context.md` (English, ~80 lines).
+6. Run each command in **Commands** locally; repeat for the next label in `stacks`.
+
+Step-by-step (Spanish): [labs/02-mapa-y-reglas.md](labs/02-mapa-y-reglas.md) → pasos 6A–6D.
 
 Si el stack no es React/serverless/Terraform, **no copies** esa regla. Escribe una regla corta propia o deja solo `core-standards` + `project-context`.
 

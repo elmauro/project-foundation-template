@@ -50,7 +50,35 @@
 
 **Kit:** `context-map.md` · `project.config.json` · `project-context.md`
 
-**Bootstrap:** Mode A (Ask) → revisar → Mode B (Agent)
+**Bootstrap mapa:** Mode A (Ask) → revisar → Mode B (Agent)
+
+**Bootstrap área:** repetir por cada `stacks[]` · `Stack root path` real · probar **Commands**
+
+**Lab:** pasos 6A–6D
+
+---
+
+## Proyecto vs `stacks` (áreas)
+
+| | Proyecto (producto) | `stacks` en JSON |
+| --- | --- | --- |
+| Qué es | El producto de negocio | Partes técnicas: UI, API, infra… |
+| Dónde | `projectName` en config | `stacks[]` + `cursor/projects/<etiqueta>/` |
+
+UI + API en **un** git = **un** `projectName`, **dos** áreas en `stacks`, **un** mapa.
+
+El campo sigue llamándose `stacks` en el kit; en clase: **áreas**, no “todo el proyecto”.
+
+---
+
+## `.mdc` vs `project-context.md` · mono-repo
+
+| | Regla `.mdc` | `cursor/projects/<stack>/project-context.md` |
+| --- | --- | --- |
+| Rol | Corta, siempre on — orden de lectura | Largo — tests, carpetas, convenciones |
+| Mono-repo | Un stack en `project.config.json` (etiqueta: `vite-ui`, `api`, …) — **editar** el `.mdc` | Un `project-context.md` con **carpetas reales** (`src/`, `apps/`, `otp-api/`) — no hace falta `frontend/` |
+
+**Lab paso 7:** adaptar `.mdc` después del bootstrap.
 
 ---
 
@@ -72,5 +100,6 @@ Modo **Ask:**
 
 - Mapa sin carpetas inventadas
 - `project-context.md` revisado por ti
+- `project-context.mdc` adaptado al repo (mono-repo OK)
 - Prueba de control OK
 - Commit: `chore(cursor): add project map and core rules`

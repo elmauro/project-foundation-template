@@ -26,6 +26,8 @@
 
 **Kit:** `.cursor/rules/*.mdc` · Copilot: `copilot-instructions.md` · Claude: `CLAUDE.md`
 
+**Dos archivos:** `project-context.mdc` (regla corta, *dónde buscar*) vs `cursor/projects/<stack>/project-context.md` (contenido del stack). En **mono-repo** suele haber un solo stack en `project.config.json` y el `.mdc` se adapta a mano — ver [lab 02 → paso 7](labs/02-mapa-y-reglas.md).
+
 ---
 
 ### C13 — Contexto en capas
@@ -42,11 +44,11 @@
 
 **Definición (IA):** Índice en git (`context-map.md`): dónde están tests, APIs, docs, prompts. Table of contents para personas y modelos — el LLM no tiene mapa mental del código (C01).
 
-**En la práctica:** Sin mapa, el agente inventa carpetas (`frontend/` en un repo solo backend).
+**En la práctica:** Sin mapa, el agente inventa carpetas (`frontend/` cuando tu UI vive en `loyalty-app-vite/` o `src/`). El stack en `project.config.json` es una **etiqueta**; el mapa lista **rutas reales**.
 
 **Para contar en clase:** Alguien pregunta dónde poner un test. Sin mapa, el modelo inventa una ruta. Con mapa, cita **tu** índice.
 
-**Kit:** `cursor/context-map.md`, `project.config.json`, `cursor/projects/<stack>/project-context.md` (cómo se trabaja en ese stack). Bootstrap (origen en el template: `templates/cursor-workspace/prompts/adoption/`): [prompt-bootstrap-project-map.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md), [prompt-bootstrap-stack-context.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md) · Copia: [adopt-on-existing-repo.md](../adopt-on-existing-repo.md) Layer 0.
+**Kit:** `cursor/context-map.md`, `project.config.json`, `cursor/projects/<etiqueta>/project-context.md` (una guía por **área** en `stacks`, no por todo el producto). Bootstrap: mapa → Mode A/B en [prompt-bootstrap-project-map.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-project-map.md); luego **una vuelta Mode A/B por etiqueta** en [prompt-bootstrap-stack-context.md](../../../templates/cursor-workspace/prompts/adoption/prompt-bootstrap-stack-context.md) (`Stack name` + `Stack root path` real, comandos verificados). Detalle: [lab 02 pasos 3–6](labs/02-mapa-y-reglas.md) · Copia: [adopt-on-existing-repo.md](../adopt-on-existing-repo.md) Layer 0.
 
 **Prueba de control (Ask):** *“Where do I add a new test for X?”* → debe citar el mapa, no inventar carpetas.
 

@@ -10,7 +10,7 @@ Imprime o duplica este archivo. Lo completas **durante cada sesión** (no hay ta
 | --- | --- |
 | Repo path | |
 | Product name / slug | |
-| Stacks reales (carpetas) | |
+| Áreas (`stacks`) + carpetas reales de cada una | |
 | Cómo se prueba hoy (comando) | |
 | Ticket candidato (sesiones 3–4) | |
 | Lead que recorta alcance | |
@@ -30,7 +30,7 @@ Cambio de práctica (no el ticket grande):
 
 - [ ] `project.config.json`
 - [ ] `cursor/context-map.md` (sin carpetas inventadas)
-- [ ] `cursor/projects/<stack>/project-context.md`
+- [ ] `cursor/projects/<etiqueta>/project-context.md` (uno por cada `stacks[]`; comandos probados)
 - [ ] `.cursor/rules/core-standards.mdc`
 - [ ] `.cursor/rules/project-context.mdc`
 - [ ] `.cursor/rules/documentation-english.mdc`

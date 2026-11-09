@@ -393,9 +393,9 @@ La prueba, en modo explorar: *“Where do I add a new test for X?”* La respues
 1. Copien de `project-foundation-template` → ver [adopt-on-existing-repo](adopt-on-existing-repo.md) capa 0.
 2. Copien `templates/cursor-workspace/prompts/adoption/*` → `cursor/prompts/adoption/` en el repo del alumno (en el template **no** existe `cursor/prompts/adoption/`).
 3. Scaffold de `context-map.md`.
-4. Peguen **Mode A** de `prompt-bootstrap-project-map.md` con `@README`, `@package.json` y rutas reales.
-5. Revisan, corrigen, **Mode B** aplica.
-6. Lo mismo con `prompt-bootstrap-stack-context.md` para su stack principal.
+4. Peguen el bloque **Mode A** completo de `prompt-bootstrap-project-map.md` (Ask) con `@README`, manifesto raíz y 2–6 rutas reales.
+5. Revisan, corrigen, **Mode B** (Agent) aplica mapa + `project.config.json`.
+6. **Por cada etiqueta en `stacks`:** `prompt-bootstrap-stack-context.md` — Mode A con `Stack name` + `Stack root path` reales → revisan comandos → Mode B escribe `cursor/projects/<etiqueta>/project-context.md` → corren los comandos del doc (no basta con el área “principal” si hay dos en `stacks`).
 7. Copien reglas: `core-standards`, `project-context`, `documentation-english`.
 8. Regla de React/serverless/Terraform **solo si les calza**. Si no, con el `project-context` alcanza hoy.
 
